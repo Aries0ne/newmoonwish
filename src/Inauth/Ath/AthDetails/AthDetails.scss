@@ -1,0 +1,220 @@
+.AthDetails-box {
+  border: var(--border);
+  padding: 1.6rem 2.4rem;
+  border-radius: 1rem;
+
+  .AthDetails-head {
+    // padding: 1.6rem 2.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .dataProcess-date {
+      //   padding: 1.6rem 2.4rem;
+      color: var(--color-dark);
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      svg {
+        fill: var(--color-dark);
+      }
+
+      .AthDetails-box-title {
+        font-size: larger;
+        font-weight: 900;
+      }
+    }
+
+    .portfolio {
+      display: flex;
+      align-items: center;
+      color: var(--color-primary) !important;
+
+      .add-portfolio {
+        font-size: small;
+        color: var(--color-primary) !important;
+      }
+    }
+  }
+
+  .AthDetails-body {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+    .AthDetails-body-box {
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.4rem;
+      background-color: rgba(128, 128, 128, 0.329);
+      color: var(--color-dark);
+    }
+
+    .AthDetails-body-icons {
+      .up-down {
+        display: flex;
+        align-items: center;
+        svg {
+          fill: var(--color-primary) !important;
+          font-size: larger !important;
+        }
+
+        .up-down-text {
+          font-size: small;
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+
+  .AthDetails-Data-body {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+
+    .market-data {
+      font-size: small;
+      color: gray;
+    }
+    .market-cap {
+      color: var(--color-dark);
+      font-size: small;
+    }
+  }
+}
+
+.AthDetails-box-data {
+  display: flex;
+  gap: 3rem;
+
+  .box-data {
+    border: var(--border);
+    border-radius: 1rem;
+    width: 100% !important;
+    color: var(--color-dark);
+
+    .box-button {
+      display: flex;
+      gap: 2rem;
+      padding: 1.6rem 2.4rem;
+
+      .button-box {
+        display: flex;
+        justify-content: center;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.4rem;
+
+        &.MCC {
+          background-color: rgba(211, 211, 211, 0.445);
+          color: var(--color-dark);
+        }
+        &.NIL {
+          background-color: var(--color-button);
+          color: var(--color-dark);
+        }
+        &.Target {
+          background-color: var(--color-btn);
+          color: var(--color-dark);
+        }
+      }
+    }
+
+    .body-data {
+      display: flex;
+      gap: 6rem;
+      padding: 1.6rem 2.4rem;
+
+      .body-data-one {
+        color: gray;
+      }
+
+      .body-data-date {
+        font-size: small;
+      }
+    }
+
+    .data-market {
+      display: flex;
+      gap: 8rem;
+      padding: 1.6rem 2.4rem;
+
+      .market-datas {
+        color: gray;
+      }
+    }
+
+    .data-entry {
+      padding: 1.6rem 2.4rem;
+
+      .data-AthDetails {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+
+        .Mui-icon {
+          &.com {
+            svg {
+              fill: #410b76 !important;
+              font-size: x-large;
+            }
+          }
+          &.incom {
+            svg {
+              fill: #9e9e9e !important;
+              font-size: x-large;
+            }
+          }
+        }
+        .market-data {
+          font-size: small;
+          color: gray;
+        }
+        .market-data-second {
+          font-size: small !important;
+        }
+      }
+    }
+
+    .Target-Details {
+      padding: 1.6rem 2.4rem;
+
+      .Target-Details-Data {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+
+        .Mui-icons {
+          &.com {
+            svg {
+              fill: #410b76 !important;
+              font-size: x-large;
+            }
+          }
+          &.incom {
+            svg {
+              fill: #9e9e9e !important;
+              font-size: x-large;
+            }
+          }
+        }
+
+        .market-data {
+          font-size: small;
+          color: gray;
+        }
+        .market-data-second {
+          font-size: small !important;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 1rem;
+  }
+}

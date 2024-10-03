@@ -1,0 +1,128 @@
+.profile-content {
+
+  li {
+    display: block;
+    margin-bottom: 2rem;
+
+    h4 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-darkblue);
+      display: block;
+      margin-bottom: 1rem;
+
+      @media screen and (max-width:767px) {
+        font-size: 1.8rem;
+      }
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: var(--color-darkgrey);
+      margin-bottom: 0.6rem;
+
+      &.list {
+        position: relative;
+        padding-left: 1.5rem;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0.6rem;
+          left: 0;
+          height: 0.8rem;
+          width: 0.8rem;
+          background-color: var(--color-primary);
+          border-radius: 50%;
+        }
+      }
+
+      a {
+        color: var(--color-darkblue);
+        text-decoration: underline !important;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+
+.fundview_box {
+  max-width: 34rem;
+  width: 100%;
+  margin: 2rem auto;
+  border: var(--border);
+  border-radius: 0.5rem;
+  padding: 2rem 0;
+
+  h5.fund_margin {
+    font-size: 2.8rem;
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .fund_view_status {
+    padding: 0 1.5rem;
+    text-align: center;
+
+    p {
+      font-size: 1.4rem;
+      color: var(--color-darkgrey);
+    }
+
+    h5 {
+      font-size: 2.2rem;
+      color: var(--color-darkblue) !important;
+    }
+  }
+
+  .profile-details {
+    margin-top: 2rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &:nth-child(odd) {
+        background-color: var(--color-light);
+      }
+
+      p {
+        font-size: 1.5rem;
+
+        &:first-child {
+          color: var(--color-darkblue);
+        }
+
+        &:last-child {
+          color: var(--color-darkgrey);
+        }
+      }
+    }
+  }
+}
+
+.fundView_note {
+  display: flex;
+  justify-content: center;
+  max-width: 31rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  margin-top: 1rem;
+  padding-top: 2rem;
+  border-top: var(--border);
+
+  p {
+    font-size: 1.3rem;
+    color: var(--color-dark);
+    font-weight: 600;
+  }
+
+  span {
+    font-size: 1.2rem;
+    color: var(--color-darkgrey);
+    margin-left: 0.4rem;
+  }
+}

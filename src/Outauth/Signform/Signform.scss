@@ -1,0 +1,293 @@
+.login_layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--color-lightPrimary);
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.whatsapp-logo {
+  height: 30px;
+  width: 30px;
+}
+.signForm-bg {
+  padding: 2rem;
+
+  
+
+  .MuiOutlinedInput-notchedOutline {
+    display: none;
+  }
+
+  .signForm-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a.logoLight {
+      height: 6rem;
+      width: 6rem;
+      display: block;
+      border-radius: 50%;
+    }
+
+    button.signForm-btn {
+      display: flex;
+      align-items: center;
+      border-radius: 0.5rem;
+      font-size: 1.5rem;
+      color: var(--color-white);
+      text-transform: capitalize;
+      font-weight: 500;
+      background-color: var(--color-primary);
+      padding: 0.6rem 1.2rem;
+
+      svg {
+        margin-left: 0.6rem;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .signForm-box {
+    max-width: 1150px;
+    margin: 4rem auto;
+
+
+    .from-bg {
+      background-color: var(--color-white);
+      border-radius: 1rem;
+      margin: 0 auto;
+      padding: 2rem;
+      width: 100%;
+
+      img.formLogo {
+        margin-bottom: 3rem;
+        height: 5rem;
+      }
+
+      p.form-text {
+        color: var(--color-darkgrey);
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      h4.form-text {
+        color: var(--color-dark);
+        font-size: 1.8rem;
+        margin-bottom: 1.4rem;
+        font-weight: 600;
+      }
+
+      h3.form-text {
+        color: var(--color-dark);
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .contactForm {
+        padding: 0;
+        margin-top: 20px;
+        
+
+        .sendOTP-alert {
+          padding: 1rem;
+          border-radius: 0.5rem;
+          border: var(--border);
+          border-color: var(--color-primary);
+          background-color: var(--color-lightPrimary);
+          margin-bottom: 2rem;
+          display: flex;
+          align-items: top;
+
+          .checkIcon {
+            color: var(--color-dark);
+          }
+
+          h5 {
+            font-size: 1.4rem;
+            color: var(--color-dark);
+
+            span {
+              font-weight: 600;
+              font-size: 1.4rem;
+            }
+          }
+
+          p {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+            color: var(--color-dark);
+          }
+        }
+
+        .countdown {
+          font-size: 1.3rem;
+          font-weight: 500;
+          margin-top: 0.5rem;
+          color: var(--color-darkgrey);
+          padding-left: 1rem;
+
+          span {
+            font-size: 1.3rem;
+            color: var(--color-danger);
+            font-weight: 600;
+          }
+        }
+
+        button.signForm-btn {
+          display: flex;
+          align-items: center;
+          background-color: var(--color-primary);
+          padding: 0.8rem;
+          border-radius: 0.5rem;
+          font-size: 1.5rem;
+          color: var(--color-darkblue);
+          font-weight: 600;
+          border: none;
+          outline: none;
+          // display: block;
+          cursor: pointer;
+          width: 100%;
+          margin: 0 0.5rem;
+
+          &.secound {
+            border: var(--border);
+            background-color: transparent;
+            color: var(--color-darkgrey);
+
+            &:hover {
+              background-color: var(--color-darkblue);
+              color: var(--color-white);
+            }
+          }
+          .whatsapp-logo {
+            height: 30px;
+            width: 30px;
+          }
+
+          &.resendOtp {
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            width: auto;
+            position: absolute;
+            right: 1rem;
+            top: 2px;
+            // transform: translateY(-50%);
+            background-color: transparent;
+          }
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        padding: 1rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 1rem;
+  }
+}
+
+.signContent {
+  text-align: center;
+
+  h3 {
+    font-size: 2.6rem;
+    color: var(--color-dark);
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1.4rem;
+    color: var(--color-darkgrey);
+    margin-top: 1rem;
+  }
+}
+
+.color {
+  color: red;
+  font-size: smaller;
+}
+
+.contactForm {
+  .MuiPaper-elevation {
+    max-height: 30vh !important;
+  }
+}
+
+// .sam{
+//   margin-left: 65px;
+//   margin-top: 0px;
+// }
+// .flag-dropdown{
+//   position: absolute;
+//   margin-left: -60px;
+//   border: 1px solid #CACACA;
+//   border-radius: 5px;
+
+// }
+//  input.form-control.sanket{
+//   padding: 18.5px 14px 18.5px 15px;
+//   width: 100%;
+//   max-width: 450px;
+// }
+
+.sam {
+  margin-left: 65px;
+  margin-top: 0px;
+}
+
+.flag-dropdown {
+  position: absolute;
+  margin-left: -60px;
+  border: 1px solid #CACACA;
+  border-radius: 5px;
+}
+
+input.form-control.sanket {
+  padding: 18.5px 14px 18.5px 15px;
+  width: 85%; /* Set width to 100% to make it scale with the box */
+  // max-width: 400px; /* Cap the width to prevent the input from growing too large */
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .sam {
+    margin-left: 65px; /* Adjust margin for smaller screens */
+  }
+
+  input.form-control.sanket {
+    padding: 14px 10px;
+    width: 85%; /* Continue to scale with the box */
+  }
+}
+
+@media (max-width: 480px) {
+  .sam {
+    margin-left: 68px; /* Adjust margin for mobile screens */
+  }
+
+  input.form-control.sanket {
+    padding: 12px 8px;
+    width: 80%; /* Use 80% of the container's width for smaller screens */
+  }
+
+  .flag-dropdown {
+    margin-left: -60px;
+  }
+}
+
+input.react-tel{
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  position: relative;
+  // width: 100%;
+}
+
+

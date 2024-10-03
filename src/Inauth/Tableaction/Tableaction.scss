@@ -1,0 +1,71 @@
+.tableActions {
+  padding: 0 0.5rem;
+
+  div.actionButton {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      margin-left: 0.5rem;
+      min-height: 2.6rem;
+      max-height: 2.6rem;
+      min-width: 2.6rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      margin-right: 0 !important;
+
+      svg {
+        height: 1.8rem;
+        width: 1.8rem;
+        font-size: 1.8rem;
+      }
+
+      &.edit {
+        background-color: var(--color-primary);
+        margin-left: 0;
+        color: #FFFFFF !important;
+      }
+
+      &.save {
+        background-color: var(--color-primary);
+        color: #FFFFFF !important;
+      }
+
+      &.del {
+        background-color: var(--color-danger);
+        color: #FFFFFF !important;
+      }
+
+      &.buy {
+        background-color: #2992ec !important;
+        color: #FFFFFF !important;
+
+        svg {
+          height: 1.3rem;
+          width: 1.3rem;
+        }
+      }
+
+      &.sell {
+        background-color: #f75723 !important;
+        color: #FFFFFF;
+
+        svg {
+          height: 1.3rem;
+          width: 1.3rem;
+        }
+      }
+
+      &.bsdel {
+        background-color: var(--color-danger);
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  @media screen and (max-width:991px) {
+    padding: 0.8rem;
+  }
+}

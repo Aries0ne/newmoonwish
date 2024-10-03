@@ -1,0 +1,238 @@
+.createStrategy {
+  padding: 1.5rem 0;
+
+  button.createStrategy-btn {
+    border: 1px dashed var(--color-dark);
+    color: var(--color-darkgrey);
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 4rem;
+    border-radius: 0.6rem;
+    margin: 0 auto;
+
+    svg {
+      font-size: 2.4rem;
+      margin-right: 1rem;
+    }
+  }
+}
+
+.download-btn-strategy{
+    font-size: 1.4rem !important;
+    height: 3.4rem !important;
+    padding: 0.6rem 1.6rem !important;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    margin-right: 1rem !important;
+    margin-top: 1rem !important;
+    margin-top: 0 !important;
+    min-width: auto !important;
+    text-transform: capitalize !important;
+    margin: 0px 14px !important;
+    margin-top: 20px !important;
+    margin-bottom: 6px !important;
+}
+
+.input {
+  padding-left: 9px;
+  font-size: small !important;
+  color: var(--color-dark) !important;
+}
+
+.MuiAccordion-root {
+  background-color: var(--color-white) !important;
+
+  &::before {
+    display: none;
+  }
+}
+
+.cs-box {
+  width: 100%;
+  border: var(--border);
+  overflow-x: auto;
+  white-space: nowrap;
+
+  .cs-th {
+    display: flex;
+    align-items: center;
+    border-bottom: var(--border);
+
+    .csIitem-th {
+      width: 33.33%;
+      height: 4rem;
+      border-right: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-dark);
+      font-size: 1.6rem;
+      background-color: var(--color-light);
+      white-space: nowrap;
+      padding: 0 1rem;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      @media screen and (max-width: 767px) {
+        min-width: 18rem;
+        width: 18rem;
+      }
+    }
+  }
+
+  .cs-td {
+    width: 100%;
+
+    .cs-item {
+      display: flex;
+      align-items: center;
+      border-bottom: var(--border);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .csIitem-td {
+        width: 33.33%;
+        height: 4rem;
+        border-right: var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-dark);
+        font-size: 1.6rem;
+        white-space: nowrap;
+        padding: 0 1rem;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        @media screen and (max-width: 767px) {
+          min-width: 18rem;
+          width: 18rem;
+        }
+      }
+    }
+  }
+
+  .createStrategydata {
+    width: 25%;
+    height: 3.5rem;
+    border-right: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-darkgrey);
+    font-size: 1.4rem;
+    white-space: nowrap;
+    padding: 0 1rem;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    @media screen and (max-width: 575px) {
+      min-width: 18rem;
+      width: 18rem;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    justify-content: left;
+  }
+}
+
+// Sybol Form
+.symbolCollapse {
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: none !important;
+
+  .collpse-header {
+    &[aria-expanded="true"] {
+      border-bottom: var(--border);
+    }
+
+    h5.collapse-heading {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--color-dark) !important;
+      text-transform: uppercase;
+    }
+
+    svg {
+      color: var(--color-dark);
+    }
+  }
+
+  .symbol-form {
+    border-bottom: var(--border);
+    padding: 1rem 0;
+
+    &:last-child {
+      border: none;
+      padding: 0;
+    }
+  }
+
+  .formBox {
+    .formItems {
+      width: auto;
+    }
+  }
+
+  .selectionDiv {
+    border: none;
+  }
+}
+
+.check_condition {
+  display: flex;
+  align-items: center;
+
+  .MuiFormControlLabel-root {
+    display: block;
+    margin-left: 0;
+
+    .MuiCheckbox-root {
+      padding: 0.5rem;
+
+      svg.MuiSvgIcon-root {
+        font-size: 2.4rem;
+        color: var(--color-lightgrey) !important;
+      }
+
+      &.Mui-checked {
+        svg.MuiSvgIcon-root {
+          color: var(--color-primary) !important;
+        }
+      }
+    }
+  }
+}
+
+// createStrategy Modal
+.createStrategy {
+  .MuiPaper-root {
+    max-width: 40rem;
+    width: 100%;
+  }
+
+  .modalHeader {
+    padding: 0 !important;
+
+    h5 {
+      font-size: 1.8rem;
+      padding: 0 1rem;
+      color: var(--color-dark);
+      font-weight: 600;
+    }
+  }
+
+  .modalBody {
+    padding: 6rem 2rem 2rem 2rem !important;
+  }
+}

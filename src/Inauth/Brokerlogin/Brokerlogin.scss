@@ -1,0 +1,233 @@
+.allTitles {
+  font-size: 2rem !important;
+  color: var(--color-darkblue);
+  margin-bottom: 1.6rem !important;
+}
+
+// Broker Login
+.MuiAutocomplete-popper {
+  font-size: 1.4rem !important;
+  color: var(--color-dark) !important;
+  background-color: var(--color-white) !important;
+  padding: 0 !important;
+
+  ul {
+    // background-color: var(--color-white) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: var(--border);
+  }
+
+  * {
+    font-size: 1.3rem !important;
+    color: var(--color-dark) !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+
+    li {
+      padding: 0.6rem 0.6rem !important;
+    }
+  }
+
+  *.Mui-Selected {
+    background-color: var(--color-lightPrimary);
+  }
+}
+
+.MuiTextField-input {
+  font-size: 1.4rem !important;
+  color: var(--color-dark) !important;
+  padding: 0.8rem 1.4rem !important;
+}
+
+div.selectBroker {
+  button.brokerList {
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    border: var(--border);
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: calc(16.66% - 2rem);
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: var(--color-dark);
+
+    &:nth-child(6n + 6) {
+      margin-right: 0;
+
+      @media screen and (max-width: 1199px) {
+        margin-right: 3rem;
+      }
+    }
+
+    img {
+      height: 7rem;
+      width: 12rem;
+      object-fit: contain;
+      border-radius: 0.6rem;
+    }
+
+    p.brokerDestials {
+      margin-left: 1rem;
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+
+    @media screen and (max-width: 1499px) {
+      width: calc(20% - 2rem);
+
+      &:nth-child(5n + 5) {
+        margin-right: 0;
+      }
+
+      &:nth-child(6n + 6) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 1199px) {
+      width: calc(25% - 1.5rem);
+
+      &:nth-child(4n + 4) {
+        margin-right: 0;
+      }
+
+      &:nth-child(5n + 5) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      width: calc(33.33% - 1.5rem);
+
+      &:nth-child(3n + 3) {
+        margin-right: 0;
+      }
+
+      &:nth-child(4n + 4) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      width: calc(50% - 1.5rem);
+
+      &:nth-child(2n + 2) {
+        margin-right: 0;
+      }
+
+      &:nth-child(3n + 3) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 575px) {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 1.5rem;
+      margin-right: 0 !important;
+    }
+  }
+  div.brokerList {
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    border: var(--border);
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: fit-content !important;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: var(--color-dark);
+
+    &:nth-child(6n + 6) {
+      margin-right: 0;
+
+      @media screen and (max-width: 1199px) {
+        margin-right: 3rem;
+      }
+    }
+
+    img {
+      height: 7rem;
+      width: 12rem;
+      object-fit: contain;
+      border-radius: 0.6rem;
+    }
+
+    p.brokerDestials {
+      margin-left: 1rem;
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+
+    @media screen and (max-width: 1499px) {
+      width: calc(20% - 2rem);
+
+      &:nth-child(5n + 5) {
+        margin-right: 0;
+      }
+
+      &:nth-child(6n + 6) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 1199px) {
+      width: calc(25% - 1.5rem);
+
+      &:nth-child(4n + 4) {
+        margin-right: 0;
+      }
+
+      &:nth-child(5n + 5) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      width: calc(33.33% - 1.5rem);
+
+      &:nth-child(3n + 3) {
+        margin-right: 0;
+      }
+
+      &:nth-child(4n + 4) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      width: calc(50% - 1.5rem);
+
+      &:nth-child(2n + 2) {
+        margin-right: 0;
+      }
+
+      &:nth-child(3n + 3) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 575px) {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 1.5rem;
+      margin-right: 0 !important;
+    }
+  }
+}
+
+.brokerDrp {
+  .MuiMenuItem-root {
+    border-bottom: var(--border);
+  }
+}
+
+.ConnectButton {
+  font-size: small !important;
+  width: 100% !important;
+  white-space: nowrap !important;
+  min-width: fit-content !important;
+}

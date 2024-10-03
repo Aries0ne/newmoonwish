@@ -1,0 +1,27 @@
+.custom-button {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  color: #ffffff !important;
+  padding: 0.7rem 0.9rem !important;
+  text-transform: capitalize !important;
+  max-width: 9rem !important;
+
+  &.btn-primary {
+    width: 100% !important;
+    background-color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary);
+
+    }
+  }
+
+  &.btn-danger {
+    width: 100% !important;
+    background-color: var(--color-danger);
+
+    &:hover {
+      background-color: var(--color-danger);
+    }
+  }
+}

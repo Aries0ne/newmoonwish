@@ -1,0 +1,22 @@
+.symbolModal {
+
+  .MuiPaper-root {
+    max-width: 60rem;
+    width: 100%;
+  }
+
+  .modalHeader {
+    padding: 0 !important;
+
+    h5 {
+      font-size: 1.8rem;
+      padding: 0 1rem;
+      color: var(--color-dark);
+      font-weight: 600;
+    }
+  }
+
+  .modalBody {
+    padding: 6rem 2rem 2rem 2rem !important;
+  }
+}

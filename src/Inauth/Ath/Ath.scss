@@ -1,0 +1,119 @@
+.AthData {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+
+  .TableData {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    .symbol {
+      font-size: 1.4rem;
+      color: var(--color-dark);
+      font-weight: bold;
+    }
+
+    .exchangeName {
+      h4 {
+        font-size: 1.4rem !important;
+        color: var(--color-dark) !important;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: var(--color-darkgrey) !important;
+        text-transform: uppercase;
+        // opacity: 0.8;
+      }
+    }
+  }
+
+  h5.rate {
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 0.5rem;
+      font-size: 1rem;
+      height: 2rem;
+      width: 1.5rem;
+    }
+
+    .up {
+      color: var(--color-darkPrimary) !important;
+      font-size: x-small !important;
+      align-items: center;
+      font-size: 1.3rem !important;
+
+      svg {
+        fill: var(--color-darkPrimary) !important;
+      }
+    }
+
+    .down {
+      color: var(--color-danger) !important;
+      font-size: x-small !important;
+      align-items: center;
+      font-size: 1.3rem !important;
+
+      svg {
+        fill: var(--color-danger) !important;
+      }
+    }
+  }
+
+  .MarketData {
+    font-size: smaller !important;
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+
+    &.up {
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.4rem;
+      background-color: #22da7ea2;
+      margin-right: 1rem;
+      font-size: 1.1rem !important;
+      color: var(--color-dark);
+      font-weight: 900;
+    }
+
+    &.down {
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.4rem;
+      margin-right: 1rem;
+      font-size: 1.1rem !important;
+      background-color: rgba(177, 127, 127, 0.384);
+      color: var(--color-dark);
+      font-weight: 900;
+    }
+  }
+}
+
+.Market {
+  font-size: smaller;
+  font-size: 1.3rem;
+  color: var(--color-darkgrey);
+
+  .first {
+    font-size: 1.4rem;
+    color: var(--color-dark);
+    font-weight: 600;
+  }
+
+  .second {
+    font-size: 1.3rem;
+    color: var(--color-darkgrey);
+  }
+}
+
+//Dropdown
+.Dropdown-select {
+  border: 2px solid black;
+}

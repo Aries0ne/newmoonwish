@@ -1,0 +1,189 @@
+.strategyCard {
+  border: var(--border);
+  border-radius: 0.6rem;
+  padding: 1rem 1.5rem;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  .strategyCard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .strategyCard-title {
+      p.title {
+        font-size: 1.6rem;
+        color: var(--color-dark);
+        font-weight: 600;
+      }
+
+      p.days {
+        font-size: 1.2rem;
+        color: var(--color-darkgrey);
+
+        span {
+          color: var(--color-primary);
+          margin-left: 0.5rem;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    div.dayGainLoss {
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 1.1rem;
+        color: var(--color-darkgrey);
+      }
+
+      .status {
+        padding: 0.2rem 0.8rem;
+        border-radius: 0.4rem;
+        font-size: 1.1rem;
+
+        &.up {
+          background-color: #24a959;
+          color: #FFFFFF;
+        }
+
+        &.down {
+          background-color: var(--color-lightdanger);
+          border: 1px solid var(--color-danger);
+          color: var(--color-danger);
+        }
+      }
+    }
+
+    button.copyShare-link {
+      background-color: transparent;
+      height: 3rem;
+      width: 3rem;
+      min-width: 3rem;
+      color: var(--color-darkgrey);
+
+      svg {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .strategyCard-body {
+    .profilt_loss {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+
+      label {
+        font-size: 1.2rem;
+        color: var(--color-dark);
+        margin-right: 0.5rem;
+        text-transform: capitalize;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #FFFFFF;
+        padding: 0.2rem 0.6rem;
+        border-radius: 0.4rem;
+
+        &.loss {
+          background-color: var(--color-danger);
+        }
+
+        &.profit {
+          background-color: #24a959;
+        }
+      }
+    }
+
+    .All_total {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      border: var(--border);
+
+      h6 {
+        font-size: 1.2rem;
+        text-transform: capitalize;
+        color: var(--color-dark);
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      p {
+        font-size: 1.3rem;
+        color: var(--color-darkgrey);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .strategyCard-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 0;
+
+    .strategyCard-btn {
+      font-size: 1.3rem;
+      padding: 0.4rem 1.5rem;
+      margin: 0 0.5rem;
+      text-transform: capitalize;
+
+      &.loss {
+        background-color: var(--color-danger);
+        color: #FFFFFF;
+      }
+
+      &.profit {
+        background-color: #24a959;
+        color: #FFFFFF;
+      }
+
+      &.bg-solid {
+        background-color: var(--color-primary);
+        color: #FFFFFF;
+      }
+    }
+
+    &.sc_fb {
+      border-top: var(--border);
+      margin-top: 0.6rem;
+
+      p {
+        font-size: 1.2rem;
+        color: var(--color-darkgrey);
+
+        span {
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: var(--color-dark);
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width:575px) {
+    padding: 1rem;
+  }
+}
+
+.deployModal {
+  .MuiPaper-elevation {
+    max-width: 600px !important;
+
+    .inputFiled {
+      width: 100%;
+    }
+  }
+}

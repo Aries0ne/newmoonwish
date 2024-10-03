@@ -1,0 +1,104 @@
+.button {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  Button.squerOff {
+    height: 3rem;
+    min-width: 3rem;
+    max-width: 3rem;
+    border-radius: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-danger);
+    color: var(--color-white);
+
+    svg {
+      font-size: 1.8rem;
+    }
+  }
+
+  .squareOff {
+    .MuiPaper-elevation {
+      max-width: 380px !important;
+    }
+  }
+
+  Button.edit {
+    height: 3rem;
+    min-width: 3rem;
+    max-width: 3rem;
+    border-radius: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: var(--color-white) !important;
+
+    svg {
+      font-size: 1.8rem;
+    }
+  }
+
+  .edit {
+    .MuiPaper-elevation {
+      max-width: 380px !important;
+    }
+  }
+}
+
+label.label {
+  font-size: 1.4rem;
+  color: var(--color-dark);
+  margin-right: 1rem;
+  display: block;
+}
+
+.tradeType-toggle {
+  padding: 0.2rem 0.2rem;
+  border-radius: 5rem !important;
+  border: var(--border);
+  // margin-top: 0.5rem;
+
+  button {
+    font-size: 1.3rem !important;
+    border: none;
+    color: var(--color-dark) !important;
+    border-radius: 5rem !important;
+    padding: 0.2rem 2.4rem;
+    font-weight: 500 !important;
+    height: 3rem;
+    min-height: 3rem;
+
+    &.Mui-selected {
+      border-color: var(--color-primary);
+      background-color: var(--color-lightPrimary) !important;
+      color: var(--color-darkPrimary) !important;
+    }
+
+    &:hover {
+      background-color: var(--color-light);
+      color: var(--color-dark) !important;
+    }
+  }
+}
+
+.footer-btns {
+  background-color: var(--color-light);
+  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.footer-btnss {
+    background-color: var(--color-primary) !important;
+  }
+
+  &.footer-cancel {
+    margin-left: 0.5rem;
+    border: 1px solid var(--color-darkgrey);
+    background-color: transparent !important;
+    color: var(--color-dark) !important;
+  }
+}

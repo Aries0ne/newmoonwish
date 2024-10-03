@@ -1,0 +1,407 @@
+.div1{
+    width: 100%;
+}
+
+.div111{
+    display: flex;
+    flex-direction: row ;
+    width: 100%;
+    gap: 20px;
+
+
+}
+
+.main{
+display: flex;
+flex-direction: column;
+width: 50%;
+}
+.slider-container {
+    width: 100%; 
+    
+}
+
+.slick-next ::before{
+    display: none;
+}
+
+.container {
+    width: 80%; /* Full width for the container */
+    height: 150px; /* Adjust height as needed */
+    background-image: url('../../images/dash1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+    padding-top: 20px;
+
+    border-radius: 30px;
+}
+
+.cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+
+
+}
+
+.div001 {
+    display: flex;
+    flex-direction: column;
+    // padding: 2px 2px 2px 10px;
+    padding-left: 25px;
+}
+
+.div001 h1 {
+    font-size: 16px;
+    font-weight: 550;
+}
+
+.div001 p {
+    font-size: 12px;
+    color: #7B7B7B;
+}
+
+.div001 button {
+    background-color: white;
+    width: 40%;
+    outline: none;
+    border: solid 1px #ADADAD;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 15px;
+    
+}
+
+.dashimage {
+    height: 150px; 
+    width: 180px;     
+
+}
+
+.tech{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 30px;
+    align-items: center;
+
+}
+
+.stratlogo{
+    height: 30px;
+    width: auto;
+}
+
+.div023{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+.div023 h6{
+    font-size: 10px;
+    color: #2C3546;
+    margin: 0px;
+    font-weight: 600;
+}
+.div023 p1{
+    font-size: 8px;
+    color: #878787;
+    padding-top: 8px;
+    margin: 0px;
+}
+
+.vertical-line {
+    border-left: 1px solid #ddd;  
+    height: 40px;              
+    margin: 0 20px;              
+}
+
+hr {
+    border: none;
+    height: 1px;        
+    background-color: #89898925; 
+    margin: 8px 0;   
+}
+
+
+
+.slick-dots {
+    bottom: 10px; 
+}
+
+.slick-dots li {
+    margin: 0 5px; 
+}
+
+.slick-dots li button {
+    font-size: 0; /* Hide default button text */
+    width: 10px; /* Dot width */
+    height: 8px; /* Dot height */
+    border: none; /* Remove border */
+    border-radius: 3px; /* Slight rounding for a softer rectangle */
+    background: gray; /* Default dot color */
+    opacity: 0.5; /* Default opacity */
+    transition: background 0.3s, opacity 0.3s; /* Smooth transition */
+}
+
+
+.slick-dots li.slick-active button {
+    background: #007bff6a; /* Active dot color */
+    opacity: 1; /* Full opacity for active dot */
+    
+}
+
+.strat{
+   
+    height: 180px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin-top: 30px;
+    border-radius: 20px;
+}
+.strat h1{
+    font-size: 16px;
+    margin-top: 0px;
+
+}
+.strat h3{
+    font-size: 12px;
+    color: #2C3546;
+
+}
+.strat p{
+    font-size: 10px;
+    color: #878787;
+
+}
+
+
+.explore{
+   
+    padding: 10px;
+}
+.exp{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FAFCFE;
+    // padding: 10px;
+}
+
+.exp button{
+    background-color: #00ff9145;
+    border: none;
+    outline: none;
+    padding: 8px 10px 8px 10px;
+    border-radius: 5px;
+    font-weight: 550;
+    font-size: 10px;
+}
+
+
+.right{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 50%;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.right h1{
+font-size: 18px;
+padding: 0px;
+
+}
+.right p{
+    font-size: 12px;
+    margin: 0px;
+}
+.live{
+  
+    // margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.live3{
+  
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.live2{
+    background-color: #FAFCFE;
+    border-radius: 20px;
+    margin-top: 20px;
+
+}
+
+.insi{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    gap: 20px;
+    padding: 5px;
+}
+
+.div123{
+    display: flex;
+    flex-direction: column;
+}
+
+.div123 h1{
+    font-size: 12px;
+    
+    font-weight: 550;
+
+
+
+}
+.div123 p{
+    font-size: 10px;
+    color: #878787;
+   
+
+}
+
+.arrow1{
+    height: 12px;
+    width: 12px;
+    padding: 10px;
+}
+
+.text111{
+    font-size: 16px;
+    font-weight: 550;
+    padding: 10px;
+}
+
+.next{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 360px; /* Width of the card */
+    margin: 5px auto; /* Center the card horizontally */
+    font-family: Arial, sans-serif;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+
+   
+    margin-bottom: 5px;
+  }
+  
+  .card-header h2 {
+    font-size: 15px;
+    font-weight: 550;
+    margin: 0;
+  }
+  
+  .date {
+    font-size: 12px;
+    color: #878787;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .card-content {
+    margin-bottom: 15px;
+  }
+  
+  .card-content p {
+    font-size: 12px;
+    color: #878787;
+    line-height: 1.6;
+  }
+  
+  .card-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+    margin-right: 10px;
+  }
+  
+  .time-frame {
+    background-color: #d1e7d6; /* Light green for the time-frame tag */
+    color: #3d9140; /* Dark green for the text */
+  }
+  
+  .index {
+    background-color: #2c354635; /* Gray background for index tag */
+    color: #666;
+  }
+  
+  .match {
+    font-weight: bold;
+    font-size: 12px;
+    color: #333;
+    margin-left: auto; /* Pushes the match tag to the right */
+  }
+  
+  .card-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+
+  .results-btn {
+    background-color: white;
+    color: #2C3546;
+    border: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid #2C3546;
+  }
+  .live-btn{
+    background-color: #2C3546;
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+
+  }
+
+  
+  /* Button hover effects */
+  .live-btn:hover {
+    background-color: #182e57e8;
+  }
+  
+  .results-btn:hover {
+    background-color: #2C3546;
+    color: white;
+  }
+  

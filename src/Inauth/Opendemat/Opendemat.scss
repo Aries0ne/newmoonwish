@@ -1,0 +1,178 @@
+.dematBox {
+  border: var(--border);
+  // padding: 2rem 2rem 4rem 2rem;
+  padding: 2rem 3rem 4rem 1.5rem;
+
+  .demat_grid {
+    padding: 0 !important;
+  }
+
+  h2.title {
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--color-darkblue) !important;
+
+    @media screen and (max-width:991px) {
+      font-size: 2.4rem;
+    }
+  }
+
+  p.tagLine {
+    font-size: 1.8rem;
+    color: var(--color-darkgrey) !important;
+    margin-top: 1rem;
+
+    @media screen and (max-width:991px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  .dematCard-item {
+    // margin-right: 1rem;
+    width: 25%;
+    // width: 35rem;
+
+    div.dematCard {
+      border: var(--border);
+      border-radius: 0.5rem;
+      margin-top: 2rem;
+      border-width: 2px;
+      overflow: hidden;
+
+      &:hover {
+        border-color: var(--color-blue);
+        border-width: 2px;
+      }
+
+      div.dematCard-img {
+        height: 12rem;
+        width: 100%;
+        text-align: center;
+
+        &.aliceblue {
+          background-color: #e5ecf4;
+        }
+
+        &.tradingo {
+          background-color: #ede6f8;
+        }
+
+        &.anglebroking {
+          background-color: #f9f3e5;
+        }
+
+        &.shany {
+          background-color: #e8e8e8;
+        }
+
+        &.zebu {
+          background-color: #e7e8ec;
+        }
+
+
+        img {
+          height: 100%;
+          width: auto;
+        }
+
+        @media screen and (max-width:767px) {
+          height: 14rem;
+        }
+      }
+
+      div.dematCard-content {
+        padding: 1rem;
+        border-top: var(--border);
+        height: 26rem;
+        display: grid;
+        align-content: space-between;
+
+        ul {
+          padding: 0;
+
+          li {
+            position: relative;
+            padding-left: 2.6rem;
+            font-size: 1.4rem;
+            color: var(--color-darkgrey) !important;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            word-break: break-all;
+
+            &:after {
+              content: '';
+              position: absolute;
+              top: 1rem;
+              left: 0;
+              background-image: url('../../images/check.png');
+              height: 1.6rem;
+              width: 1.6rem;
+              background-size: 100%;
+            }
+
+            span {
+              font-size: 1.4rem;
+              font-weight: 600;
+              color: var(--color-dark) !important;
+              display: contents;
+              margin: 0 0.5rem;
+            }
+          }
+        }
+
+        button.dematCard-btn {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--color-light);
+          color: var(--color-darkgrey);
+          height: 4.5rem;
+          border-radius: 0.5rem;
+          font-size: 1.2rem;
+          border: var(--border);
+
+          &:hover {
+            background-color: var(--color-blue);
+            color: var(--color-white) !important;
+          }
+
+          svg {
+            margin-right: 1rem;
+          }
+
+          @media screen and (max-width:1199px) {
+            font-size: 1.4rem;
+            height: 4rem;
+          }
+        }
+
+        @media screen and (max-width:1199px) {
+          height: 25rem;
+        }
+      }
+    }
+
+    @media screen and (max-width:1399px) {
+      width: 35%;
+    }
+
+    @media screen and (max-width:1199px) {
+      width: 43%;
+    }
+
+    @media screen and (max-width:767px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width:650px) {
+      width: 70%;
+    }
+
+    @media screen and (max-width:480px) {
+      width: 100%;
+    }
+  }
+}

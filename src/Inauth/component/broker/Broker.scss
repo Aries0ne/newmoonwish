@@ -1,0 +1,20 @@
+.border {
+    border: 1px solid #D3D3D3;
+    margin-top: 10px;
+    padding: 5px 10px;
+    box-shadow:1px 1px 5px #d1d0d0;
+    border-radius: 7px;
+}
+
+.gridw {
+    width: 100%;
+}
+
+.btnZebull {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error{
+    color: red;
+}

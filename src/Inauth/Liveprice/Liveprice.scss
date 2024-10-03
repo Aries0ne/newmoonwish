@@ -1,0 +1,153 @@
+div.livePrice-list {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  div.livePrice-item {
+    border: var(--border);
+    border-radius: 0.3rem;
+    min-height: 6rem;
+    max-width: 17.5rem;
+    width: 19.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border: none;
+  padding: 6px;
+    border-radius: 15px;
+   
+
+    &.high {
+      border-left-color: #26de81;
+    }
+
+    div.price {
+      padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+      width: 100%;
+
+      h6 {
+        font-size: 0.9rem;
+        text-transform: capitalize;
+        color: #00B8A9;
+        font-weight: 500;
+        margin-bottom: 0.3rem;
+        margin-top: 5px;
+        border-radius: 15px;
+      }
+
+      p {
+        font-size: 1.3rem;
+        color: var(--color-dark);
+      }
+      p2{
+        font-size: 10px;
+        font-weight: 600;
+      }
+
+      & .price_value {
+        display: inline-flex;
+
+        &.up {
+          color: #24a959;
+        }
+
+        &.down {
+          color: var(--color-danger);
+        }
+
+      }
+
+      small {
+        font-size: 1rem;
+        color: var(--color-dark);
+        display: flex;
+        align-items: center;
+        justify-content: left;
+
+
+        span {
+          padding: 0rem 0.5rem;
+          font-size: 1.1rem;
+          border-radius: 0.5rem;
+          margin-left: 0.5rem;
+
+          &.up {
+            // color: #24a959;
+            // background-color: rgba(38, 221, 128, 0.24);
+          }
+
+          &.down {
+            // color: var(--color-danger);
+            // background-color: var(--color-lightdanger);
+          }
+
+          svg {
+            margin-right: 0.3rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.mname{
+  background-color: #DAF7F7;
+  color: #00B8A9;
+  border-radius: 10px;
+  width: fit-content;
+  font-size: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 5px;
+  padding: 0px 10px 0px 2px;
+}
+.symbo{
+  font-size: 13px;
+  background-color: #6F947D;
+
+  border-radius: 10px;
+
+}
+.first{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text001{
+  color: red;
+}
+.div001{
+  display: flex;
+  flex-direction: column;
+}
+.div002{
+  display: flex;
+  flex-direction: row;
+}
+
+.text111{
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.div012{
+  display: flex;
+  flex-direction: column;
+
+}
+.div11{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  
+}

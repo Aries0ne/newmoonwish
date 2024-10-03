@@ -1,0 +1,645 @@
+.strategyBox {
+  padding: 1rem;
+  border-bottom: var(--border);
+  color: var(--color-dark);
+  display:contents;
+  justify-content: center;
+  // height: 100%;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media screen and (max-width: 900px) {
+    padding: 0;
+    order: 2;
+  }
+}
+
+.SidebarChart {
+  .SidebarChart-header {
+    border-bottom: var(--border) !important;
+    padding: 1rem;
+    text-align: right;
+  }
+
+  .sidebar-items {
+    width: 5rem;
+    text-align: center;
+
+    @media screen and (max-width: 1199px) {
+      width: 100%;
+      text-align: left;
+
+      button {
+        margin-right: 0.6rem;
+      }
+    }
+  }
+
+  button.sidebar-menubutn {
+    min-width: 3rem;
+    width: 3rem;
+    height: 3rem;
+    border: var(--border);
+    margin-bottom: 0.5rem;
+    color: var(--color-white);
+
+    svg {
+      font-size: 1.6rem;
+      color: var(-color-border);
+      height: 1.6rem;
+      width: 1.6rem;
+    }
+
+    &.watch {
+      background-color: var(--color-darkgrey);
+    }
+
+    &.buy {
+      background-color: #2992ec !important;
+      color: #ffffff;
+    }
+
+    &.sell {
+      background-color: #f75723 !important;
+      color: #ffffff;
+    }
+  }
+
+  // Sidebar Body
+  .SidebarChart-body {
+    height: calc(100vh - 26.5rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: var(--color-light);
+      border: var(--border);
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-darkgrey);
+      border-radius: 2rem;
+    }
+
+    .SidebarList {
+      padding: 1rem;
+
+      .SidebarList-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        position: relative;
+
+        .SidebarList-details,
+        .SidebarList-name,
+        .SidebarList-rate {
+          display: flex;
+          align-items: center;
+          margin-right: 1rem;
+          width: 100%;
+
+          .SidebarList-name {
+            justify-content: left;
+
+            span {
+              border-bottom: 1px solid var(--color-darkgrey);
+            }
+          }
+
+          .SidebarList-rate {
+            justify-content: end;
+          }
+
+          p {
+            font-size: 1.4rem;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            margin-right: 0.5rem;
+            font-weight: 600;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &.mareket-token {
+              max-width: 14rem;
+              min-width: 14rem;
+            }
+
+            &.price {
+              color: var(--color-danger);
+              font-size: 1.4rem;
+              font-weight: 600;
+            }
+          }
+
+          span {
+            font-size: 1.3rem;
+            color: var(--color-darkgrey);
+          }
+
+          @media screen and (max-width: 1449px) {
+            display: flex;
+
+            .SidebarList-name,
+            .SidebarList-rate {
+              display: block;
+            }
+          }
+        }
+
+        .buysell-box {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 3.5rem;
+          border: var(--border);
+          background-color: var(--color-white);
+          padding: 0.5rem 0.6rem;
+          width: auto;
+          display: flex;
+          align-items: center;
+          justify-content: end;
+          border-radius: 0.5rem;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          display: none;
+
+          .sidebar-menubutn {
+            margin: 0 0.5rem;
+          }
+        }
+
+        &:hover {
+          .buysell-box {
+            display: block;
+          }
+        }
+      }
+
+      button.SidebarList-buttom {
+        min-width: 3.5rem;
+        height: 3.5rem;
+        color: var(--color-danger);
+      }
+    }
+  }
+}
+
+Button.collapse-btn {
+  min-width: 3rem;
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  color: var(--color-dark);
+  border: var(--border);
+
+  svg {
+    font-size: 1.8rem;
+    color: var(-color-border);
+  }
+}
+
+// Add Symbol modal css
+.addSymbol {
+  .MuiPaper-elevation {
+    max-width: 100rem !important;
+  }
+
+  .modalHeader {
+    h4 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      padding: 0 1.5rem;
+    }
+  }
+
+  .modalBody {
+    padding: 5rem 1.5rem 40rem !important;
+
+    .inputFiled {
+      border: var(--border);
+      margin-right: 1rem !important;
+      border-radius: 0.4rem;
+      position: relative;
+      display: inline-block;
+      height: 4.4rem;
+      width: 100%;
+
+      .MuiTextField -root {
+        width: 100%;
+
+        input {
+          font-size: 1.4rem;
+          padding: 1rem 1rem 1rem 5rem !important;
+          color: var(--color-dark);
+        }
+      }
+
+      .searchIcon {
+        position: absolute;
+        top: 50%;
+        left: 1.5rem;
+        transform: translateY(-50%);
+        font-size: 2.4rem;
+        opacity: 0.7;
+      }
+
+      @media screen and (max-width: 900px) {
+        margin: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+    }
+
+    .toggleButton {
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+
+      button {
+        background-color: transparent;
+        border-radius: 5rem !important;
+        padding: 0.2rem 1rem !important;
+        color: var(--color-dark);
+        border: var(--border);
+        font-size: 1.4rem !important;
+        margin-right: 0.5rem;
+        margin-top: 1rem;
+        font-weight: 500;
+        height: auto !important;
+        min-height: auto !important;
+
+        &.Mui-selected {
+          border-color: var(--color-primary);
+          background-color: var(--color-lightPrimary);
+        }
+
+        @media screen and (max-width: 767px) {
+          font-size: 1.2rem;
+          padding: 0.2rem 0.8rem;
+        }
+      }
+    }
+
+    .addSymbolList-box {
+      height: 50vh;
+      overflow-y: auto;
+      overflow-x: auto;
+
+      .addSymbolList {
+        display: flex;
+        align-items: center;
+        padding: 0.6rem 0.2rem;
+        border-bottom: var(--border);
+
+        .addSymbol-actions {
+          width: 4rem;
+          padding: 0 0.2rem;
+          text-align: center;
+
+          &.last {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 10rem;
+            border-right: none;
+            padding-right: 0;
+          }
+
+          button.addSymbol-btn {
+            min-width: 3rem;
+            width: 3rem;
+            height: 3rem;
+            min-height: 3rem;
+            color: var(--color-dark);
+            border: var(--border);
+            margin-top: 0;
+            margin-right: 0.5rem;
+
+            &:hover {
+              background-color: var(--color-lightPrimary);
+            }
+
+            svg {
+              color: var(--color-dark);
+              font-size: 2rem;
+            }
+          }
+        }
+
+        .pText {
+          p {
+            font-size: 1.4rem;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin: 0 1rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+
+        img.symbolImg {
+          height: 2.8rem;
+          width: 2.8rem;
+          border-radius: 50%;
+        }
+
+        .symbols {
+          width: 20rem;
+          display: flex;
+          align-items: center;
+          padding: 0 1rem;
+        }
+
+        .symbolName {
+          width: 40rem;
+          padding: 0 1rem;
+        }
+      }
+
+      .exchangeSell {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 20rem;
+        padding: 0 1rem;
+
+        span {
+          font-size: 1.2rem;
+          color: var(--color-darkgrey);
+        }
+      }
+    }
+  }
+}
+
+// Buy/Sell Modal
+.buysellModal {
+  .MuiPaper-elevation {
+    width: 50rem !important;
+    max-width: 50rem !important;
+  }
+
+  .modalBody {
+    overflow-x: hidden;
+
+    .buysell-box {
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .buysell_header {
+        display: block;
+        align-items: center;
+        justify-content: left;
+
+        .symbol {
+          font-size: 1.6rem;
+          color: #ffffff;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+
+          .symbol_type {
+            font-size: 1rem;
+            color: #ffffff;
+            margin-left: 0.4rem;
+          }
+
+          .symbol_qty {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-left: 0.6rem;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    .buysell-radio {
+      .white-radio {
+        .MuiSwitch-root {
+          .Mui-checked {
+            color: #ffffff;
+          }
+        }
+
+        .MuiRadio-root {
+          span {
+            color: #ffffff !important;
+          }
+        }
+
+        span.MuiFormControlLabel-label {
+          color: #ffffff !important;
+        }
+      }
+
+      .MuiRadio-root {
+        .MuiSvgIcon-root {
+          height: 1.8rem !important;
+          width: 1.8rem !important;
+        }
+      }
+    }
+
+    .buysellModal-tabs {
+      border-bottom: var(--border);
+      overflow-y: auto;
+
+      .MuiTabs-indicator {
+        display: block;
+      }
+
+      div.main-tab {
+        div.MuiTabs-flexContainer {
+          button.MuiButtonBase-root {
+            border: none !important;
+            margin-top: 1rem !important;
+            margin-bottom: 0 !important;
+
+            &:hover,
+            &[aria-selected="true"] {
+              background-color: transparent !important;
+            }
+          }
+        }
+      }
+
+      .tabBox {
+        .selectionDiv {
+          display: block !important;
+          box-shadow: none;
+
+          p {
+            display: none !important;
+          }
+        }
+      }
+    }
+
+    .buysell-footer {
+      background-color: var(--color-light);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .margin {
+        display: flex;
+        align-items: center;
+
+        &.down {
+          background-color: var(--color-lightdanger);
+          color: var(--color-danger);
+        }
+
+        &.up {
+          background-color: var(--color-lightsuccess);
+          color: var(--color-success);
+        }
+
+        p {
+          font-size: 1.4rem;
+          color: var(--color-dark);
+        }
+
+        button {
+          min-width: 3.5rem;
+          width: 3.5rem;
+          height: 3.5rem;
+          background-color: transparent;
+          color: #2992ec;
+          margin: 0;
+          margin-left: 0.6rem;
+
+          svg {
+            font-size: 2.4rem;
+          }
+        }
+      }
+
+      .footer-btn {
+        button {
+          padding: 0.5rem 2.4rem;
+          border-radius: 0.5rem;
+          font-size: 1.4rem;
+          margin: 0;
+          margin-left: 0.5rem;
+          margin-top: 0;
+
+          &:last-child {
+            border: 1px solid var(--color-darkgrey);
+            background-color: transparent !important;
+            color: var(--color-dark);
+          }
+        }
+      }
+
+      @media screen and (max-width: 575px) {
+        display: block;
+      }
+    }
+  }
+
+  &.sell {
+    .modalBody {
+      .buysell-box {
+        background-color: #f75723;
+
+        div.main-tab {
+          div.MuiTabs-flexContainer {
+            button.MuiButtonBase-root {
+              &:hover,
+              &[aria-selected="true"] {
+                color: #f75723 !important;
+              }
+            }
+          }
+        }
+      }
+
+      .dropdown {
+        .MuiOutlinedInput-notchedOutline {
+          border-color: #f75723 !important;
+          background-color: transparent;
+        }
+      }
+
+      .footer-btn {
+        button {
+          background-color: #f75723 !important;
+        }
+      }
+    }
+  }
+
+  &.buy {
+    .modalBody {
+      .buysell-box {
+        background-color: #2992ec;
+
+        div.main-tab {
+          div.MuiTabs-flexContainer {
+            button.MuiButtonBase-root {
+              &:hover,
+              &[aria-selected="true"] {
+                color: #2992ec !important;
+              }
+            }
+          }
+        }
+      }
+
+      .MuiTabs-indicator {
+        background-color: #2992ec;
+      }
+
+      .dropdown {
+        .MuiOutlinedInput-notchedOutline {
+          border-color: #2992ec !important;
+          background-color: transparent;
+        }
+      }
+
+      .footer-btn {
+        button {
+          background-color: #2992ec !important;
+        }
+      }
+    }
+  }
+}
+
+.marketWatch_portofolio {
+  height: auto;
+
+  &.close {
+    height: 3.4rem;
+    overflow: hidden;
+    padding: 1rem !important;
+  }
+
+  .marketWatch_portofolio_table {
+    display: block;
+
+    &.close {
+      display: block;
+    }
+  }
+
+  p {
+    font-size: 1.8rem;
+    color: var(--color-dark);
+  }
+}

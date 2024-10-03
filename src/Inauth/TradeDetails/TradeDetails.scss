@@ -1,0 +1,20 @@
+.buySell_box {
+  padding: 1rem;
+  width: calc(100% - 2rem) !important;
+
+  h4 {
+    color: var(--color-white) !important;
+    font-weight: 500 !important;
+  }
+
+  &.buy {
+    background-color: #2992ec !important;
+    color: var(--color-white) !important;
+  }
+
+  &.sell {
+    background-color: #f75723 !important;
+    color: var(--color-white) !important;
+
+  }
+}

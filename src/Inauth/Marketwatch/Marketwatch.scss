@@ -1,0 +1,298 @@
+.delete-btn {
+  font-size: 1.4rem !important;
+  color: #fff !important;
+  background-color: var(--color-danger) !important;
+  text-transform: capitalize !important;
+  font-weight: 600 !important;
+  margin-left: 1.5rem !important;
+  padding: 2px 14px !important;
+
+  svg {
+    color: #fff;
+    margin-right: 0.8rem;
+  }
+}
+
+.searchSelect-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem !important;
+  margin: 1rem;
+  cursor: pointer;
+
+  .exchangeName {
+    display: flex !important;
+    gap: 1rem !important;
+
+    h4 {
+      font-size: 1.4rem !important;
+      color: var(--color-dark) !important;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: var(--color-darkgrey) !important;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+  }
+
+  .exchangeSell {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 0.5rem !important;
+    width: 20rem;
+    padding: 0 1rem;
+
+    span {
+      font-size: 1.2rem;
+      color: var(--color-darkgrey);
+    }
+
+    .addSymbol-actions {
+      width: 4rem;
+      padding: 0 0.2rem;
+      text-align: center;
+
+      &.last {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 10rem;
+        border-right: none;
+        padding-right: 0;
+      }
+
+      button.addSymbol-btn {
+        min-width: 3rem;
+        width: 3rem;
+        height: 3rem;
+        min-height: 3rem;
+        color: var(--color-dark);
+        border: var(--border);
+        margin-top: 0;
+        margin-right: 0.5rem;
+
+        &:hover {
+          background-color: var(--color-lightPrimary);
+        }
+
+        svg {
+          color: var(--color-dark);
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  h5.rate {
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      height: 2rem;
+      width: 2rem;
+    }
+
+    &.up {
+      color: #0071f3 !important;
+
+      svg {
+        color: #0071f3 !important;
+      }
+    }
+
+    &.down {
+      color: var(--color-danger) !important;
+
+      svg {
+        color: var(--color-danger) !important;
+      }
+    }
+  }
+}
+
+.addSymbol-marketwatch {
+  .modalHeader {
+    h4 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      padding: 0 1.5rem;
+    }
+  }
+
+  .modalBody {
+    padding: 4rem 2rem 2rem 2rem !important;
+    padding-top: 7rem !important;
+
+    .inputFiled {
+      border: var(--border);
+      margin-right: 1rem !important;
+      border-radius: 0.4rem;
+      position: relative;
+      display: inline-block;
+      height: 4.4rem;
+      width: 100%;
+
+      .MuiTextField -root {
+        width: 100%;
+
+        input {
+          font-size: 1.4rem;
+          padding: 1rem 1rem 1rem 5rem !important;
+          color: var(--color-dark);
+        }
+      }
+
+      .searchIcon {
+        position: absolute;
+        top: 50%;
+        left: 1.5rem;
+        transform: translateY(-50%);
+        font-size: 2.4rem;
+        opacity: 0.7;
+      }
+
+      @media screen and (max-width: 900px) {
+        margin: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+    }
+
+    .toggleButton {
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+
+      button {
+        background-color: transparent;
+        border-radius: 5rem !important;
+        padding: 0.2rem 1rem !important;
+        color: var(--color-dark);
+        border: var(--border);
+        font-size: 1.4rem !important;
+        margin-right: 0.5rem;
+        margin-top: 1rem;
+        font-weight: 500;
+        height: auto !important;
+        min-height: auto !important;
+
+        &.Mui-selected {
+          border-color: var(--color-primary);
+          background-color: var(--color-lightPrimary);
+        }
+
+        @media screen and (max-width: 767px) {
+          font-size: 1.2rem;
+          padding: 0.2rem 0.8rem;
+        }
+      }
+    }
+
+    .addSymbolList-box {
+      height: 50vh;
+      overflow-y: auto;
+      overflow-x: auto;
+
+      .addSymbolList {
+        display: flex;
+        align-items: center;
+        padding: 0.6rem 0.2rem;
+        border-bottom: var(--border);
+
+        .addSymbol-actions {
+          width: 4rem;
+          padding: 0 0.2rem;
+          text-align: center;
+
+          &.last {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 10rem;
+            border-right: none;
+            padding-right: 0;
+          }
+
+          button.addSymbol-btn {
+            min-width: 3rem;
+            width: 3rem;
+            height: 3rem;
+            min-height: 3rem;
+            color: var(--color-dark);
+            border: var(--border);
+            margin-top: 0;
+            margin-right: 0.5rem;
+
+            &:hover {
+              background-color: var(--color-lightPrimary);
+            }
+
+            svg {
+              color: var(--color-dark);
+              font-size: 2rem;
+            }
+          }
+        }
+
+        .pText {
+          p {
+            font-size: 1.4rem;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin: 0 1rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+
+        img.symbolImg {
+          height: 2.8rem;
+          width: 2.8rem;
+          border-radius: 50%;
+        }
+
+        .symbols {
+          width: 20rem;
+          display: flex;
+          align-items: center;
+          padding: 0 1rem;
+        }
+
+        .symbolName {
+          width: 40rem;
+          padding: 0 1rem;
+        }
+      }
+
+      .exchangeSell {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 20rem;
+        padding: 0 1rem;
+
+        span {
+          font-size: 1.2rem;
+          color: var(--color-darkgrey);
+        }
+      }
+    }
+  }
+}
+
+.tabbut{
+  border-radius: 10px;
+  background-color: #00ff9125;
+  border: none;
+  color:black
+}

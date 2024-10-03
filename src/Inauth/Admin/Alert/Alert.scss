@@ -1,0 +1,226 @@
+.alertBox {
+  display: flex !important;
+  align-items: center;
+  position: inherit;
+  left: auto;
+  bottom: auto;
+
+  .alertBox-item {
+    display: flex;
+    align-items: center;
+
+    svg.alert {
+      color: var(--color-darkblue);
+    }
+
+    .bulkAlert_drp {
+      button {
+        min-width: auto;
+        width: 100%;
+        background-color: transparent;
+        font-size: 1.2rem;
+        text-transform: capitalize;
+        color: var(--color-darkblue);
+      }
+    }
+
+    button.del {
+      background-color: transparent !important;
+      font-size: 1.4rem !important;
+      // color: var(--color-darkgrey);
+      text-transform: capitalize;
+      font-weight: 600;
+
+      svg {
+        margin-right: 0.8rem;
+      }
+    }
+  }
+}
+
+
+// .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+//   position: static;
+//   font-size: 1.5rem;
+// }
+
+.newAlert {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  .newAlert-item {
+    p {
+      color: var(--color-darkgrey);
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    button.refresh-btn {
+      height: 4rem;
+      min-height: 4rem;
+      width: 4rem !important;
+      min-width: 4rem !important;
+      color: var(--color-darkgrey) !important;
+      margin-left: 0.8rem;
+    }
+  }
+}
+
+.searchData {
+  margin: 0 !important;
+}
+
+.alertStyle {
+  margin: 1.5rem 0;
+
+  label.label {
+    color: var(--color-darkgrey) !important;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  label .MuiFormControlLabel-label {
+    color: var(--color-dark) !important;
+  }
+}
+
+.searchSelect {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem !important;
+  margin: 1rem;
+  cursor: pointer;
+
+  .exchangeName {
+    h4 {
+      font-size: 1.4rem !important;
+      color: var(--color-dark) !important;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: var(--color-darkgrey) !important;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+  }
+
+  h5.rate {
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      height: 2rem;
+      width: 2rem;
+    }
+
+    &.up {
+      color: #0071f3 !important;
+
+      svg {
+        color: #0071f3 !important;
+      }
+    }
+
+    &.down {
+      color: var(--color-danger) !important;
+
+      svg {
+        color: var(--color-danger) !important;
+      }
+    }
+  }
+}
+
+// File Select
+.fileUpload {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-top: 0.8rem;
+  font-size: 1.4rem !important;
+  padding: 0.8rem 0;
+  color: var(--color-dark) !important;
+  cursor: pointer;
+
+  svg {
+    margin-right: 1rem;
+    font-size: 2rem;
+  }
+
+  .MuiInputBase-root {
+    display: none;
+  }
+}
+
+.commonModal.HelpModal {
+  .modalBody {
+    padding-top: 6rem !important;
+
+    .helpContent {
+      .helpContent_item {
+        margin-bottom: 1.5rem;
+
+        p {
+          font-size: 1.3rem;
+          color: var(--color-darkgrey);
+        }
+
+        .helpContent_title {
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          margin-bottom: 0.5rem;
+
+          h5 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-dark);
+          }
+
+          span {
+            font-size: 1.3rem;
+            color: var(--color-darkgrey);
+            margin-left: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.MultieValue {
+  .MuiInputBase-root {
+    position: relative;
+    padding-right: 7rem !important;
+  }
+
+  .autoComplete-box {
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
+    right: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    color: var(--color-blue);
+    font-size: 1.3rem;
+
+    svg {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+      height: 1.8rem;
+      width: 1.8rem;
+    }
+  }
+}

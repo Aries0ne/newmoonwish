@@ -1,0 +1,32 @@
+.admin-label {
+  margin-bottom: 0.8rem !important
+}
+
+.admin-grid-container {
+  margin-top: 1rem !important;
+}
+
+.strategy-custom-input {
+
+  .MuiInputBase-root input,
+  .MuiInputBase-root textarea {
+    max-width: 100% !important;
+
+  }
+
+  .MuiInputBase-root textarea {
+    height: 9rem !important
+  }
+}
+
+.create-strategy-h1 {
+  font-size: 2rem !important;
+  color: var(--color-dark)
+}
+
+.p-strategy {
+  font-size: 1.3rem !important;
+  color: var(--color-dark);
+  margin-top: 0.5rem !important;
+}
+

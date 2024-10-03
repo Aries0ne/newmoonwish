@@ -1,0 +1,95 @@
+html[data-theme="light"] {
+  --color-primary: #22da7e;
+  // --color-darkPrimary: #24a959;
+  --color-darkPrimary: #008F75;
+  --color-lightPrimary: rgba(38, 221, 128, 15%);
+  --color-bluegrey: #758696;
+  --color-darkgrey: #6a6d78;
+  --color-lightgrey: rgba(106, 109, 120, 56%);
+  --color-dark: #131722;
+  --color-lightdark: rgba(19, 23, 34, 56%);
+  --color-lightblue: #3f4765;
+  --color-darkblue: #18214d;
+  --color-blue: #2960ff;
+  --color-lightblue: rgba(41, 96, 255, 0.08);
+  --color-extralightblue: #f5f9fc;
+  --color-success: rgb(0, 143, 117);
+  --color-lightsuccess: rgba(0, 143, 117, 0.08);
+  --color-danger: #ff231f;
+  --color-lightdanger: rgba(255, 35, 31, 0.08);
+  --color-white: #ffffff;
+  --color-lightwhite: rgba(255, 255, 255, 56%);
+  --color-light: #f2f2f2;
+  --shadow: -24px 0px 80px rgba(49, 79, 124, 0.02);
+  --border: 1px solid rgba(117, 134, 150, 0.2);
+  --border-color: rgba(117, 134, 150, 0.2);
+  --color-button: #e9dff9;
+  --color-btn: #d7edfc;
+
+  body {
+    background-color: #FBFBFB;
+  }
+}
+
+html[data-theme="dark"] {
+  --color-primary: #22da7e;
+  --color-darkPrimary: #24a959;
+  --color-lightPrimary: rgba(38, 221, 128, 15%);
+  --color-bluegrey: #fcfcfc;
+  --color-darkgrey: #d1d2d2;
+  --color-lightgrey: #9f9fa0;
+  --color-dark: #ffffff;
+  --color-lightblue: #3f4765;
+  --color-darkblue: #ffffff;
+  --color-blue: #0071f3;
+  --color-lightblue: rgba(41, 96, 255, 0.08);
+  --color-extralightblue: #1a1c1e;
+  --color-success: #26de81;
+  --color-lightsuccess: rgba(0, 143, 117, 0.08);
+  --color-danger: #f32000;
+  --color-lightdanger: rgba(255, 35, 31, 0.08);
+  --color-white: #141415;
+  --shadow: -24px 0px 80px rgba(49, 79, 124, 0.02);
+  --border: 1px solid rgb(38, 40, 42);
+  --color-button: #6944a3;
+  --color-btn: #34a6f1;
+  --color-light: #242424;
+
+  body {
+    background-color: #0e1012;
+
+    .text-white {
+      color: var(--color-darkblue) !important;
+    }
+
+    .MuiSelect-outlined,
+    .MuiSelect-icon {
+      color: #ffffff !important;
+    }
+
+    .premium {
+      background-color: #18314d !important;
+      border-color: #18214d !important;
+
+      li {
+        color: var(--color-white) !important;
+      }
+    }
+
+    .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled {
+      -webkit-text-fill-color: #ffffff;
+    }
+
+    .data-value {
+      color: #ffffff !important;
+    }
+
+    .table.table.tableData tbody tr td .symbolName p:last-child {
+      color: #ffffff !important;
+    }
+
+    .contactForm-bg:after {
+      background-color: #0e1012 !important;
+    }
+  }
+}

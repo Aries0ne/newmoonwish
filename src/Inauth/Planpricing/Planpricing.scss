@@ -1,0 +1,251 @@
+.planStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3.8rem;
+
+  div.plan {
+    margin-right: 2.6rem;
+
+    span {
+      font-size: 1.4rem;
+      margin: 0 0.5rem;
+      font-weight: 600;
+
+      &:first-child {
+        color: var(--color-dark);
+      }
+
+    }
+
+    .green {
+      color: var(--color-success);
+    }
+
+    .grey {
+      color: var(--color-lightgrey);
+    }
+  }
+
+  @media screen and (max-width:767px) {
+    display: block;
+    text-align: center;
+  }
+}
+
+h2.title {
+  font-size: 2rem;
+  color: var(--color-darkblue);
+  font-weight: 600;
+}
+
+
+div.planCard-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div.planCard {
+    border: var(--border);
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    border-width: 2px;
+    margin-left: 1.6rem;
+    width: calc(25% - 1.6rem);
+
+    &:hover {
+      border-color: var(--color-blue);
+      border-width: 2px;
+    }
+
+    div.planCard-type {
+      min-height: 12rem;
+      width: 100%;
+      padding: 1rem;
+
+      p.planType {
+        font-size: 2rem;
+        color: var(--color-dark);
+        text-align: center;
+      }
+
+      .planPrice {
+        display: flex;
+        align-items: end;
+        justify-content: center;
+
+        span {
+          &:first-child {
+            font-size: 3.5rem;
+            color: var(--color-darkgrey);
+          }
+
+          &:nth-child(2) {
+            font-size: 3.5rem;
+            color: var(--color-dark);
+            font-weight: 600;
+          }
+
+          &:last-child {
+            font-size: 1.4rem;
+            color: var(--color-darkgrey);
+            margin-bottom: 1rem;
+          }
+        }
+      }
+
+      .save {
+        font-size: 1.4rem;
+        color: var(--color-darkgrey);
+        text-align: center;
+
+        span {
+          font-size: 1.4rem;
+          color: var(--color-blue);
+          font-weight: 500;
+          margin-right: 0.5rem;
+          display: block;
+          width: 100%;
+
+          @media screen and (max-width:1399px) {
+            display: block;
+            text-align: center;
+          }
+        }
+
+        del {
+          color: var(--color-white);
+          background-color: var(--color-blue);
+          padding: 0.4rem 1rem;
+          border-radius: 5rem;
+          display: inline-block;
+          margin-left: 0.5rem;
+          font-size: 1.2rem;
+
+          @media screen and (max-width:1399px) {
+            display: inline-block;
+            text-align: center;
+          }
+        }
+
+        @media screen and (max-width:1399px) {
+          display: block;
+          text-align: center;
+        }
+      }
+
+      @media screen and (max-width:991px) {
+        height: auto;
+      }
+    }
+
+    div.planCard-content {
+      padding: 1rem;
+      border-top: var(--border);
+      height: 30rem;
+      display: grid;
+      align-content: space-between;
+
+      ul {
+        padding: 0;
+
+        li {
+          position: relative;
+          padding-left: 2.6rem;
+          font-size: 1.4rem;
+          color: var(--color-darkgrey);
+          font-weight: 400 !important;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          word-break: break-all;
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            left: 0;
+            background-image: url('../../images/check.png');
+            height: 1.6rem;
+            width: 1.6rem;
+            background-size: 100%;
+          }
+        }
+      }
+
+      button.planCard-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-light);
+        color: var(--color-darkgrey);
+        height: 5rem;
+        border-radius: 0.5rem;
+        font-size: 1.4rem;
+        border: var(--border);
+        margin-top: 1rem;
+
+        &:hover {
+          background-color: var(--color-blue);
+          color: var(--color-white) !important;
+        }
+
+        svg {
+          margin-right: 1rem;
+        }
+      }
+
+      @media screen and (max-width:1199px) {
+        height: auto;
+      }
+    }
+
+    &.premium {
+      background-color: var(--color-darkblue);
+      border-color: var(--color-darkblue);
+
+      * {
+        color: #FFFFFF !important;
+      }
+
+      .save {
+        span {
+          color: #F39A00 !important;
+          margin-right: 0.5rem;
+        }
+
+        del {
+          background-color: #F39A00 !important;
+          margin-left: 0.5rem;
+        }
+      }
+
+      button.planCard-btn {
+        background-color: var(--color-blue) !important;
+        color: var(--color-white) !important;
+      }
+    }
+
+    @media screen and (max-width:1299px) {
+      width: calc(33.33% - 1.6rem);
+    }
+
+    @media screen and (max-width:991px) {
+      width: calc(40% - 1.6rem);
+    }
+
+    @media screen and (max-width:767px) {
+      width: calc(50% - 1.6rem);
+    }
+
+    @media screen and (max-width:576px) {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  @media screen and (max-width:1299px) {
+    flex-wrap: wrap;
+  }
+}

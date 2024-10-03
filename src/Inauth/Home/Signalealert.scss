@@ -1,0 +1,258 @@
+.signal_alertcard {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+
+  p {
+    font-size: 1.3rem !important;
+    color: var(--color-lightgrey);
+    padding: 1.4rem 2.8rem;
+
+    @media screen and (max-width:767px) {
+      padding: 1rem;
+    }
+  }
+
+  .alertcard_box {
+    background-color: var(--color-extralightblue);
+    padding: 1.4rem 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .strategy_name {
+      h2 {
+        font-size: 2rem !important;
+        color: var(--color-dark);
+        font-weight: 600;
+      }
+
+      a {
+        font-size: 1.1rem;
+        color: rgba(41, 96, 255, 100);
+        background-color: rgba(41, 96, 255, 16%);
+        padding: 0.6rem 1.2rem;
+        border-radius: 0.4rem;
+        margin-top: 1rem;
+        display: inline-block;
+      }
+
+      p {
+        font-size: 1.4rem;
+        color: var(--color-blue);
+      }
+    }
+
+    .alertcard_action {
+      display: flex;
+      align-items: center;
+
+      button.subscribe {
+        font-size: 1.4rem;
+        padding: 0.6rem 2.2rem;
+        color: var(--color-white);
+        background-color: var(--color-blue);
+        text-transform: capitalize;
+
+        &.unsubscribe {
+          color: var(--color-bluegrey);
+          background-color: transparent;
+          border: 2px solid var(--border-color);
+          margin-left: 0.5rem;
+        }
+
+        @media screen and (max-width:767px) {
+          font-size: 1.3rem;
+          padding: 0.6rem 1rem;
+        }
+      }
+
+      button.like {
+        font-size: 1.4rem;
+        padding: 0.5rem;
+        color: var(--color-bluegrey);
+        background-color: transparent;
+        text-transform: capitalize;
+        min-width: 4rem;
+        width: 4rem;
+        height: 4rem;
+        margin-left: 0.5rem;
+
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+
+        @media screen and (max-width:767px) {
+          min-width: 3rem;
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+
+      @media screen and (max-width:767px) {
+        margin-top: 1rem;
+      }
+    }
+
+    @media screen and (max-width:767px) {
+      display: block;
+      padding: 1rem;
+    }
+  }
+
+  .strategy_details {
+    padding: 1.2rem 2.4rem;
+
+    .by_box {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--color-white);
+      border: var(--border);
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.03);
+      margin: 1.2rem 0;
+      border-radius: 0.4rem;
+
+      span {
+        font-size: 1.3rem;
+        color: var(--color-dark);
+      }
+
+      p {
+        font-size: 1.3rem;
+        color: var(--color-darkPrimary);
+        padding: 0;
+        margin-left: 0.4rem;
+      }
+
+      .status {
+        height: 1.6rem;
+        width: 1.6rem;
+        border-radius: 50%;
+        margin-left: 0.8rem;
+
+        &.active {
+          background-color: var(--color-darkPrimary);
+        }
+
+        &.inactive {
+          background-color: var(--color-danger);
+        }
+      }
+    }
+
+    .strategy_badge {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 80%;
+      margin-bottom: 3rem;
+
+      span {
+        font-size: 1.2rem;
+        color: var(--color-darkPrimary);
+        background-color: var(--color-lightPrimary);
+        border: 1px solid var(--color-darkPrimary);
+        border-radius: 0.4rem;
+        padding: 0.2rem 1.2rem;
+        margin: 0.5rem;
+
+        @media screen and (max-width:767px) {
+          font-size: 1rem;
+          padding: 0.1rem 0.8rem;
+          margin: 0.3rem;
+        }
+      }
+
+      @media screen and (max-width:767px) {
+        max-width: 100%;
+      }
+    }
+
+    .strategy_countbox {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+
+      .strategy_countboxItem {
+        border-right: 1px solid var(--border-color);
+        padding: 1rem 2rem;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        .strategy_header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 2.4rem;
+
+          h4 {
+            font-size: 1.4rem;
+            color: var(--color-dark);
+            font-weight: 600;
+            opacity: 0.7;
+          }
+
+          span {
+            height: 1.6rem;
+            width: 1.6rem;
+            display: inline-block;
+            border-radius: 50%;
+
+            svg {
+              color: var(--color-dark);
+            }
+          }
+
+          @media screen and (max-width:767px) {
+            margin-bottom: 1.2rem;
+          }
+        }
+
+        h3 {
+          font-size: 2.4rem;
+          color: var(--color-dark);
+          font-weight: 600;
+          display: flex;
+          align-items: flex-end;
+
+          sub {
+            font-size: 1.4rem;
+            color: var(--color-bluegrey);
+            margin-left: 0.6rem;
+          }
+
+          @media screen and (max-width:767px) {
+            font-size: 1.8rem;
+          }
+        }
+
+        @media screen and (max-width:1299px) {
+          padding: 1rem;
+        }
+
+        @media screen and (max-width:767px) {
+          border-bottom: 1px solid var(--border-color);
+        }
+
+        @media screen and (max-width:575px) {
+          border-right: none;
+        }
+      }
+
+      @media screen and (max-width:767px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media screen and (max-width:575px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    @media screen and (max-width:767px) {
+      padding: 1rem;
+    }
+  }
+}

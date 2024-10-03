@@ -1,0 +1,60 @@
+.title_table {
+  font-size: 1.8rem !important;
+  color: var(--color-dark);
+  font-weight: 500 !important;
+  padding: 1.5rem;
+}
+
+.buy {
+  color: var(--color-darkPrimary);
+  font-size: 1.3rem !important;
+  text-transform: uppercase;
+}
+
+.sell {
+  color: var(--color-danger);
+  font-size: 1.3rem !important;
+  text-transform: uppercase;
+}
+
+.strategy_view_date {
+  border: var(--border);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  .strategy_view_dateItem {
+    border-left: var(--border);
+    padding: 1.5rem 1.2rem;
+    font-size: 1.4rem;
+
+    p {
+      font-size: 1.3rem;
+      color: var(--color-darkgrey);
+
+      @media screen and (max-width:767px) {
+        font-size: 1.2rem;
+      }
+    }
+
+    &:first-child {
+      background-color: var(--color-light);
+
+      p {
+        font-size: 1.4rem;
+        color: var(--color-dark);
+      }
+    }
+
+    @media screen and (max-width:767px) {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (max-width:767px) {
+    flex-wrap: wrap;
+  }
+}

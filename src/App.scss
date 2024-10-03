@@ -1,0 +1,1055 @@
+@import "./Variables/color";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+
+html {
+  font-size: 10px !important;
+}
+
+body {
+  font-size: 1.6rem !important;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    font-family: 'Roboto', sans-serif !important;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none !important;
+}
+
+.MuiButtonBase-root.MuiCheckbox-root .MuiSvgIcon-root {
+  font-size: 24px;
+}
+
+.owl-nav,
+.MuiTabs-indicator,
+.MuiOutlinedInput-notchedOutline {
+  display: none !important;
+}
+
+.border-ap {
+  border: var(--border) !important;
+  padding: 1rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input.Mui-disabled,
+textarea.Mui-disabled {
+  background-color: var(--color-light);
+  opacity: 0.5 !important;
+}
+
+.MuiPickersLayout-actionBar {
+  button.MuiButton-root {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+  }
+}
+
+.MuiButtonBase-root.Mui-disabled {
+  cursor: not-allowed !important;
+  pointer-events: initial !important;
+  color: rgba(0, 0, 0, 0.26) !important;
+}
+
+.error {
+  input,
+  textarea {
+    border-color: var(--color-danger) !important;
+    background-color: var(--color-lightdanger) !important;
+  }
+}
+
+.wp_button {
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 50%;
+  display: block;
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.MuiCheckbox-root {
+  svg.MuiSvgIcon-root {
+    color: var(--color-dark) !important;
+  }
+
+  &.Mui-checked {
+    svg.MuiSvgIcon-root {
+      color: var(--color-primary) !important;
+    }
+  }
+}
+
+// tabs
+div.tabs {
+  // box-shadow: var(--shadow);
+  width: auto;
+  border-radius: 0.5rem !important;
+
+  .MuiTabs-flexContainer {
+    flex-wrap: wrap;
+  }
+
+  div.main-tab {
+    div.MuiTabs-flexContainer {
+      button.MuiButtonBase-root {
+        border: var(--border);
+        font-size: 1.3rem;
+        padding: 0.4rem 1rem;
+        font-weight: 500;
+        color: var(--color-dark) !important;
+        min-width: 10rem;
+        min-height: 3.8rem;
+        text-align: center;
+        word-wrap: break-word;
+        text-transform: capitalize;
+        margin-bottom: 0.5rem;
+
+        &:first-child {
+          border-radius: 4px 0 0 4px;
+        }
+
+        &:last-child {
+          border-radius: 0 4px 4px 0;
+        }
+
+        &[aria-selected="true"],
+        &:hover {
+          background-color: var(--color-lightPrimary);
+          color: var(--color-primary) !important;
+          border-color: var(--color-primary);
+        }
+
+        @media screen and (max-width: 767px) {
+          min-width: auto;
+          width: auto;
+        }
+
+        @media screen and (max-width: 575px) {
+          min-width: auto;
+          width: auto;
+          padding: 0.8rem;
+          font-size: 1.1rem;
+          min-height: auto;
+        }
+      }
+    }
+  }
+
+  div.tabBox {
+    border-radius: 0.2rem !important;
+    margin-top: 1.2rem;
+    width: 100%;
+    border: var(--border);
+
+    div.sub-tabBox {
+      .MuiTabPanel-root {
+        padding: 0;
+      }
+
+      div.sub-tabs {
+        min-height: 3.8rem;
+        border-bottom: var(--border);
+        background-color: var(--color-extralightblue);
+
+        button.MuiButtonBase-root {
+          font-size: 1.4rem;
+          padding: 1rem 2.4rem;
+          font-weight: 500;
+          color: var(--color-lightgrey) !important;
+          min-height: 3.8rem;
+          text-align: center;
+          min-width: auto;
+
+          &[aria-selected="true"] {
+            color: var(--color-darkblue) !important;
+            font-weight: 600;
+          }
+
+          @media screen and (max-width: 991px) {
+            padding: 1rem;
+            min-width: 8rem;
+            font-size: 1.4rem;
+          }
+
+          @media screen and (max-width: 767px) {
+            padding: 1rem;
+            min-width: auto !important;
+            width: 33.33%;
+            font-size: 1.4rem;
+          }
+        }
+      }
+
+      div.tabBox {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+// Select Menu List
+.MuiMenuItem-root {
+  font-size: 1.3rem !important;
+  color: var(--color-dark) !important;
+  background-color: var(--color-white);
+
+  &:hover,
+  &.Mui-selected {
+    background-color: var(--color-lightPrimary) !important;
+  }
+}
+
+.MuiAutocomplete-popper ul {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: var(--border);
+  background-color: var(--color-white);
+}
+
+// table Dropdown
+.selectiondiv-box {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+
+  &.flex-none {
+    display: block;
+  }
+
+  .selectionDiv {
+    display: inline-flex !important;
+    align-items: center;
+    border-radius: 0.4rem;
+    text-transform: capitalize;
+
+    &.searchFlex {
+      display: flex !important;
+      align-items: center;
+    }
+
+    // Two Menu Option
+    li.MuiMenu-item2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      p {
+        font-size: 1.3rem;
+        color: var(--color-dark);
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      width: calc(50% - 2rem);
+      margin: 0;
+      margin-left: 0 !important;
+      border: none;
+      padding: 0 !important;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: calc(100% - 2rem);
+    }
+
+    @media screen and (max-width: 576px) {
+      margin-bottom: 0;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+  }
+
+  &.m-rb {
+    .selectionDiv {
+      margin-right: 1rem !important;
+      margin-bottom: 1rem !important;
+    }
+  }
+
+  &.fullWidth {
+    .selectionDiv,
+    .dropdown-ap {
+      width: 100%;
+      max-width: 100%;
+      box-shadow: none !important;
+    }
+  }
+
+  &.small {
+    .selectionDiv {
+      .dropdown-ap {
+        min-width: 8rem !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin: 0;
+    padding: 1rem !important;
+    width: calc(100% - 1rem);
+  }
+}
+
+.MuiMenu-paper {
+  background-color: var(--color-white) !important;
+  border: var(--border);
+
+  &::before {
+    background-color: var(--color-white) !important;
+  }
+}
+
+//  buttton
+button.solidButton {
+  min-height: 3.4rem;
+  height: 3.4rem;
+  border-radius: 0.4rem;
+  color: var(--color-dark) !important;
+  font-size: 1.1rem;
+
+  &.small {
+    min-height: 3rem !important;
+    height: 3rem !important;
+    min-width: 3rem !important;
+    width: 3rem !important;
+
+    svg {
+      font-size: 1.8rem !important;
+    }
+  }
+
+  &.download-btn,
+  &.refresh-btn,
+  &.squareOff-btn,
+  &.fetchReport-btn {
+    padding: 1rem;
+    min-width: 3.5rem;
+    width: 3.5rem;
+    background-color: var(--color-blue) !important;
+    color: #ffffff !important;
+
+    &.add {
+      background-color: var(--color-danger) !important;
+    }
+
+    &.remove {
+      background-color: var(--color-blue) !important;
+    }
+
+    &.sort {
+      background-color: var(--color-lightgrey) !important;
+    }
+
+    svg {
+      font-size: 2.4rem;
+    }
+  }
+
+  &.auto {
+    width: auto !important;
+
+    @media screen and (max-width: 991px) {
+      width: 100% !important;
+    }
+  }
+
+  &.squareOff-btn {
+    background-color: var(--color-danger) !important;
+  }
+
+  &.fetchReport-btn {
+    background-color: var(--color-darkblue) !important;
+    color: var(--color-white) !important;
+  }
+
+  &.counterBtn {
+    height: 2.4rem;
+    min-height: 2.4rem;
+    width: 2.4rem;
+    min-width: 2.4rem;
+    border-radius: 50%;
+    background-color: var(--color-lightgrey);
+    color: var(--color-white);
+    font-size: 1.8rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 !important;
+  }
+
+  &.android {
+    background-color: #008000 !important;
+    color: #ffffff !important;
+  }
+
+  &.ios {
+    background-color: #e21824 !important;
+  }
+
+  @media screen and (max-width: 900px) {
+    width: calc(50% - 2rem);
+    min-width: calc(50% - 2rem);
+  }
+
+  @media screen and (max-width: 767px) {
+    width: calc(100% - 2rem);
+    min-width: calc(100% - 2rem);
+  }
+}
+
+// Date Picker
+.datePicker {
+  border: var(--border) !important;
+  border-radius: 0.5rem;
+  max-width: 17rem;
+  height: 3.2rem;
+
+  .MuiOutlinedInput-root {
+    height: 100%;
+    width: 100%;
+
+    .MuiSelect-select {
+      height: 100%;
+      width: 100%;
+      padding: 0.5rem;
+    }
+
+    input.MuiInputBase-input {
+      font-size: 1.4rem !important;
+      padding: 0.8rem;
+      color: var(--color-dark);
+    }
+
+    button.MuiButtonBase-root {
+      svg.MuiSvgIcon-root {
+        font-size: 2rem;
+        color: var(--color-dark);
+      }
+    }
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    display: none;
+  }
+
+  @media screen and (max-width: 991px) {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.MuiTypography-caption,
+.MuiPickersDay-root,
+.MuiPickersYear-yearButton {
+  font-size: 1.6rem !important;
+}
+
+// Form
+.formBox {
+  .formItems {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5rem;
+
+    label.label {
+      font-size: 1.4rem;
+      color: var(--color-darkgrey);
+      margin-bottom: 0.8rem;
+      display: block;
+      font-weight: 500;
+      white-space: nowrap;
+
+      &.important {
+        position: relative;
+
+        &::after {
+          content: "*";
+          position: absolute;
+          top: 0;
+          right: auto;
+          color: var(--color-danger);
+          font-size: 1.4rem;
+          margin-left: 0.5rem;
+        }
+      }
+
+      .MuiFormControlLabel-label {
+        font-size: 1.4rem;
+        margin-left: 0.5rem;
+        color: var(--color-darkgrey);
+      }
+    }
+
+    // File Select
+    .fileUpload {
+      max-width: 20rem;
+      border: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.8rem;
+      font-size: 1.4rem;
+      padding: 0.8rem 1.5rem;
+      color: var(--color-dark) !important;
+      cursor: pointer;
+      border-radius: 0.4rem;
+
+      svg {
+        margin-right: 1rem;
+      }
+
+      .MuiInputBase-root {
+        display: none;
+      }
+    }
+
+    // Select
+    .MuiInputLabel-root {
+      font-size: 1.4rem;
+      color: var(--color-darkgrey);
+      margin-top: -0.7rem;
+
+      &[data-shrink="true"] {
+        margin-top: 0;
+        background-color: var(--color-white);
+      }
+    }
+
+    .dropdown-ap {
+      width: 100%;
+      height: 3.8rem;
+      box-shadow: none !important;
+
+      .MuiFormControl-root {
+        height: 100%;
+      }
+
+      .MuiInputBase-root {
+        height: 100% !important;
+        border: var(--border);
+        font-size: 1.4rem !important;
+        padding: 0.5rem 4rem 0.5rem 0.5rem;
+        color: var(--color-dark);
+
+        .MuiSelect-select {
+          height: 100%;
+          width: 100%;
+          padding: 0.5rem;
+          display: flex;
+          align-items: center;
+        }
+
+        .MuiAutocomplete-endAdornment {
+          top: 50%;
+          transform: translateY(-50%);
+
+          .MuiButtonBase-root {
+            color: var(--color-dark);
+            padding: 0 !important;
+
+            svg {
+              font-size: 1.8rem;
+            }
+          }
+        }
+      }
+
+      .MuiOutlinedInput-root {
+        .MuiOutlinedInput-notchedOutline {
+          border: none !important;
+          border: var(--border) !important;
+          padding: 0;
+        }
+      }
+    }
+
+    // Input
+    div.inputFiled {
+      font-size: larger;
+      border-radius: 0.4rem;
+      width: 100%;
+      color: var(--color-dark);
+
+      .MuiInputBase-root {
+        width: 100% !important;
+        padding: 0;
+        color: var(--color-dark) !important;
+        // height: 3.2rem;
+
+        input,
+        textarea {
+          font-size: 1.4rem;
+          width: 100% !important;
+          outline: none;
+          border-radius: 0.5rem !important;
+          padding: 0.8rem 1.4rem;
+          border: var(--border);
+
+          &::placeholder {
+            font-weight: 600;
+            color: var(--color-darkgrey);
+          }
+        }
+      }
+    }
+  }
+}
+
+.dropdown-ap {
+  width: 100%;
+  height: 3.8rem;
+  box-shadow: none !important;
+
+  .MuiFormControl-root {
+    height: 100%;
+  }
+
+  .MuiInputBase-root {
+    height: 100% !important;
+    border: var(--border);
+    font-size: 1.4rem !important;
+    padding: 0.5rem 4rem 0.5rem 0.5rem;
+    color: var(--color-dark);
+
+    .MuiSelect-select {
+      height: 100%;
+      width: 100%;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .MuiAutocomplete-endAdornment {
+      top: 50%;
+      transform: translateY(-50%);
+
+      .MuiButtonBase-root {
+        color: var(--color-dark);
+        padding: 0 !important;
+
+        svg {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+
+  .MuiOutlinedInput-root {
+    .MuiOutlinedInput-notchedOutline {
+      border: none !important;
+      border: var(--border) !important;
+      padding: 0;
+    }
+  }
+}
+
+.errorFields {
+  color: var(--color-danger) !important;
+  font-size: 1.1rem !important;
+}
+
+button.formSolid-btn {
+  background-color: var(--color-primary) !important;
+  font-size: 1.4rem;
+  height: 3.4rem;
+  padding: 0.6rem 1.6rem;
+  color: #ffffff !important;
+  font-weight: 500;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  margin-top: 0 !important;
+  min-width: auto;
+  text-transform: capitalize;
+
+  &.formOutline-btn {
+    border: var(--border) !important;
+    border-width: 2px !important;
+    background-color: transparent !important;
+    color: var(--color-darkgrey);
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+button.download-PDF {
+  background-color: var(--color-blue) !important;
+  font-size: 1.4rem;
+  padding: 1rem 2.4rem;
+  color: #ffffff;
+}
+
+button.customize-btn {
+  padding: 0.6rem 1.6rem;
+  border: var(--border);
+  color: var(--color-darkgrey);
+  font-size: 1.3rem;
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+}
+
+// Modal
+div.commonModal {
+  &.AddStrategyPrice {
+    .MuiDialog-paper {
+      max-width: 40rem;
+    }
+  }
+
+  .modalHeader {
+    border-bottom: var(--border);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--color-white);
+
+    h4 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      padding-left: 1rem;
+      color: var(--color-dark);
+      align-items: center;
+      gap: 1rem;
+    }
+
+    button.closeModal {
+      background-color: var(--color-danger);
+      min-width: 4rem;
+      min-height: 4rem;
+      border-radius: 0;
+
+      @media screen and (max-width: 991px) {
+        min-height: 3.5rem;
+        min-width: 3.5rem;
+      }
+    }
+  }
+
+  .modalBody {
+    padding: 4rem 2rem 2rem 2rem;
+    position: relative;
+    background-color: var(--color-white) !important;
+
+    h4 {
+      font-size: 1.6rem;
+      color: var(--color-dark);
+      font-weight: 500;
+
+      @media screen and (max-width: 991px) {
+        font-size: 2rem;
+      }
+    }
+
+    .alertIcons {
+      height: 8rem;
+      width: 8rem;
+      margin: 2rem auto 0;
+
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    p.alertText {
+      font-size: 1.6rem;
+      color: var(--color-dark);
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .deployrForm {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3.6rem;
+
+      label {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: var(--color-darkgrey);
+        margin-right: 2.6rem;
+
+        @media screen and (max-width: 991px) {
+          margin-bottom: 1rem;
+          display: inline-block;
+        }
+      }
+
+      .input-ap {
+        input.MuiInputBase-input {
+          font-size: 1.8rem !important;
+        }
+      }
+
+      @media screen and (max-width: 991px) {
+        display: block;
+        margin-top: 2.4rem;
+      }
+    }
+
+    button {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #ffffff;
+      padding: 0.4rem 1.2rem;
+      text-transform: capitalize;
+
+      &.btn-primary {
+        width: 100% !important;
+        background-color: var(--color-primary);
+      }
+
+      &.btn-danger {
+        width: 100% !important;
+        background-color: var(--color-danger);
+      }
+    }
+  }
+}
+
+.footer {
+  height: 4.5rem;
+  width: 100%;
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  text-align: center;
+
+  p {
+    font-size: 1.3rem;
+    color: var(--color-darkgrey);
+  }
+}
+
+// All Inputs
+.inputFields {
+  border-radius: 0.6rem;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  &.space-y {
+    margin-bottom: 1rem;
+  }
+
+  &.flex {
+    display: flex;
+    align-items: center;
+    width: auto;
+  }
+
+  label.label {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: var(--color-darkgrey);
+
+    &.important {
+      position: relative;
+
+      &::after {
+        content: "*";
+        position: absolute;
+        top: 0;
+        right: auto;
+        color: var(--color-danger);
+        font-size: 1.4rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  // Radio button
+  .MuiFormControlLabel-root {
+    .MuiRadio-root {
+      height: 3rem;
+      width: 3rem;
+      color: var(--color-lightgrey);
+
+      .MuiSvgIcon-root {
+        height: 2.6rem;
+        width: 2.6rem;
+      }
+
+      &.Mui-checked {
+        color: var(--color-primary) !important;
+      }
+    }
+
+    span.MuiTypography-root {
+      font-size: 1.4rem;
+      color: var(--color-dark);
+    }
+  }
+
+  .MuiInputBase-root,
+  .MuiFormControl-root {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+
+    input,
+    textarea {
+      font-size: 1.4rem !important;
+      padding: 1rem 1rem 1rem 4rem !important;
+      color: var(--color-dark);
+      width: 100%;
+      height: 1.4rem;
+      max-width: 16rem;
+      border: var(--border);
+      border-radius: 0.5rem;
+
+      &.error {
+        border-color: var(--color-danger) !important;
+        background-color: var(--color-lightdanger);
+      }
+
+      &.Mui-disabled {
+        -webkit-text-fill-color: var(--color-darkgrey);
+      }
+
+      @media screen and (max-width: 991px) {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  &.space {
+    input,
+    textarea {
+      padding: 1rem !important;
+
+      @media screen and (max-width: 991px) {
+        padding: 0.8rem !important;
+      }
+    }
+  }
+
+  &.fullWidth {
+    input,
+    textarea {
+      width: 100%;
+      max-width: 100%;
+      // height: 100%;
+    }
+  }
+
+  .searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 2.4rem;
+    opacity: 0.7;
+  }
+
+  @media screen and (max-width: 900px) {
+    margin: 0;
+    margin-bottom: 0;
+    width: 100%;
+  }
+}
+
+.wp_button {
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 50%;
+  display: block;
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.formSolid-btn .css-1idz92c-MuiCircularProgress-svg {
+  padding: 10px !important;
+}
+
+.paginations {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  ul {
+    li {
+      button.MuiButtonBase-root {
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.Mui-selected {
+          background-color: var(--color-primary);
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+}
+
+.MuiButtonBase-root.MuiPaginationItem-root {
+  color: var(--color-dark);
+}
+
+.MuiPaginationItem-root.MuiPaginationItem-ellipsis {
+  color: var(--color-dark);
+}
+
+.MuiPaginationItem-root.Mui-disabled {
+  color: var(--color-dark) !important;
+  opacity: 0.6 !important;
+}
+
+.confirm-dialog {
+  & .MuiDialog-paper {
+    background: var(--color-white);
+  }
+
+  & .MuiDialogTitle-root,
+  & .MuiDialogContentText-root {
+    color: var(--color-dark);
+  }
+}

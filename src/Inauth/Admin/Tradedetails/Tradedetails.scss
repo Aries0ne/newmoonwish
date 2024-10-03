@@ -1,0 +1,16 @@
+Button.autoTrade-btn {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.4rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  margin-right: 1rem;
+  cursor: no-drop;
+
+  &.on {
+    background-color: var(--color-darkPrimary);
+  }
+
+  &.off {
+    background-color: var(--color-danger);
+  }
+}
