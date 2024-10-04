@@ -7,6 +7,7 @@ import {
   Typography,
   Button,
   Grid,
+  
   TextField,
   Select,
   MenuItem,
@@ -49,6 +50,7 @@ export default function Signform() {
   const [signin, setsignin] = useState("none");
   const [signup, setsignup] = useState("none");
   const [counter, setCounter] = useState(40);
+
   const [otpcode, setOtpCode] = useState("");
   const [countrycode, setCountryCode] = useState("IN");
   const [number, setNumber] = useState("");
@@ -59,9 +61,13 @@ export default function Signform() {
   const [fielderror, setFieldError] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
   let countNum = 30;
+  let countNum1 = 120;
   const [count, setCount] = useState(countNum);
+  const [count1, setCount1] = useState(countNum1);
   const [showOtp, setShowOtp] = useState(false);
   const [readOnly, setReadOnly] = useState(false);
+  const [readOnly1, setReadOnly1] = useState(false);
+  const [readOnly2, setReadOnly2] = useState(false);
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -143,7 +149,10 @@ export default function Signform() {
           }
         }
         setReadOnly(true);
+        setReadOnly1(true);
+        setReadOnly2(false);
         setCount(countNum);
+        setCount1(countNum1);
         handleCount();
         generatePopup("success", "OTP sent successfully !");
       });
@@ -154,10 +163,13 @@ export default function Signform() {
   };
 
   const changenumber = () => {
+    setOtpCode("");
     if (otp === "none") {
+      
       setotp("block");
       setsignin("none");
     } else {
+
       setotp("block");
       setsignin("none");
     }
@@ -218,11 +230,11 @@ export default function Signform() {
     let selectedDate = new Date(fields?.DOB);
     let todayDate = new Date();
 
-    if (loginObj?.firstname?.length < 4) {
-      return generatePopup("error", "FirstName should greater than 3 letter !");
-    } else if (loginObj?.lastname?.length < 4) {
-      return generatePopup("error", "LastName should greater than 3 letter !");
-    } else if (todayDate.getFullYear() - selectedDate.getFullYear() < 18) {
+    // if (loginObj?.firstname?.length < 4) {
+    //   return generatePopup("error", "FirstName should greater than 3 letter !");
+    // } else if (loginObj?.lastname?.length < 4) {
+    //   return generatePopup("error", "LastName should greater than 3 letter !");
+    if (todayDate.getFullYear() - selectedDate.getFullYear() < 18) {
       return generatePopup("error", "You should be elder than 18 years !");
     }
 
@@ -294,6 +306,7 @@ export default function Signform() {
 
   const handleCount = () => {
     setCount(countNum);
+    setCount1(countNum1);
   };
 
   useEffect(() => {
@@ -308,6 +321,21 @@ export default function Signform() {
     return () => {
       clearInterval(interval);
     };
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount1((oldCount1) => {
+        if (oldCount1 === 1) {
+          setReadOnly1(false);
+          setReadOnly2(true);
+        }
+        return Math.max(oldCount1 - 1, 0);
+      });
+    }, 1000);
+    // return () => {
+    //   clearInterval(interval);
+    // };
   }, []);
 
   let token = localStorage.getItem("token");
@@ -530,13 +558,28 @@ export default function Signform() {
                         label="Enter OTP"
                       />
                       {Error ? <p className="color">{Error}</p> : ""}
-                      {readOnly && (
+                      {/* {readOnly && (
                         <Typography className={"countdown"}>
                           You can resend the OTP in{" "}
                           <Typography component={"span"}>{count}</Typography>{" "}
                           seconds.
                         </Typography>
+                      )} */}
+
+                      {readOnly1 && (
+                        <Typography className={"countdown"}>
+                          OTP will expire in{" "}
+                          <Typography component={"span"}>{count1}</Typography>{" "}
+                          seconds.
+                        </Typography>
                       )}
+                      {readOnly2 && (
+                        <Typography className={"countdown"} sx={{color:'red'}}>
+                          Your OTP expire.
+                        </Typography>
+                      )}
+
+
                       <Button
                         className="signForm-btn resendOtp"
                         onClick={(e) => handleSendOTP(e, false)}
@@ -550,7 +593,14 @@ export default function Signform() {
                           color: readOnly === true && "gray",
                         }}
                       >
-                        RESEND OTP
+                        RESEND OTP{" "}
+                        {readOnly && (
+                        <Typography className={"resendOtp"} sx={{fontWeight: 'bold',color: readOnly === true && "gray",}}>
+                           in{" "}
+                          <Typography sx={{color: 'red'}} component={"span"}>{count}</Typography>{" "}
+                          seconds.
+                        </Typography>
+                      )}
                       </Button>
                     </Box>
 

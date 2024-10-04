@@ -32,11 +32,21 @@ export const validateRegister = (fields) => {
     isValid.firstName = "Please enter firstname";
   }
   if (!fields?.firstname) {
-    isValid.firstName = "Please enter firstname";
+    isValid.firstName = "Please enter firstname"; // If the field is empty
+  } else if (fields.firstname.length <= 2) {
+    isValid.firstName = "Firstname should be greater than 2 letters"; // If firstname is less than or equal to 2 characters
+  } else if (!/^[a-zA-Z]+$/.test(fields?.firstname)) {
+    isValid.firstName = "Firstname should be alphabetical"; // If it contains non-alphabetical characters
   }
-
+  // if (!fields?.lastname) {
+  //   isValid.lastname = "Please enter lastname";
+  // }
   if (!fields?.lastname) {
-    isValid.lastname = "Please enter lastname";
+    isValid.lastname = "Please enter lastname"; // If the field is empty
+  } else if (fields.lastname.length <= 2) {
+    isValid.lastname = "Lastname should be greater than 2 letters"; // If lastname is less than or equal to 2 characters
+  } else if (!/^[a-zA-Z]+$/.test(fields?.lastname)) {
+    isValid.lastname = "Lastname should be alphabetical"; // If it contains non-alphabetical characters
   }
   if (!fields?.email) {
     isValid.email = "Please enter email";

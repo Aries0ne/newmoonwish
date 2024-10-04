@@ -86,10 +86,25 @@ const settings1 = {
         description:
           'Scan for Open(0) equal to Close(0) and Open(0) equal to High(0) and High(0) equal to Low(0) on Daily candles using candlestick chart',
       },
-    // Add more cards with different data if needed
-    { /* second card */ },
-    { /* third card */ },
-    { /* more cards if needed */ },
+      {
+        title: 'Four Price Trade',
+        date: '09 Feb 2024',
+        timeFrame: '5 min',
+        index: 'Nifty 500',
+        match: '2 Match',
+        description:
+          'Scan for Open(0) equal to Close(0) and Open(0) equal to High(0) and High(0) equal to Low(0) on Daily candles using candlestick chart',
+      },
+      {
+        title: 'Four Price Trade',
+        date: '09 Feb 2024',
+        timeFrame: '5 min',
+        index: 'Nifty 500',
+        match: '2 Match',
+        description:
+          'Scan for Open(0) equal to Close(0) and Open(0) equal to High(0) and High(0) equal to Low(0) on Daily candles using candlestick chart',
+      },
+   
   ];
 
 export default function Dash(props) {
