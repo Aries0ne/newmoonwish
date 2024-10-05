@@ -32,6 +32,7 @@ import Finvasia from "../Inauth/component/broker/Finvasia";
 import Kotak from "../Inauth/component/broker/Kotak";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
 import {
   aliceLogin,
   iciciLogin,
@@ -51,17 +52,24 @@ const BrokerComponent = (props) => {
   const [sessionToken, setSessionToken] = useState();
   const [optionsKey, setOptionsKey] = useState(0);
 
+  const [isModalOpen,setModalOpen] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let { brokers, broker, brokerStatus } = props;
 
   const handleClick = (value) => {
     if (value) {
+      setModalOpen(true);
       setBrokerValue(value);
       setOptionsKey((prevKey) => prevKey + 1);
     }
   };
 
+  const closemodal = () => {
+    setModalOpen(false);
+    setBrokerValue(null);
+  }
   const handleSelectbroker = (event, value) => {
     setBrokerValue(value);
   };
@@ -78,23 +86,7 @@ const BrokerComponent = (props) => {
     const secretkey = localStorage.getItem("secretkey");
     const brokername = localStorage.getItem("brokername");
     const broker = localStorage.getItem("broker");
-    // if (apisession) {
-    //   let obj = {
-    //     appkey: appkey,
-    //     session: apisession,
-    //     secretkey: secretkey,
-    //     brokername: "icici",
-    //   };
-    //   dispatch(iciciLogin(obj, navigate));
-    // }
-    // if (authCode && userId) {
-    //   let obj = {
-    //     authcode: authCode,
-    //     uid: userId,
-    //     brokername: "aliceblue",
-    //   };
-    //   dispatch(aliceLogin(obj, navigate));
-    // }
+
     if (session && appkey && secretkey && brokername == "sharekhan") {
       let obj = {
         appkey: appkey,
@@ -127,37 +119,16 @@ const BrokerComponent = (props) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={5} xl={3}>
+        <Grid item>
           <Box className="formBox" sx={{ border: "none !important" }}>
             <Box className="formItems">
               <Box className="selectionDiv brokerDrp">
-                <Typography component={"label"} className="label">
-                  Connect a Broker
+                <Typography component={"label"} className="label1">
+                  Connect Your Broker
                 </Typography>
-                <Box className="dropdown-ap">
-                  <Autocomplete
-                    placeholder="Select Broker"
-                    key={optionsKey}
-                    value={brokerValue}
-                    inputValue={brokerValue ? brokerValue : ""}
-                    className="dropdown"
-                    renderInput={(params) => (
-                      <TextField {...params} placeholder="Select Broker" />
-                    )}
-                    options={
-                      brokerStatus[0]?.status == true
-                        ? [brokerStatus[0]?.brokername.toUpperCase()]
-                        : brokers
-                    }
-                    onChange={handleSelectbroker}
-                    getOptionLabel={(option) => option}
-                    sx={{
-                      "& > .MuiFormControl-root > .MuiInputBase-root": {
-                        padding: "0.5rem !important",
-                      },
-                    }}
-                  />
-                </Box>
+       
+
+                <p className="text002">Total 52 items sdfsdv efgev evv eveve bebebeb evew vevev ervev ervberve erverv revev ervev reve veve vrevrev</p>
               </Box>
               <Box xs={8}>
                 <div>
@@ -176,14 +147,14 @@ const BrokerComponent = (props) => {
                       <Icici broker={brokerValue} type="new"></Icici>
                     </div>
                   )} */}
-                  {brokerValue?.toLowerCase() === "zerodha" && (
+                  {brokerValue?.toLowerCase() === "zerodha" && isModalOpen && (
                     <div>
-                      <Zerodha broker={brokerValue}></Zerodha>
+                      <Zerodha broker={brokerValue} onClose={closemodal}></Zerodha>
                     </div>
                   )}
-                  {brokerValue?.toLowerCase() === "sharekhan" && (
+                  {brokerValue?.toLowerCase() === "sharekhan"  && isModalOpen && (
                     <div>
-                      <Sharekhan broker={brokerValue}></Sharekhan>
+                      <Sharekhan broker={brokerValue} onClose={closemodal}></Sharekhan>
                     </div>
                   )}
                   {/* {brokerValue.toLowerCase() === "Angle Broking" && (
@@ -228,25 +199,13 @@ const BrokerComponent = (props) => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} sx={{ marginTop: "3rem" }}>
+        <Grid item xs={12} sx={{ marginTop: "1rem" }}>
           <Box className="selectBroker">
-            <Typography className="allTitles">Associated Brokers</Typography>
+          
             <Box
-              sx={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}
+              sx={{ display: "flex", alignItems: "center", flexWrap: "wrap",justifyContent:"space-between" }}
             >
-              {/* {broker.map((borkers, index) => (
-                                <Button
-                                    className="brokerList"
-                                    key={index}
-                                    onClick={() => handleClick(borkers.name)}
-                                >
-                                    <img src={borkers.img} />
-                                    <Typography component={"p"} className="brokerDestials">
-                                        {borkers.name}
-                                    </Typography>
-                                </Button>
-                            ))} */}
-              {/* {brokerValue == broker.name} */}
+   
               {brokerStatus[0]?.status == true ? (
                 <>
                   {broker.map((brokers, index) => {
@@ -271,8 +230,7 @@ const BrokerComponent = (props) => {
                 </>
               ) : (
                 <>
-                  {brokerValue !== null
-                    ? broker.map((brokers, index) => {
+                  {brokerValue !== null? broker.map((brokers, index) => {
                         if (brokerValue?.toLowerCase() == brokers.name) {
                           return (
                             <div className="brokerList">
@@ -288,6 +246,7 @@ const BrokerComponent = (props) => {
                                   {brokers.name}
                                 </Typography>
                               </Button>
+                              zerodha
                             </div>
                           );
                         }
@@ -300,28 +259,36 @@ const BrokerComponent = (props) => {
                               <div
                                 style={{
                                   display: "flex",
-                                  flexDirection: "column",
-                                  gap: "10px",
+                                  flexDirection: "row",
+                                  width:"100%",
+                                  justifyContent:"space-evenly",
+                                  
                                 }}
                               >
-                                <Tooltip title={brokerDesc} placement="top">
-                                  <Button key={index}>
+                                {/* <Tooltip title={brokerDesc} placement="top"> */}
+                                  <Button title={brokerDesc} key={index}>
+                                  
                                     <img src={brokers.img} />
 
-                                    <Typography
-                                      component={"p"}
-                                      className="brokerDestials"
-                                    >
-                                      {brokers.name}
-                                    </Typography>
+                                    
                                   </Button>
-                                </Tooltip>
+                                {/* </Tooltip> */}
+                                
                                 <div
                                   style={{
                                     display: "flex",
-                                    gap: "10px",
+                                    flexDirection:"column",
+                                    justifyContent:"end",
+                                    gap:"10px",
+                                    width:"55%",
+                                    padding:"5px",
+                                    
+                                 
                                   }}
                                 >
+                                
+                                  <h6 className="text001">{brokers.name}</h6>
+                                  <p className="text002">{brokers.desc}</p>
                                   <Button
                                     onClick={() => handleClick(brokers.name)}
                                     variant="outlined"
@@ -341,7 +308,7 @@ const BrokerComponent = (props) => {
                                       <InfoIcon style={{ fontSize: "20px" }} />
                                     </Button>
                                   </Tooltip> */}
-                                </div>
+                               
                                 <Button
                                   onClick={() =>
                                     window.open(
@@ -356,6 +323,7 @@ const BrokerComponent = (props) => {
                                     style={{ marginLeft: "5px" }}
                                   />
                                 </Button>
+                                </div>
                               </div>
                             </div>
                           </>

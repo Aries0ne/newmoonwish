@@ -1,8 +1,8 @@
 .border {
-    border: 1px solid #D3D3D3;
+    // border: 1px solid #D3D3D3;
     margin-top: 10px;
     padding: 5px 10px;
-    box-shadow:1px 1px 5px #d1d0d0;
+    // box-shadow:1px 1px 5px #d1d0d0;
     border-radius: 7px;
 }
 
@@ -17,4 +17,126 @@
 }
 .error{
     color: red;
+}
+
+
+
+
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end; /* Align modal to the right */
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fff;
+    height: 100vh;
+    width: 25vw;
+    padding: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  /* Modal Content on Mobile (100% width and height) */
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 100vw;
+    }
+  }
+  
+  /* Close Button */
+  .close-button {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background-color: #00ff9135;
+    border-radius: 25px;
+    padding: 8px 12px;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .texth6{
+    font-size: 18px;
+    margin: 0px;
+  }
+  
+
+  .horizontal-line {
+    background-color: #DEDCDC; /* Change color as needed */
+    height: 1px; /* Set the height of the line */
+    width: 100%; /* Set the width of the line */
+    margin-top:30px ;
+    
+  }
+  .formItems{
+    margin-top: 20px;
+    margin-bottom: 0 !important;
+  }
+
+  .contactForm{
+    padding: 0px !important;
+  }
+
+  .label{
+    font-size: 12px !important;
+    color: #726E6E !important;
+    font-weight: 500 !important;
+  }
+  .inputFiled{
+    border-radius: 10px !important;
+    color: #A8A8A8 !important;
+    
+  }
+
+  .inputFiled ::placeholder {
+    font-size: 10px;
+  }
+
+  .custom-input{
+    font-size: 10px !important;
+    font-weight: 100 !important;
+  }
+
+  .button1{
+    width: 100% !important;
+    border-radius: 15px !important;
+  }
+  .text0h6{
+    font-size: 14px;
+    font-weight: 550;
+    margin: 20px 0px 5px;
+  }
+
+  .my-list {
+    list-style-type: none; /* Remove default bullets */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  
+}
+
+.my-list li {
+    padding: 10px 0; /* Add some padding for each list item */
+    font-size: 1.2rem; /* Font size for list items */
+    color: #333; /* Text color */
+    background-image: url('../../../images/Ok.png'); /* Add your image here */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: left center; /* Position the image on the left center */
+    background-size: 20px 20px; /* Set size of the bullet image */
+    padding-left: 30px; /* Add padding to the left to avoid overlap with the image */
+}
+
+.my-list li:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
 }

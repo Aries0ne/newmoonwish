@@ -290,9 +290,296 @@
   }
 }
 
+
+
 .tabbut{
   border-radius: 10px;
   background-color: #00ff9125;
   border: none;
-  color:black
+  color:black;
+
 }
+
+.head{
+  font-size: 20px;
+}
+
+.line{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.dropbtn {
+  background-color: #ffff;
+  color: #333333;
+  padding: 8px 100px 8px 25px;
+  min-width: 280px;
+  font-size: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #D6D5D5;
+  font-weight: 500;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 280px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  font-size: 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #dddbdb;
+}
+.div01{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+
+}
+.stratlogo{
+  height: 20px;
+  width: 20px;
+}
+.text01{
+  color: #7429B5;
+  font-size: 12px;
+}
+
+.div004{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+
+.tablebutton{
+  border-radius: 15px;
+  padding: 6px 30px 6px 30px !important;
+  background-color: white !important;
+  border: 1px solid #A8A8A8 !important;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.w3-bar-item {
+  background-color: #f1f1f1;
+  color: black;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Style for the active tab */
+.active-tab {
+  background-color: #00ff9146 !important; /* Change to your desired active color */
+  color: black; /* Change the text color for active tab if needed */
+  border: none !important;
+}
+
+/* Hover effect for the tab buttons */
+.w3-bar-item:hover {
+  background-color: #ddd;
+}
+
+
+.watchlist-tab {
+  position: relative;
+  display: inline-block;
+}
+
+.delete-tab-btn {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: -4px;
+  right: -4px; /* Adjust position to suit your design */
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 2px 4px;
+  font-size: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+/* Show delete button on hover */
+.watchlist-tab:hover .delete-tab-btn {
+  display: inline-block;
+}
+
+.add-watchlist-btn {
+
+  border: none !important;
+  color: #5A5A5A;
+  padding: 0px !important;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 10px 0;
+  background-color: #FBFBFB;
+}
+
+.add-watchlist-btn:disabled {
+  background-color: #FBFBFB;
+  cursor: not-allowed;
+}
+
+.w3-bar-item {
+  position: relative;
+}
+
+.div006{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.text0123{
+  font-size: 16px;
+}
+.addbut{
+  border: none;
+  padding: 10px 40px 10px 40px;
+  background-color: #00ff9143;
+  border-radius: 10px ;
+}
+.div007{
+  display: flex;
+  flex-direction: column;
+ 
+}
+.text003{
+  font-size: 12px;
+  margin: 0px;
+  color: #5A5A5A;
+}
+
+
+
+
+
+.column-settings {
+  position: absolute;
+  top: 100%; /* Position it directly below the image */
+  right: 0;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  color: rgb(138, 137, 137);
+  font-size: 12px;
+  font-weight: 200;
+  z-index: 1000;
+  width: 200px; /* Set width for the dropdown */
+}
+
+.stratlogo {
+  width: 20px;
+  height: 20px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+  width: 10px;
+}
+
+.column-settings div {
+  padding: 5px 0;
+}
+
+thead{
+  font-size: 12px;
+  border: 0px solid white;
+  
+ 
+}
+
+table{
+  margin-top: 20px;
+
+}
+.scroll::-webkit-scrollbar {
+  height: 10px; /* Change the height of the horizontal scrollbar */
+}
+
+// .scroll::-webkit-scrollbar-thumb {
+//   background-color:rgba(0, 255, 145, 0.262745098); /* Color of the scroll thumb */
+//   border-radius: 10px; /* Rounded corners for the thumb */
+// }
+
+// .scroll::-webkit-scrollbar-thumb:hover {
+//   background-color: #555; /* Thumb color on hover */
+// }
+
+// .scroll::-webkit-scrollbar-track {
+//   background-color: #fbfbfb; /* Track color */
+// }
+
+// /* For Firefox */
+// .scroll {
+//   scrollbar-width: thin; /* Thin scrollbar */
+//   scrollbar-color: rgba(0, 255, 145, 0.262745098) #fbfbfb; /* Thumb and track colors */
+// }
+

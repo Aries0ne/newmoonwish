@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { BrokerStatus } from "../../../redux/actions/brokerAction";
 import { SharekhanValidation } from "../../../validation/broker";
 
-const Sharekhan = () => {
+const Sharekhan = ({onClose}) => {
   const inputFields = { appkey: "", secretkey: "", uid: "" };
   const [fields, setFields] = useState(inputFields);
   const [isSubmit, setIsSubmit] = useState(false);
@@ -68,28 +68,22 @@ const Sharekhan = () => {
 
   return (
     <>
+   <div className="modal-overlay" >
+      <div className="modal-content" >
+        <button className="close-button" onClick={onClose} >X</button>
+        <div className="modal-body">
+       
+
       <div className="border">
         <Box>
           <Grid xs={12} lg={12}>
             {/* <Box>
-                              <Typography component={'label'} style={{ display: 'flex', justifyContent: "center" }}>ZERODHA BROKER</Typography>
-                              <hr style={{ color: "#26DE81", border: '2px solid' }} />
-                          </Box> */}
+                            <Typography component={'label'} style={{ display: 'flex', justifyContent: "center" }}>ZERODHA BROKER</Typography>
+                            <hr style={{ color: "#26DE81", border: '2px solid' }} />
+                        </Box> */}
             <Box style={{ border: "none" }} className="contactForm formBox">
-              <Box className="formItems">
-                <Typography component={"label"} className="label">
-                  UID :
-                </Typography>
-                <TextField
-                  placeholder="Enter UID"
-                  name="uid"
-                  className="inputFiled"
-                  style={inputBorder}
-                  onChange={handleChange}
-                  value={fields?.uid}
-                />
-                {Error ? <div className="error">{Error.uid}</div> : ""}
-              </Box>
+              <h6 className="texth6">Broker Login</h6>
+              <div class="horizontal-line"></div>
               <Box className="formItems">
                 <Typography component={"label"} className="label">
                   APP KEY :
@@ -97,10 +91,11 @@ const Sharekhan = () => {
                 <TextField
                   placeholder="Enter Access Key"
                   name="appkey"
-                  className="inputFiled"
+                  className="inputFiled custom-input"
                   style={inputBorder}
                   onChange={handleChange}
                   value={fields?.appkey}
+                 
                 />
                 {Error ? <div className="error">{Error.appkey}</div> : ""}
               </Box>
@@ -118,27 +113,53 @@ const Sharekhan = () => {
                 />
                 {Error ? <div className="error">{Error.secretkey}</div> : ""}
               </Box>
+              <Box className="formItems">
+                <Typography component={"label"} className="label">
+                  UID :
+                </Typography>
+                <TextField
+                  placeholder="Enter UID"
+                  name="uid"
+                  className="inputFiled"
+                  style={inputBorder}
+                  onChange={handleChange}
+                  value={fields?.uid}
+                />
+                {Error ? <div className="error">{Error.uid}</div> : ""}
+              </Box>
               <Grid
                 container
                 style={{ display: "flex", justifyContent: "start" }}
               >
-                <Box>
+                <Box className="button1">
                   <Button
                     variant="contained"
                     style={{
                       fontSize: "15px",
-                      marginTop: "13px",
-                      width: "120px",
+                      marginTop: "30px",
+                      width: "100%",
+                      backgroundColor:"#031b10df",
+                      borderRadius: "10px",
+                      fontSize:"12px",
                     }}
                     onClick={handleSubmit}
                   >
-                    Login
+                    Login To Sharekhan
                   </Button>
+                  <h6 className="text0h6">Process To Login</h6>
+                  <ul class="my-list">
+                  <li>Free Demat Account Opeaning </li>
+                  <li>Free Demat Account Opeaning</li>
+                  <li>Free Demat Account Opeaning</li>
+              </ul>
                 </Box>
               </Grid>
             </Box>
           </Grid>
         </Box>
+      </div>
+      </div>
+        </div>
       </div>
     </>
   );

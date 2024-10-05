@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BrokerStatus } from "../../../redux/actions/brokerAction";
 
-const Zerodha = () => {
+const Zerodha = ({onClose}) => {
   const inputFields = { appkey: "", secretkey: "" };
   const [fields, setFields] = useState(inputFields);
   const [isSubmit, setIsSubmit] = useState(false);
@@ -48,6 +48,8 @@ const Zerodha = () => {
     }
   };
 
+
+
   useEffect(() => {
     dispatch(BrokerStatus());
   }, []);
@@ -67,6 +69,12 @@ const Zerodha = () => {
 
   return (
     <>
+    <div className="modal-overlay" >
+      <div className="modal-content" >
+        <button className="close-button" onClick={onClose} >X</button>
+        <div className="modal-body">
+       
+
       <div className="border">
         <Box>
           <Grid xs={12} lg={12}>
@@ -75,6 +83,8 @@ const Zerodha = () => {
                             <hr style={{ color: "#26DE81", border: '2px solid' }} />
                         </Box> */}
             <Box style={{ border: "none" }} className="contactForm formBox">
+              <h6 className="texth6">Broker Login</h6>
+              <div class="horizontal-line"></div>
               <Box className="formItems">
                 <Typography component={"label"} className="label">
                   APP KEY :
@@ -82,10 +92,11 @@ const Zerodha = () => {
                 <TextField
                   placeholder="Enter Access Key"
                   name="appkey"
-                  className="inputFiled"
+                  className="inputFiled custom-input"
                   style={inputBorder}
                   onChange={handleChange}
                   value={fields?.appkey}
+                 
                 />
                 {Error ? <div className="error">{Error.appkey}</div> : ""}
               </Box>
@@ -121,24 +132,37 @@ const Zerodha = () => {
                 container
                 style={{ display: "flex", justifyContent: "start" }}
               >
-                <Box>
+                <Box className="button1">
                   <Button
                     variant="contained"
                     style={{
                       fontSize: "15px",
-                      marginTop: "13px",
-                      width: "120px",
+                      marginTop: "30px",
+                      width: "100%",
+                      backgroundColor:"#031b10df",
+                      borderRadius: "10px",
+                      fontSize:"12px",
                     }}
                     onClick={handleSubmit}
                   >
-                    Login
+                    Login To Zerodha
                   </Button>
+                  <h6 className="text0h6">Process To Login</h6>
+                  <ul class="my-list">
+                  <li>Free Demat Account Opeaning </li>
+                  <li>Free Demat Account Opeaning</li>
+                  <li>Free Demat Account Opeaning</li>
+              </ul>
                 </Box>
               </Grid>
             </Box>
           </Grid>
         </Box>
       </div>
+      </div>
+        </div>
+      </div>
+    
     </>
   );
 };

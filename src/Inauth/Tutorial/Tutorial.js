@@ -23,6 +23,7 @@ export default function Tutorial() {
   return (
     <>
       {/* <TutorialComponent tutorial={tutorial} /> */}
+      
 
       
     </>

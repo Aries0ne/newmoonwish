@@ -135,11 +135,12 @@ div.selectBroker {
     border: var(--border);
     margin-right: 2rem;
     margin-bottom: 2rem;
-    width: fit-content !important;
+    width: 45% !important;
     display: flex;
     align-items: center;
     justify-content: left;
     color: var(--color-dark);
+    background-color: white;
 
     &:nth-child(6n + 6) {
       margin-right: 0;
@@ -150,10 +151,11 @@ div.selectBroker {
     }
 
     img {
-      height: 7rem;
-      width: 12rem;
+      height: 16rem;
+      width: 16rem;
       object-fit: contain;
-      border-radius: 0.6rem;
+      border-radius: 10px;
+      background-color: #F3F3F3;
     }
 
     p.brokerDestials {
@@ -220,14 +222,40 @@ div.selectBroker {
 }
 
 .brokerDrp {
+
   .MuiMenuItem-root {
     border-bottom: var(--border);
   }
 }
 
+
+
 .ConnectButton {
   font-size: small !important;
+  background-color: #031b10df !important;
+  color: white !important;
+  border-radius: 10px !important;
   width: 100% !important;
-  white-space: nowrap !important;
-  min-width: fit-content !important;
+  font-size: 11px !important;
 }
+.text001{
+  font-size: 16px;
+  color: black !important;
+  font-weight: 550;
+  margin: 0px !important;
+}
+.text002{
+  font-size: 12px;
+  color: #726E6E !important;
+ 
+  margin: 0px !important;
+
+}
+
+.label1{
+  font-size: 18px !important;
+  font-weight: 550 !important;
+}
+
+
+

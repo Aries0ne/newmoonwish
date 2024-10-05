@@ -28,6 +28,7 @@ import Strategyoverview from "../Inauth/Admin/Strategy/Strategyoverview/Strategy
 import Strategys from "../Inauth/Strategys/Strategys";
 import IndicatorBacktest from "../Inauth/Indicators/IndicatorBacktest";
 import Strategyview from "../Inauth/Strategyview/Strategyview";
+import Marketwatch1 from "../Inauth/Marketwatch/Marketwatch1";
 
 const PublicRoutes = [
   {
@@ -134,6 +135,11 @@ const PublicRoutes = [
     index: "18",
     path: "/marketwatch",
     Component: <Marketwatch />,
+  },
+  {
+    index: "18",
+    path: "/marketwatch1",
+    Component: <Marketwatch1 />,
   },
   {
     index: "18",

@@ -83,8 +83,9 @@ export default function Brokerlogin() {
     // },
     {
       img: broker10,
-      name: "zerodha",
+      name: "Zerodha",
       id: 10,
+      desc:"Total 52 items sdsdv efgev evv eveve bebebeb evew vevev ervev ervberve erverv revev ervev reve veve vrevrev"
     },
     // {
     //   img: broker11,
@@ -93,8 +94,10 @@ export default function Brokerlogin() {
     // },
     {
       img: sharekhan,
-      name: "sharekhan",
+      name: "Sharekhan",
       id: 12,
+      desc:"Total 52 items sdsdv efgev evv eveve bebebeb evew vevev ervev ervberve erverv revev ervev reve veve vrevrev"
+
     },
   ];
 
