@@ -13,6 +13,7 @@ import Scanner from "../Inauth/Scanner/Scanner";
 import Strategy from "../Inauth/Strategy/Strategy";
 import Tutorial from "../Inauth/Tutorial/Tutorial";
 import Alert from "../Inauth/Admin/Alert/Alert";
+import Alert1 from "../Inauth/Admin/Alert/newalert";
 import Indicators from "../Inauth/Admin/Indicators/Indicators";
 import IndexFuture from "../Inauth/Admin/Strategy/Strategyalert/Strategyalert";
 import CardDetails from "../Inauth/CardDetails/CardDetails";
@@ -29,6 +30,7 @@ import Strategys from "../Inauth/Strategys/Strategys";
 import IndicatorBacktest from "../Inauth/Indicators/IndicatorBacktest";
 import Strategyview from "../Inauth/Strategyview/Strategyview";
 import Marketwatch1 from "../Inauth/Marketwatch/Marketwatch1";
+import AlertComponent from "../Inauth/Admin/Alert/newalert";
 
 const PublicRoutes = [
   {
@@ -103,8 +105,14 @@ const PublicRoutes = [
   },
   {
     index: "15",
-    path: "/alert",
+    path: "/newalert",
     Component: <Alert />,
+  },
+
+  {
+    index: "15",
+    path: "/alert1",
+    Component: <AlertComponent />,
   },
   {
     index: "16",
