@@ -412,6 +412,49 @@ export const uploadBulkAlertData =
 		});
 	};
 
+
+
+export const uploadBulkwatchlist =
+	(payload = {}) =>
+	(dispatch) => {
+		return new Promise((resolve, reject) => {
+			let token = localStorage.getItem('token');
+			axios
+				.post(`${API_URL}/position/excelwatchlist/`, payload, {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				})
+				.then((res) => {
+					if (res.status === 200) {
+						dispatch({
+							type: actionTypes.UPLOAD_BULK_WATCHLIST,
+							payload: res.data,
+						});
+						generatePopup('success', 'All Watchlist added succesfully.');
+						
+						resolve(res.data);
+					} else {
+						dispatch({
+							type: actionTypes.UPLOAD_BULK_WATCHLIST_FAIL,
+						});
+					}
+				})
+				.catch((error) => {
+					if (error.response.status === 400) {
+						dispatch({
+							type: actionTypes.UPLOAD_BULK_WATCHLIST_FAIL,
+						});
+					} else if (error?.response?.status === 401) {
+						generatePopup('error', 'Token is invalid or expired.');
+
+						localStorage.clear();
+						window.location.replace('/');
+					}
+				});
+		});
+	};
+
 export const getAlertPrice =
 	(payload = {}) =>
 	(dispatch) => {
