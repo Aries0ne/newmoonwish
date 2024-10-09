@@ -102,6 +102,7 @@ const BrokerComponent = (props) => {
         appkey: appkey,
         secretkey: secretkey,
         session: session,
+        uid:uid,
         brokername: "zerodha",
       };
       dispatch(zerodhaLogin(obj, navigate));

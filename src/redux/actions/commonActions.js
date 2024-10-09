@@ -14,6 +14,16 @@ export const getLiveData = (payload) => (dispatch) => {
   });
 };
 
+export const getaddsymboldata = (payload) => (dispatch) => {
+  return new Promise((resolve, reject) => {
+    dispatch({
+      type: actionTypes.ADD_SYMBOL_DATA_SOCKET,
+      payload: payload,
+    });
+    resolve();
+  });
+};
+
 export const getProfitLoss = (payload) => (dispatch) => {
   return new Promise((resolve, reject) => {
     dispatch({

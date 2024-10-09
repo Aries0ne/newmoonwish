@@ -7,6 +7,7 @@ const initState = {
   watchListData: [],
   watchListLive: [],
   overAllProfitLoss: {},
+  addsymboldata:[],
 };
 
 const store = (state = initState, action) => {
@@ -35,6 +36,14 @@ const store = (state = initState, action) => {
         ...state,
         loading: false,
         watchListData: action?.payload,
+      };
+
+    case actionTypes.ADD_SYMBOL_DATA_SOCKET:
+      console.log('Updating Redux addsymboldata with:', action.payload);
+      return {
+        ...state,
+        
+        addsymboldata: action?.payload,
       };
 
     case actionTypes.GET_WATCH_LIST_DATA_FAIL:

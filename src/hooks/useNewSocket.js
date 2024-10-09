@@ -11,6 +11,7 @@ import {
   getProfitLoss,
   getWatchListLiveData,
   getWatchListSocket,
+  getaddsymboldata
 } from "../redux/actions/commonActions";
 import { getLivePositions } from "../redux/actions/positionAction";
 export function useSocket(endpoint) {
@@ -36,8 +37,6 @@ export function useSocket(endpoint) {
         dispatch(getLiveData(message));
       } else if (endpoint === "liveposition") {
         dispatch(getLivePositions(message));
-      } else if (endpoint === "watchlist") {
-        dispatch(getWatchListSocket(message));
       } else if (endpoint === "watchlistupdate") {
         dispatch(getWatchListLiveData(message));
       } else if (endpoint === "profit") {
@@ -48,6 +47,8 @@ export function useSocket(endpoint) {
         dispatch(getSocketIndicatorsData(message));
       } else if (endpoint === "indicator1") {
         dispatch(getPortfolioIndicatorsData(message));
+      } else if (endpoint === "watchlist") {
+        dispatch(getaddsymboldata(message));
       }
     };
 

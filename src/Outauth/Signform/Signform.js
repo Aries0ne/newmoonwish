@@ -7,7 +7,7 @@ import {
   Typography,
   Button,
   Grid,
-  
+
   TextField,
   Select,
   MenuItem,
@@ -110,15 +110,15 @@ export default function Signform() {
     const formattedValue = value.replace(/\D/g, "");
     console.log(formattedValue);
     let formattedNumber = formattedValue;
-  
+
     // Format the phone number with a hyphen after 5 characters for display
-  
-  
+
+
     // Ensure the formatted number stays within 10 digits
-   
-      setFormattedPhoneNumber(formattedNumber);
-      setNumber(formattedValue);
-    
+
+    setFormattedPhoneNumber(formattedNumber);
+    setNumber(formattedValue);
+
   };
 
   // const handleSendOTP = (e, flag = true) => {
@@ -133,7 +133,7 @@ export default function Signform() {
     console.log("handle Send OTP called", validateValues(number));
     if (validateValues(number) === true) {
       let obj = {
-        phone:  number,
+        phone: number,
         method: "text",
       };
       dispatch(sendOtp(obj)).then((res) => {
@@ -165,7 +165,7 @@ export default function Signform() {
   const changenumber = () => {
     setOtpCode("");
     if (otp === "none") {
-      
+
       setotp("block");
       setsignin("none");
     } else {
@@ -189,7 +189,7 @@ export default function Signform() {
     e.preventDefault();
     if (!validateOtp(otpcode) === true) {
       let obj = {
-        phone:  number,
+        phone: number,
         otp: otpcode,
       };
       dispatch(verifyOtp(obj, navigate))
@@ -271,6 +271,8 @@ export default function Signform() {
       });
     }
   };
+
+
 
   const handleInputChange = (event) => {
     const keyName = event.target.name;
@@ -370,12 +372,12 @@ export default function Signform() {
         </Box>
 
         <Box className="signForm-box">
-            <Grid
-              container
-              spacing={2}
-              alignItems={"center"}
-              justifyContent={"space-around"}
-            >
+          <Grid
+            container
+            spacing={2}
+            alignItems={"center"}
+            justifyContent={"space-around"}
+          >
             <Grid item xs={12} md={6} lg={5} xl={5}>
               <Box className="from-bg">
                 <img src={logodark} className="formLogo" />
@@ -394,7 +396,9 @@ export default function Signform() {
                   className="contactForm formBox"
                   sx={{ display: otp, border: "none !important" }}
                 >
-                  <form onSubmit={handleSendOTP}>
+                  <form onSubmit={handleSendOTP} 
+                    
+                  >
                     <Box className="formItems">
                       {/* <Typography component={"label"} className="label">
                       Enter Mobile Number
@@ -440,22 +444,22 @@ export default function Signform() {
                       </Box>
 
 
-                 
-            <PhoneInput
-              value={formattedPhoneNumber}
-              onChange={handleChange}
-              inputProps={{
-                name: 'ph',
-                required: true,
-              }}
-              country="in"
-              enableSearch={true}
-              inputClass = 'sanket'
-              countryCodeEditable={false}
-              
-              containerClass = 'sam'
-              
-            />
+
+                      <PhoneInput
+                        value={formattedPhoneNumber}
+                        onChange={handleChange}
+                        inputProps={{
+                          name: 'ph',
+                          required: true,
+                        }}
+                        country="in"
+                        enableSearch={true}
+                        inputClass='sanket'
+                        countryCodeEditable={false}
+
+                        containerClass='sam'
+
+                      />
 
 
 
@@ -574,7 +578,7 @@ export default function Signform() {
                         </Typography>
                       )}
                       {readOnly2 && (
-                        <Typography className={"countdown"} sx={{color:'red'}}>
+                        <Typography className={"countdown"} sx={{ color: 'red' }}>
                           Your OTP expire.
                         </Typography>
                       )}
@@ -595,12 +599,12 @@ export default function Signform() {
                       >
                         RESEND OTP{" "}
                         {readOnly && (
-                        <Typography className={"resendOtp"} sx={{fontWeight: 'bold',color: readOnly === true && "gray",}}>
-                           in{" "}
-                          <Typography sx={{color: 'red'}} component={"span"}>{count}</Typography>{" "}
-                          seconds.
-                        </Typography>
-                      )}
+                          <Typography className={"resendOtp"} sx={{ fontWeight: 'bold', color: readOnly === true && "gray", }}>
+                            in{" "}
+                            <Typography sx={{ color: 'red' }} component={"span"}>{count}</Typography>{" "}
+                            seconds.
+                          </Typography>
+                        )}
                       </Button>
                     </Box>
 

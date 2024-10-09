@@ -5,9 +5,11 @@ import del from "../../images/Delete1.png";
 import { useTable } from "react-table";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { isOverflown } from "@mui/x-data-grid/utils/domUtils";
+import Addsymbol from "./Marketwatchview/addsymbol";
 
 const Marketwatchview1 = () => {
   const [activeTab, setActiveTab] = useState("London");
+  const [isModalOpen,setModalOpen] = useState(false);
   const [watchlists, setWatchlists] = useState([
     { name: "My Watchlist", city: "London" },
     { name: "My Watchlist 1", city: "Paris" },
@@ -15,33 +17,33 @@ const Marketwatchview1 = () => {
   ]);
 
   const columnsData = [
-    { Header: "Short Exchange Name", accessor: "Short Exchange Name" },
-    { Header: "Scrip Code", accessor: "Scrip Code" },
-    { Header: "Scrip Name", accessor: "Scrip Nam" },
-    { Header: "% Change", accessor: "% Change" },
+    { Header: "Short Exchange Name", accessor: "ShortExchangeName" },
+    { Header: "Scrip Code", accessor: "ScripCode" },
+    { Header: "Scrip Name", accessor: "ScripNam" },
+    { Header: "% Change", accessor: "Change" },
     { Header: "Current", accessor: "Current" },
-    { Header: "Bid Qty", accessor: "Bid Qty" },
-    { Header: "Bid Price", accessor: "Bid Price" },
-    { Header: "Offer Price", accessor: "Offer Price" },
-    { Header: "Offer Qty", accessor: "Offer Qty" },
+    { Header: "Bid Qty", accessor: "BidQty" },
+    { Header: "Bid Price", accessor: "BidPrice" },
+    { Header: "Offer Price", accessor: "OfferPrice" },
+    { Header: "Offer Qty", accessor: "OfferQty" },
     { Header: "Open", accessor: "Open" },
     { Header: "High", accessor: "High" },
     { Header: "Low", accessor: "Low" },
     { Header: "Close", accessor: "Close" },
     { Header: "Difference", accessor: "Difference" },
 
-    { Header: "Offer Qty", accessor: "1" },
-    { Header: "Open", accessor: "7" },
-    { Header: "High", accessor: "4" },
-    { Header: "Low", accessor: "3" },
-    { Header: "Close", accessor: "5" },
-    { Header: "Difference", accessor: "8" },
+    { Header: "Offer Qty", accessor: "a" },
+    { Header: "Open", accessor: "b" },
+    { Header: "High", accessor: "c" },
+    { Header: "Low", accessor: "d" },
+    { Header: "Close", accessor: "e" },
+    { Header: "Difference", accessor: "f" },
 
   ];
 
   const data = [
-    { name: "John Doe", age: 28, address: "1234 Main St" },
-    { name: "Jane Smith", age: 34, address: "5678 Oak St" },
+    { ShortExchangeName: "John Doe", ScripCode: 28, ScripNam: "1234 Main St" ,Change:"54",Current:"45",BidQty:"43",BidPrice:"34",OfferPrice:"34",OfferQty:"45",Open:"45",High:"45",Low:"45",Close:"54",Difference:"434",a:"45",b:"$5",c:"434",d:"44",e:"54",f:"353"},
+    { ShortExchangeName: "John Doe", ScripCode: 28, ScripNam: "1234 Main St" ,Change:"54",Current:"45",BidQty:"43",BidPrice:"34",OfferPrice:"34",OfferQty:"45",Open:"45",High:"45",Low:"45",Close:"54",Difference:"434",a:"45",b:"$5",c:"434",d:"44",e:"54",f:"353"},
   ];
 
   // Function to switch between tabs
@@ -100,15 +102,29 @@ const Marketwatchview1 = () => {
       data,
     });
 
+    const closemodal = () => {
+      setModalOpen(false);
+  
+    }
+
+    const handleClick= () => {
+      setModalOpen(true);
+  
+    }
+
   // Handle column drag and drop
   const handleOnDragEnd = (result) => {
-    if (!result.destination) return;
+    const { source, destination } = result;
 
-    const updatedColumns = [...columns];
-    const [movedColumn] = updatedColumns.splice(result.source.index, 1);
-    updatedColumns.splice(result.destination.index, 0, movedColumn);
+    // If no destination, exit
+    if (!destination) return;
 
-    setColumns(updatedColumns);
+    // Reorder columns based on the drag result
+    const reorderedColumns = Array.from(columns);
+    const [movedColumn] = reorderedColumns.splice(source.index, 1);
+    reorderedColumns.splice(destination.index, 0, movedColumn);
+
+    setColumns(reorderedColumns);
   };
 
   // Toggle column visibility
@@ -125,8 +141,25 @@ const Marketwatchview1 = () => {
     setShowDropdown((prev) => !prev); // Toggle dropdown visibility
   };
 
+  const getItemStyle = (isDragging, draggableStyle) => ({
+    // styles we need to apply on draggables
+    ...draggableStyle,
+    ...(isDragging && {
+      background: "#e0f7fa", // Pop-out color while dragging
+      transform: "scale(1.1)", // Pop-out effect (increase size slightly)
+      zIndex: 999, // Make sure it's above other columns
+      boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)", // Add shadow for pop-out
+    }),
+  });
+
   return (
     <>
+      { isModalOpen && (
+        <div>
+          <Addsymbol onClose={closemodal}></Addsymbol>
+          
+        </div>
+      )}
       <h1 className="head">Watchlists</h1>
       <div className="line">
         <div className="dropdown">
@@ -162,7 +195,7 @@ const Marketwatchview1 = () => {
         </div>
       </div>
 
-      <div className="w3-bar w3-black div004">
+      <div className="w1-bar w3-black div004">
         {watchlists.map((watchlist, index) => (
           <div key={index} className="watchlist-tab">
             <button
@@ -193,6 +226,8 @@ const Marketwatchview1 = () => {
 
 
       <hr></hr>
+      
+      
 
       {watchlists.map((watchlist, index) => (
         <div
@@ -208,7 +243,7 @@ const Marketwatchview1 = () => {
               <p className="text0123">Indices</p>
               <p className="text003">Total 52 Items</p>
             </div>
-            <button className="addbut">+ Add Symbol</button>
+            <button className="addbut" onClick={handleClick}>+ Add Symbol</button>
           </div>
           <div>
             <div>
@@ -250,6 +285,7 @@ const Marketwatchview1 = () => {
                                         minWidth:"90px",
                                      height:"35px",
                                       }}
+                                      
                                     >
                                       {column.render("Header")}
                                     </th>
@@ -271,6 +307,7 @@ const Marketwatchview1 = () => {
                                      borderBottom:"1px solid #CCCCCC",
                                      height:"35px",
                                       padding: "8px",
+                                      fontSize:"12px"
                                     }}
                                   >
                                     {cell.render("Cell")}
