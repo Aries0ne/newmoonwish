@@ -275,7 +275,7 @@ const Addalert = ({ onClose }) => {
                   </div>
                   <input className="typeinp" placeholder="Type the message you want to send..." />
                   <div className="butdiv">
-                    <button className="button48">Create Alert</button>
+                    <button className="button48" >Create Alert</button>
                     <button className="button49">Clear Values</button>
                   </div>
                 </div>
