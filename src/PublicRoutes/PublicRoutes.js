@@ -114,6 +114,9 @@ const PublicRoutes = [
     path: "/alert1",
     Component: <AlertComponent />,
   },
+
+  
+ 
   {
     index: "16",
     path: "/indicators",

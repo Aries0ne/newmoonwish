@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import { confirm } from "../../../redux/actions/confirmActions";
 import { deepClone } from "@mui/x-data-grid/utils/utils";
 import { MaterialReactTable } from "material-react-table";
+import "./addsymbol.scss";
+import Orderplace from "./orderplace";
 
 const down = (
   <svg
@@ -36,6 +38,8 @@ const up = (
   </svg>
 );
 
+
+
 const Marketwatchview = (props) => {
   const { data, buysellOpen, handleClickOpen, removeWatchList } = props;
   const [stateData, setStateData] = useState([]);
@@ -43,6 +47,8 @@ const Marketwatchview = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selectAll, setSelectedAll] = useState(false);
   const [ids, setIDs] = useState([]);
+
+  const [isModalOpen1, setModalOpen1] = useState(false);
 
   const handleSelectAll = (e) => {
     const value = e.target.checked;
@@ -63,6 +69,10 @@ const Marketwatchview = (props) => {
     }
     setSelectedAll(e.target.checked);
   };
+
+  const orderplacebutton = () => {
+    setModalOpen1(true);
+  }
 
   const [columns, setColumns] = useState([
     {
@@ -109,7 +119,7 @@ const Marketwatchview = (props) => {
             <Button
               className="buy"
               variant="text"
-              onClick={() => buysellOpen("buy", row)}
+              onClick={() => orderplacebutton("buy", row)}
             >
               <svg
                 width="15"
@@ -162,6 +172,11 @@ const Marketwatchview = (props) => {
       ),
     },
   ]);
+
+  const closemodal1 = () => {
+    setModalOpen1(false);
+
+  }
 
   useEffect(() => {
     setStateData(data);
@@ -273,20 +288,33 @@ const Marketwatchview = (props) => {
   // });
   return (
     <>
-      <Box cla className="border-ap">
-        <Grid container spacing={1}>
+      <Box cla className="box1254" >
+        <Grid container spacing={1} sx={{width:"100%",overflowX:"scroll"}}>
           <MaterialReactTable
             muiTableHeadCellProps={{
               style: {
                 color: "black",
                 fontSize: "12px",
                 fontWeight: "bold",
-                borderTop: "2px solid #d6d6d6",
-                borderBottom: "2px solid #d6d6d6",
+                boxShadow: "none",
+                width: "100%",
+                overflowX:"scroll",
+                height:"30px",
+                paddingTop:"10px"
+              },
+            }}
+            muiTablePaperProps={{
+              sx: {
+                boxShadow: "none", // Remove shadow
+              },
+            }}
+            muiTableContainerProps={{
+              sx: {
+                boxShadow: "none", // Remove shadow from the table container
               },
             }}
             data={stateData || []}
-            muiTableBodyCellProps={{ style: { width: "100px" } }}
+            muiTableBodyCellProps={{ style: { width: "100px" ,boxShadow: "none" } }}
             enableDensityToggle={false}
             enableFullScreenToggle={false}
             columns={columns.map((column) => ({
@@ -298,63 +326,63 @@ const Marketwatchview = (props) => {
             enableSorting={true}
             enableColumnActions={false}
             enableRowSelection={true}
-            renderTopToolbarCustomActions={({ table }) => {
-              const selected = table.getSelectedRowModel()?.flatRows;
-              return (
-                <>
-                  <Grid
-                    item
-                    xs={12}
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "2rem",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        marginTop: "10px",
-                        marginLeft: "10px",
-                      }}
-                    >
-                      <Tooltip
-                        arrow
-                        placement="top"
-                        title={
-                          <Typography sx={{ fontSize: "1.4rem" }}>
-                            Add Symbol
-                          </Typography>
-                        }
-                      >
-                        <Button
-                          className="collapse-btn"
-                          onClick={handleClickOpen}
-                        >
-                          <AddIcon />
-                        </Button>
-                      </Tooltip>
-                      {selected?.length > 0 && (
-                        <Button
-                          onClick={() => {
-                            confirm("Are you sure you want to continue?")
-                              .then((e) => {
-                                // send ids to backend here
-                                setIDs([]);
-                                setSelectedAll(false);
-                              })
-                              .catch((err) => {});
-                          }}
-                          className="delete-btn btn-danger"
-                        >
-                          Delete
-                        </Button>
-                      )}
-                    </Box>
-                  </Grid>
-                </>
-              );
-            }}
+            // renderTopToolbarCustomActions={({ table }) => {
+            //   const selected = table.getSelectedRowModel()?.flatRows;
+            //   return (
+            //     <>
+            //       <Grid
+            //         item
+            //         xs={12}
+            //         sx={{
+            //           display: "flex",
+            //           alignItems: "center",
+            //           gap: "2rem",
+            //         }}
+            //       >
+            //         <Box
+            //           sx={{
+            //             display: "flex",
+            //             marginTop: "10px",
+            //             marginLeft: "10px",
+            //           }}
+            //         >
+            //           <Tooltip
+            //             arrow
+            //             placement="top"
+            //             title={
+            //               <Typography sx={{ fontSize: "1.4rem" }}>
+            //                 Add Symbol
+            //               </Typography>
+            //             }
+            //           >
+            //             <Button
+            //               className="collapse-btn"
+            //               onClick={handleClickOpen}
+            //             >
+            //               <AddIcon />
+            //             </Button>
+            //           </Tooltip>
+            //           {selected?.length > 0 && (
+            //             <Button
+            //               onClick={() => {
+            //                 confirm("Are you sure you want to continue?")
+            //                   .then((e) => {
+            //                     // send ids to backend here
+            //                     setIDs([]);
+            //                     setSelectedAll(false);
+            //                   })
+            //                   .catch((err) => {});
+            //               }}
+            //               className="delete-btn btn-danger"
+            //             >
+            //               Delete
+            //             </Button>
+            //           )}
+            //         </Box>
+            //       </Grid>
+            //     </>
+            //   );
+            // }}
           />
           {/* <TableDraggable
               data={data || []}
@@ -531,6 +559,15 @@ const Marketwatchview = (props) => {
           </Grid> */}
         </Grid>
       </Box>
+
+
+
+      {isModalOpen1 && (
+        <div>
+          <Orderplace onClose={closemodal1}></Orderplace>
+
+        </div>
+      )}
     </>
   );
 };
