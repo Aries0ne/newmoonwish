@@ -799,7 +799,7 @@ export default function Marketwatch() {
   return (
     <>
       <Box
-        sx={{ display: "grid", alignContent: "space-between", height: "75vh" }}
+        sx={{ display: "grid", alignContent: "space-between", height: "75vh",width:"100%",overflowX:"scroll" }}
       >
         {/* MarketWatch tabs */}
         <Box className="tabs">
@@ -830,12 +830,13 @@ export default function Marketwatch() {
               sx={{
                 // height: "80vh",
                 overflowY: "auto",
-                overflowX: "hidden",
+                overflowX: "scroll",
+                width: "100%"
               }}
             >
               <TabPanel
                 value="MarketWatch1"
-                sx={{ padding: 0, marginTop: "1.5rem", color: "white" }}
+                sx={{ padding:0, marginTop: "1.5rem", color: "white" }}
               >
                 <Marketwatchview
                   data={table1Data}

@@ -6,6 +6,7 @@ import { useTable } from "react-table";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { isOverflown } from "@mui/x-data-grid/utils/domUtils";
 import Addsymbol from "./Marketwatchview/addsymbol";
+import Marketwatchview from "./Marketwatchview/Marketwatchview";
 import { useSocket } from "../../hooks/useNewSocket";
 import { useDispatch, useSelector } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -14,6 +15,8 @@ import { Box, Button, Grid, Tooltip, Typography, InputBase } from "@mui/material
 import { confirm } from "../../redux/actions/confirmActions";
 import * as XLSX from "xlsx";
 import UploadIcon from '@mui/icons-material/Upload';
+import { generatePopup } from "../../utils/popup";
+import Dropdown from "../Dropdown/Dropdown";
 import {
   uploadBulkwatchlist
 } from '../../redux/actions/alertActions';
@@ -39,8 +42,10 @@ const Marketwatchview1 = () => {
     { name: "My Watchlist 1", city: "Paris" },
     { name: "My Watchlist 2", city: "Tokyo" },
   ]);
-
-
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   const handleBulkUploadwatchlist = (event) => {
     const formData = new FormData();
@@ -50,15 +55,20 @@ const Marketwatchview1 = () => {
     dispatch(uploadBulkwatchlist(formData));
   };
 
+
+  const [selectedStock, setSelectedStock] = useState();
+  const [sell, setbuy] = useState("buy");
+  const [buysell, setbuysell] = useState("Buy");
+  const [bsopen, setbsopen] = useState(false);
   const buysellOpen = (value, data) => {
-    // const stock = data?.original;
-    // console.log("stock :>> ", stock);
-    // if (stock?.exchange === "NSE" && value?.toLowerCase() === "sell") {
-    //   return generatePopup(
-    //     "error",
-    //     "Short Selling is not allowed in this segment."
-    //   );
-    // }
+    const stock = data?.original;
+    console.log("stock :>> ", stock);
+    if (stock?.exchange === "NSE" && value?.toLowerCase() === "sell") {
+      return generatePopup(
+        "error",
+        "Short Selling is not allowed in this segment."
+      );
+    }
     // dispatch(
     //   getAlertFutureData({
     //     exchange: stock?.exchange,
@@ -75,10 +85,10 @@ const Marketwatchview1 = () => {
     //   }
     // });
 
-    // setSelectedStock(stock);
-    // setbuy(value);
-    // setbuysell(value);
-    // setbsopen(true);
+    setSelectedStock(stock);
+    setbuy(value);
+    setbuysell(value);
+    setbsopen(true);
 
   };
 
@@ -196,7 +206,11 @@ const Marketwatchview1 = () => {
   ];
   const [tableData, setTableData] = useState([]);
 
+  const [table1Data, setTable1Data] = useState();
+  useEffect(() => {
+    setTable1Data(watchListLive?.slice(0, 50));
 
+  }, [watchListLive]);
 
   useEffect(() => {
 
@@ -392,6 +406,8 @@ const Marketwatchview1 = () => {
     XLSX.writeFile(workbook, fileName);
   };
 
+  const watchValues = ["market1", "market2", "market3", "SL-M"];
+
   return (
     <>
       {isModalOpen && (
@@ -403,15 +419,37 @@ const Marketwatchview1 = () => {
       <h1 className="head">Watchlists</h1>
       <div className="line">
         <div className="dropdown">
-          <button className="dropbtn">Select Predifined Watchlist</button>
+          {/* <button className="dropbtn">Select Predifined Watchlist</button>
           <div className="dropdown-content">
             <a href="#">List 1</a>
             <a href="#">List 2</a>
             <a href="#">List 3</a>
-          </div>
+          </div> */}
+          <Box
+            className="inputFields space fullWidth"
+            
+            sx={{
+              "& > .selectionDiv": {
+                padding: "0 !important",
+                marginTop: "0 !important",
+                border: "none !important",
+                height: "35px",
+                width:"300px",
+                
+
+              },
+            }}
+          >
+            <Dropdown
+              sx={{ height: "30px", fontSize: "12px" }}
+              val={watchValues}
+              value=""
+              
+            />
+          </Box>
         </div>
         <div className="div01">
-          <div style={{ position: 'relative', display: 'inline-block' }}>
+          {/* <div style={{ position: 'relative', display: 'inline-block' }}>
             <img src={edit} className="stratlogo" onClick={handleEditClick} // On image click, toggle dropdown visibility
               style={{ cursor: 'pointer' }} alt="edit" />
             {showDropdown && (
@@ -428,9 +466,9 @@ const Marketwatchview1 = () => {
                 ))}
               </div>
             )}
-          </div>
-          <img src={search} className="stratlogo" alt="search" />
-          <img src={del} className="stratlogo" alt="delete" />
+          </div> */}
+          {/* <img src={search} className="stratlogo" alt="search" />
+          <img src={del} className="stratlogo" alt="delete" /> */}
           <a className="text01" onClick={() => exportToExcel(tableData)}>Export to Excel</a>
           <Typography
             component={'label'}
@@ -482,7 +520,7 @@ const Marketwatchview1 = () => {
 
       <hr></hr>
 
-      
+
 
       {watchlists.map((watchlist, index) => (
         <div
@@ -505,7 +543,7 @@ const Marketwatchview1 = () => {
               <div className="scroll" style={{ overflowX: "scroll" }}>
 
 
-                <DragDropContext onDragEnd={handleOnDragEnd}>
+                {/* <DragDropContext onDragEnd={handleOnDragEnd}>
                   <Droppable
                     droppableId="droppable-columns"
                     direction="horizontal"
@@ -537,7 +575,7 @@ const Marketwatchview1 = () => {
                                         padding: "8px",
                                         background: "#FBFBFB",
                                         borderBottom: "1px solid #CCCCCC",
-                                        minWidth: "90px",
+                                        minWidth: "120px",
                                         height: "35px",
                                       }}
 
@@ -582,12 +620,20 @@ const Marketwatchview1 = () => {
                       </table>
                     )}
                   </Droppable>
-                </DragDropContext>
+                </DragDropContext> */}
+                <Marketwatchview
+                  data={table1Data}
+                  buysellOpen={buysellOpen}
+                  handleClickOpen={handleClickOpen}
+                  removeWatchList={removeWatchList}
+                  MarketWatch={"Market Watch 1"}
+                />
               </div>
             </div>
           </div>
         </div>
       ))}
+
     </>
   );
 };
