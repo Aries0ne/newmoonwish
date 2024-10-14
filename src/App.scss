@@ -101,10 +101,11 @@ textarea.Mui-disabled {
 div.tabs {
   // box-shadow: var(--shadow);
   width: auto;
-  border-radius: 0.5rem !important;
+  border-radius: 0.5rem ;
 
   .MuiTabs-flexContainer {
     flex-wrap: wrap;
+    gap: 15px;
   }
 
   div.main-tab {
@@ -133,8 +134,9 @@ div.tabs {
         &[aria-selected="true"],
         &:hover {
           background-color: var(--color-lightPrimary);
-          color: var(--color-primary) !important;
+          color: var(--color-primary) ;
           border-color: var(--color-primary);
+          border-radius: 20px;
         }
 
         @media screen and (max-width: 767px) {

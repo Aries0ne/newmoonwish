@@ -1,0 +1,306 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end; /* Align modal to the right */
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fff;
+    height: 100vh;
+    width: 25vw;
+    padding: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  /* Modal Content on Mobile (100% width and height) */
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 100vw;
+    }
+  }
+  
+  /* Close Button */
+  .close-button {
+    background-color: #00ff9135;
+    border-radius: 25px;
+    padding: 8px 12px;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+
+  .texth6{
+    font-size: 18px;
+    margin: 0px;
+  }
+
+
+  .border {
+    // border: 1px solid #D3D3D3;
+    margin-top: 10px;
+    padding: 5px 10px;
+    // box-shadow:1px 1px 5px #d1d0d0;
+    border-radius: 7px;
+}
+
+.horizontal-line {
+    background-color: #DEDCDC; /* Change color as needed */
+    height: 1px; /* Set the height of the line */
+    width: 100%; /* Set the width of the line */
+    margin-top:30px ;
+    
+  }
+  .horizontal-line1 {
+    background-color: #DEDCDC; /* Change color as needed */
+    height: 1px; /* Set the height of the line */
+    width: 100%; /* Set the width of the line */
+    margin-top:10px ;
+    margin-bottom: 10px;
+    
+  }
+  .text15{
+    font-size: 16px;
+    color: #222222;
+    font-weight: 500;
+  }
+
+  .text16{
+    font-size: 14px;
+    color: #726E6E;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+  .text161{
+    font-size: 14px;
+    color: #067026;
+    font-weight: 400;
+    margin-top: 20px;
+    border: 1px solid #C9C9C9;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+
+  .MuiInputBase-root,
+  .MuiFormControl-root {
+    width: 100% !important;
+    height: 100%;
+    padding: 0;
+
+    input,
+    textarea {
+      font-size: 1.4rem !important;
+     
+      color: var(--color-dark);
+      width: 100% !important;
+      height: 1.4rem;
+      max-width: 100% !important;
+      border: var(--border);
+      border-radius: 0.5rem;
+
+      &.Mui-disabled {
+        -webkit-text-fill-color: var(--color-darkgrey)
+      }
+
+      @media screen and (max-width:991px) {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+
+  }
+
+
+
+
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Adjust as needed */
+    margin-top: 20px;
+
+  }
+  
+  .button {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .button.active {
+    background-color: #00ff913b; /* Active color */
+    color: black;
+    border: 1px solid #00ff913b; /* Active border color */
+  }
+
+
+  .box15{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .box16{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+  }
+  .box17{
+    display: flex;
+
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+  }
+  .text45{
+    font-size: 15px;
+    color: #494848;
+    font-weight: 400;
+  }
+  .text46{
+    font-size: 13px;
+    color: #888686;
+    font-weight: 300;
+    margin-top: 5px;
+  }
+  .button45{
+    padding: 7px 15px 7px 15px;
+    border: none;
+    background-color: #00ff9141;
+    color: black;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .boxing{
+   
+    width: 100%;
+    padding: 5px;
+    margin-top: 20px;
+  }
+
+  .additional-content{
+    margin-top: 20px;
+  }
+
+  .text444{
+    font-size: 14px;
+    color: #000000;
+    margin-top: 20px;
+    font-weight: 550;
+
+  }
+  .above{
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between ;
+  }
+  .close1{
+    height: 15px;
+    width: 15px;
+  }
+  .divh6{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .input1 {
+    text-align: center;
+    font-size: 12px;
+    width: 100%; 
+    border: none !important; 
+    
+  }
+  
+  .typeinp {
+    width: 100%;
+    min-height: 300px; 
+    border-radius: 15px;
+    border: 1px solid #C9C9C9;
+    margin-top: 30px;
+    padding: 10px; 
+    box-sizing: border-box; 
+    font-size: 14px; 
+    outline: none; 
+    resize: none; 
+    
+}
+
+/* Styling the placeholder */
+.typeinp::placeholder {
+    color: #888; 
+    opacity: 1; 
+    position: absolute; 
+    top: 20px; 
+    left: 15px; 
+}
+
+.typeinp:focus::placeholder {
+    opacity: 0.5;
+}
+
+.button48{
+    padding: 7px 10px 7px 10px;
+    border: none;
+    background-color: #2C3546;
+    color: white;
+    font-size: 13px;
+    border-radius: 10px;
+    margin-top: 30px;
+    width: 48%;
+  }
+  .button49{
+    padding: 7px 10px 7px 10px;
+    border: 1px solid #2C3546;
+    background-color: white;
+    color: black;
+    font-size: 13px;
+    border-radius: 10px;
+    margin-top: 30px;
+    width: 48%;
+  }
+  .butdiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+  }
+  .close-button1 {
+    background-color: #00ff9135;
+    border-radius: 25px;
+    padding: 8px 12px;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+

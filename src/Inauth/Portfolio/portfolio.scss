@@ -1,0 +1,166 @@
+.tabs12{
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 15px !important;
+
+}
+
+
+
+
+.text444{
+    font-size: 18px;
+    margin: 0px;
+
+}
+
+.text445{
+    font-size: 12px;
+    color: #888888;
+    margin-top: 10px;
+
+}
+
+.maintab12{
+    padding: 10px;
+    
+}
+
+.tab12button{
+    background-color: #FFFFFF ;
+    border: none !important;
+    color: black;
+    font-weight: bold !important;
+    border-radius: 20px;
+    font-size: 12px !important;
+    padding: 10px 20px 10px 20px !important;
+   
+}
+
+.tab12button.active {
+    background-color: #00ff9188 !important;
+    border-radius: 20px ;
+    color: black !important;
+  }
+  
+  .tab12button.active[aria-selected="true"],
+  .tab12button.active:hover {
+    background-color: #00ff9188 !important;
+    border-radius: 20px ;
+  }
+
+
+
+
+
+  .div4{
+    display: flex;
+    flex-direction: column;
+
+}
+.text3{
+    font-size: 14px;
+    color: #454545;
+    margin-top: 10px;
+
+}
+
+
+.input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #D6D5D5;
+    background-color: white !important;
+    color: #A8A8A8;
+    padding: 5px 80px 5px 10px;
+    width: 100%;
+    
+    border-radius: 5px;
+    border-radius: 4px;
+  }
+
+.input-container img.ree {
+    width: auto; 
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  .input-container input {
+    border: none;
+    outline: none;
+    color: #A8A8A8;
+    font-size: 12px;
+    flex: 1;
+  }
+
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-trigger {
+    padding: 8px 80px 8px 8px;
+    background-color: white;
+    color: #A8A8A8;
+    border: 1px solid #D6D5D5;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .arrow {
+    margin-left: 5px;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+  
+  .arrow.up {
+    transform: rotate(180deg);
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #D6D5D5;
+    color: #A8A8A8;
+    border-radius: 4px;
+    background-color: white;
+    margin-top: 5px;
+    z-index: 100;
+    padding: 5px 0;
+    font-size: 12px;
+  }
+  
+  .dropdown-item {
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
+
+  .divinner1{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    background-color: #F6F6F6;
+    padding: 15px;
+    border-radius: 10px;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+
+.tabelBox12{
+    border: none !important;
+}
+
+.tabelBox{
+    border: none !important;
+}

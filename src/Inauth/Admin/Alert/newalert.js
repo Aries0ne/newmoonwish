@@ -2,10 +2,24 @@ import React, { useState } from "react";
 import "./newalert.scss";
 import rebot from "../../../images/Reboot.png";
 import search from "../../../images/search1.png";
+import Addalert from "./addalert";
+
 
 export default function AlertComponent() {
     const [showDropdown, setShowDropdown] = useState(false);
     const [selectedOption, setSelectedOption] = useState("Triggered");
+    const [isModalOpen, setModalOpen] = useState(false);
+
+
+    const closemodal = () => {
+      setModalOpen(false);
+  
+    }
+  
+    const handleClick = () => {
+      setModalOpen(true);
+  
+    }
   
     const handleToggleDropdown = () => {
       setShowDropdown(!showDropdown);
@@ -68,8 +82,18 @@ export default function AlertComponent() {
 
 
   return (
+    <>
+
+{isModalOpen && (
+        <div>
+          <Addalert onClose={closemodal}></Addalert>
+
+        </div>
+      )}
+
+    
     <div className="divbox">
-      <div className="div1">
+      <div className="div191">
         <div className="div2">
           <div className="div3">
             <h6 className="text1">Alert</h6>
@@ -77,7 +101,7 @@ export default function AlertComponent() {
           </div>
           <p className="text2">Total 52 alerts</p>
         </div>
-        <button className="alertbut">+ Add Alert</button>
+        <button className="alertbut" onClick={handleClick} >+ Add Alert</button>
       </div>
 
       <div className="divinner">
@@ -167,5 +191,6 @@ export default function AlertComponent() {
       </table>
     </div>
     </div>
+    </>
   );
 }

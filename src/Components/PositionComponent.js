@@ -12,11 +12,13 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import "../Inauth/Position/Position.scss";
 import Table from "../Inauth/Table/Table";
 import Tablesearch from "../Inauth/Tablesearch/Tablesearch";
 import close from "../images/close.png";
+import "../Inauth/Portfolio/portfolio.scss";
+import search from "../images/search1.png";
 
 const PositionComponent = (props) => {
   const {
@@ -58,11 +60,22 @@ const PositionComponent = (props) => {
   const handleClose4 = () => {
     setOpen4(false);
   };
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("Triggered");
+
+  const handleToggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleSelectOption = (option) => {
+    setSelectedOption(option);
+    setShowDropdown(false); // Close the dropdown after selecting
+  };
 
   return (
     <>
-      <Box className="tabelBox">
-        <Grid container spacing={2} alignItems={"center"}>
+      <Box className="tabelBox tabelBox12">
+        {/* <Grid container spacing={2} alignItems={"center"}>
           <Grid item xs={12}>
             <Box className="selectiondiv-box">
               <Box className="selectionDiv bn searchFlex">
@@ -107,7 +120,50 @@ const PositionComponent = (props) => {
               </Box>
             </Box>
           </Grid>
-        </Grid>
+        </Grid> */}
+
+<div className="divinner1">
+      <div className="div4">
+          <p className="text3">Search For Symbol</p>
+          <div className="input-container">
+            <img src={search} className="ree" />
+            <input placeholder="Search your Symbols" />
+          </div>
+        </div>
+        <div className="div4">
+          <p className="text3">Select Trade Type</p>
+          <div className="dropdown-container">
+       <button onClick={handleToggleDropdown} className="dropdown-trigger">
+        {selectedOption}
+        <span className={`arrow ${showDropdown ? "up" : "down"}`}>▾</span>
+       </button>
+       {showDropdown && (
+        <div className="dropdown-menu">
+          <div
+            className="dropdown-item"
+            onClick={() => handleSelectOption("Option 1")}
+          >
+            Option 1
+          </div>
+          <div
+            className="dropdown-item"
+            onClick={() => handleSelectOption("Option 2")}
+          >
+            Option 2
+          </div>
+          <div
+            className="dropdown-item"
+            onClick={() => handleSelectOption("Option 3")}
+          >
+            Option 3
+          </div>
+        </div>
+        )}
+        </div>
+        </div>
+        <button className="deletbut">Square Off All</button>
+
+        </div>
 
         <Table
           col={col}
@@ -339,7 +395,36 @@ const PositionComponent = (props) => {
           </DialogContentText>
         </DialogContent>
       </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+      
+ 
+    
     </>
+    
   );
 };
 
