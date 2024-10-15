@@ -31,6 +31,9 @@ const Marketwatchview1 = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const watchListUpdateSocket = useSocket("watchlistupdate");
   const [selectAll, setSelectedAll] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  
+ 
 
 
   const watchListLive = useSelector(
@@ -283,6 +286,7 @@ const Marketwatchview1 = () => {
       city: `City${watchlists.length}`,
     };
     setWatchlists([...watchlists, newWatchlist]);
+    setShowModal(true);
   };
 
   // Function to delete a watchlist
@@ -302,6 +306,7 @@ const Marketwatchview1 = () => {
       setActiveTab("");
     }
   };
+  const closeModal = () => setShowModal(false);
 
   const [columns, setColumns] = useState(columnsData);
   const [visibleColumns, setVisibleColumns] = useState(
@@ -655,6 +660,31 @@ const Marketwatchview1 = () => {
           </div>
         </div>
       ))}
+
+
+
+
+
+
+
+{showModal && (
+        <div className="modal-overlay1">
+          <div className="modal-content1">
+            <p>Successfully created a new watchlist!</p>
+            <input className="inpmod" placeholder="WatchList Name "></input>
+            <button className="subbut">Submit</button>
+            <button className="close-btn1" onClick={closeModal}>X</button>
+          </div>
+        </div>
+      )}
+
+
+
+
+
+
+
+
 
     </>
   );
