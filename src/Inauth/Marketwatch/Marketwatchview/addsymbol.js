@@ -30,13 +30,14 @@ const Addsymbol = ({ onClose }) => {
     }, [addsymboldata]);
 
     const handleSendMessage = () => {
+       
     if (inputValue) {
-        if (!selectedOption){
+        if (selectedOption == ""){
             setSelectedOption("all");
         }
         addsymbol.sendMessage({
         exchange: selectedOption,  // Define message type, if needed
-        symbol: inputValue,  // Send input value as symbol
+        symbol: inputValue.toUpperCase(),  // Send input value as symbol
         });
         
         
@@ -73,6 +74,11 @@ const Addsymbol = ({ onClose }) => {
     
     const handleButtonClick = (option) => {
         setSelectedOption(option);
+        setDatasymbol([])
+        addsymbol.sendMessage({
+            exchange: option,  // Define message type, if needed
+            symbol: inputValue.toUpperCase(),  // Send input value as symbol
+            });
         // setDatasymbol([{ name: "Banknifty", exchange: "NSE" },
         //     { name: "Nifty", exchange: "NSE" },
         //     { name: "Dow Jones", exchange: "NYSE" }])
@@ -125,7 +131,7 @@ const Addsymbol = ({ onClose }) => {
                                 </Box>
                             </Box>
                             <div className="button-group">
-                                {['All', 'NSE', 'NFO', 'Currency', 'Commodity'].map((option) => (
+                                {['all', 'NSE', 'NFO', 'CDS', 'MCX'].map((option) => (
                                     <button
                                         key={option}
                                         className={`button ${selectedOption === option ? 'active' : ''}`}

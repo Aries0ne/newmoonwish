@@ -109,6 +109,8 @@ const Marketwatchview = (props) => {
     { id: "9", accessorKey: "BQ", header: "Ask Qty" },
     { id: "10", accessorKey: "SQ", header: "Bid Qty" },
     { id: "11", accessorKey: "OI", header: "Open Interest" },
+    { id: "13", accessorKey: "US", header: "Upper Circuit" },
+    { id: "14", accessorKey: "DS", header: "Lower Circuit" },
     {
       id: "12",
       accessorKey: "",

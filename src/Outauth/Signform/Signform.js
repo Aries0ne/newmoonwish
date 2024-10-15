@@ -153,6 +153,7 @@ export default function Signform() {
         setReadOnly2(false);
         setCount(countNum);
         setCount1(countNum1);
+        setOtpCode("");
         handleCount();
         generatePopup("success", "OTP sent successfully !");
       });
@@ -539,7 +540,7 @@ export default function Signform() {
                             ? " " + "Mobile Number"
                             : " " + "whatsapp number"}{" "} */}
                           <Typography component={"span"}>
-                            {" +" + country_list[countrycode].phone + number}
+                            {" +" + number}
                           </Typography>
                         </Typography>
                         <Typography component={"p"}>
