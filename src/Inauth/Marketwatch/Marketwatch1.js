@@ -33,6 +33,13 @@ const Marketwatchview1 = () => {
   const [selectAll, setSelectedAll] = useState(false);
 
 
+
+
+
+
+
+
+
   const watchListLive = useSelector(
     (state) => state?.CommonReducer?.watchListLive
   );
@@ -274,15 +281,16 @@ const Marketwatchview1 = () => {
 
   // Function to add a new watchlist
   const addWatchlist = () => {
-    if (watchlists.length >= 5) {
-      alert("Maximum limit of 5 watchlists reached!");
-      return;
-    }
-    const newWatchlist = {
-      name: `My Watchlist ${watchlists.length}`,
-      city: `City${watchlists.length}`,
-    };
-    setWatchlists([...watchlists, newWatchlist]);
+   
+    // if (watchlists.length >= 5) {
+    //   alert("Maximum limit of 5 watchlists reached!");
+    //   return;
+    // }
+    // const newWatchlist = {
+    //   name: `My Watchlist ${watchlists.length}`,
+    //   city: `City${watchlists.length}`,
+    // };
+    // setWatchlists([...watchlists, newWatchlist]);
   };
 
   // Function to delete a watchlist
@@ -432,6 +440,11 @@ const Marketwatchview1 = () => {
 
   return (
     <>
+
+
+
+
+
       {isModalOpen && (
         <div>
           <Addsymbol onClose={closemodal}></Addsymbol>
