@@ -9,6 +9,7 @@ const initState = {
   error: "",
   livePositions: [],
   liveTradeDetails: [],
+  watchlistName : [],
 };
 
 const store = (state = initState, action) => {
@@ -18,6 +19,28 @@ const store = (state = initState, action) => {
         ...state,
         error: "",
       };
+      case actionTypes.CREATE_WATCHLIST_NAME:
+        return {
+          ...state,
+          error: "",
+        };
+        case actionTypes.CREATE_WATCHLIST_NAME_FAIL:
+          return {
+            ...state,
+            error: "",
+          };
+      case actionTypes.GET_WATCHLIST_NAME:
+        return {
+          ...state,
+          watchlistName: action.payload,
+          error: "",
+        };
+        case actionTypes.GET_WATCHLIST_NAME_FAIL:
+          return {
+            ...state,
+      
+            error: "",
+          };
     case actionTypes.PAPER_PROFIT_DETAILS_SUCCESS:
       return {
         ...state,

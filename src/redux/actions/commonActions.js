@@ -131,6 +131,11 @@ export const deleteWatchList = (payload) => (dispatch) => {
   });
 };
 
+
+
+
+
+
 // export const getWatchListData = (payload) => (dispatch) => {
 //   return new Promise((resolve, reject) => {
 //     let token = localStorage.getItem("token");

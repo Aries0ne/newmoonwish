@@ -339,6 +339,9 @@ export const liveTradeDetails = (payload) => (dispatch) => {
   });
 };
 
+
+
+
 export const squareOffAllLive = (payload) => (dispatch) => {
   return new Promise((resolve, reject) => {
     let token = localStorage.getItem("token");
@@ -503,6 +506,101 @@ export const deletePositionOrder =
               type: actionTypes.POST_POSITION_CANCEL_ORDER_FAIL,
             });
             generatePopup("error", "Failed to Delete Order.");
+          } else if (error?.response?.status === 401) {
+            generatePopup("error", "Token is invalid or expired.");
+            localStorage.clear();
+            window.location.replace("/");
+          }
+        });
+    });
+  };
+
+
+
+
+
+
+
+  // get watchlist name
+
+
+  export const getWatchlistName = (payload) => (dispatch) => {
+    return new Promise((resolve, reject) => {
+      let token = localStorage.getItem("token");
+      dispatch({
+        type: actionTypes.GET_WATCHLIST_NAME,
+      });
+      axios
+        .get(`${API_URL}/position/createwatchlistname/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch({
+              type: actionTypes.GET_WATCHLIST_NAME,
+              payload: res.data,
+            });
+            resolve(res);
+          } else {
+            dispatch({
+              type: actionTypes.GET_WATCHLIST_NAME_FAIL,
+            });
+            generatePopup("error", "Failed to get live trade details.");
+          }
+        })
+        .catch((error) => {
+          if (error.response.status == 400) {
+            dispatch({
+              type: actionTypes.GET_WATCHLIST_NAME_FAIL,
+            });
+            generatePopup("error", "Failed to get live trade details.");
+          } else if (error?.response?.status === 401) {
+            generatePopup("error", "Token is invalid or expired.");
+            localStorage.clear();
+            window.location.replace("/");
+          }
+        });
+    });
+  };
+
+
+
+
+  export const createWatchlistName = (payload) => (dispatch) => {
+    return new Promise((resolve, reject) => {
+      let token = localStorage.getItem("token");
+      dispatch({
+        type: actionTypes.CREATE_WATCHLIST_NAME,
+      });
+      axios
+        .post(`${API_URL}/position/createwatchlistname/`, payload, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch({
+              type: actionTypes.CREATE_WATCHLIST_NAME,
+              
+            });
+            generatePopup("error", "New Watchlist created.");
+            
+          } else {
+            dispatch({
+              type: actionTypes.CREATE_WATCHLIST_NAME_FAIL,
+            });
+            generatePopup("error", "Failed to create new watchlist.");
+          }
+        })
+        .catch((error) => {
+          if (error.response.status == 400) {
+            dispatch({
+              type: actionTypes.CREATE_WATCHLIST_NAME_FAIL,
+            });
+            generatePopup("error", "Failed to create new watchlist.");
           } else if (error?.response?.status === 401) {
             generatePopup("error", "Token is invalid or expired.");
             localStorage.clear();

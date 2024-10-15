@@ -13,6 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Grid, Tooltip, Typography, InputBase } from "@mui/material";
 import { confirm } from "../../redux/actions/confirmActions";
+
 import * as XLSX from "xlsx";
 import UploadIcon from '@mui/icons-material/Upload';
 import { generatePopup } from "../../utils/popup";
@@ -20,6 +21,8 @@ import Dropdown from "../Dropdown/Dropdown";
 import {
   uploadBulkwatchlist
 } from '../../redux/actions/alertActions';
+
+import {getWatchlistName,createWatchlistName} from '../../redux/actions/positionAction';
 import { CSVLink } from 'react-csv';
 
 const Marketwatchview1 = () => {
@@ -34,14 +37,33 @@ const Marketwatchview1 = () => {
     (state) => state?.CommonReducer?.watchListLive
   );
 
+  const watchlistNameData = useSelector((state) => state.Position.watchlistName);
+  const [watchlists, setWatchlists] = useState([]);
+  useEffect(() => {
+    dispatch(getWatchlistName());
+  }, [dispatch]);
+
+
+  
+
+  useEffect(() => {
+    if (watchlistNameData && Array.isArray(watchlistNameData)) {
+      const mappedWatchlists = watchlistNameData.map(item => ({
+        name: item.name,
+        city: item.name // Assuming `owner` is what you want to display as `city`
+      }));
+      setWatchlists(mappedWatchlists); // Update the state with the API response
+    }
+  }, [watchlistNameData]);
+
   const removeWatchList = (obj) => {
     // dispatch(deleteWatchList(obj));
   };
-  const [watchlists, setWatchlists] = useState([
-    { name: "My Watchlist", city: "London" },
-    { name: "My Watchlist 1", city: "Paris" },
-    { name: "My Watchlist 2", city: "Tokyo" },
-  ]);
+  // const [watchlists, setWatchlists] = useState([
+  //   { name: "My Watchlist", city: "London" },
+  //   { name: "My Watchlist 1", city: "Paris" },
+  //   { name: "My Watchlist 2", city: "Tokyo" },
+  // ]);
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
