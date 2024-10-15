@@ -72,7 +72,7 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <TableContainer sx={{ MarginTop: 16, maxHeight: 550 }}>
+      <TableContainer sx={{ MarginTop: 16, maxHeight: 550 }} className="custom-scrollbar">
         <Table
           stickyHeader
           sx={{ minWidth: "100%", maxHeight: 550 }}
@@ -130,6 +130,7 @@ export default function Dashboard(props) {
       </TableContainer>
       <Box
         className="tablePagination"
+         
         sx={{
           display: "flex",
           justifyContent: { xs: "center", md: "end" },
@@ -137,6 +138,7 @@ export default function Dashboard(props) {
         }}
       >
         <TablePagination
+   
           rowsPerPageOptions={[10, 20, 30, { label: "All", value: -1 }]}
           count={rows?.length}
           rowsPerPage={rowsPerPage}
@@ -145,7 +147,7 @@ export default function Dashboard(props) {
             native: false,
           }}
           page={page}
-          className="tablePagination"
+          className="tablePagination custom-scrollbar"
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />

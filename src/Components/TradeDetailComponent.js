@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useState } from "react";
 import "../Inauth/Orderhistory/Orderhistory.scss";
 import {
   Box,
@@ -34,27 +34,75 @@ const TradeDetailComponent = (props) => {
     orderTypeOptions,
   } = props;
 
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("Triggered");
+
+  const handleToggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleToggleDropdown1 = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleSelectOption = (option) => {
+    setSelectedOption(option);
+    setShowDropdown(false); // Close the dropdown after selecting
+  }
+  const handleSelectOption1 = (option) => {
+    setSelectedOption(option);
+    setShowDropdown(false); // Close the dropdown after selecting
+  }
+
   return (
     <Box className="tabelBox">
-      <Grid container spacing={2} alignItems={"center"}>
+      <div className="divinner1">
+      <div className="div4">
+          <p className="text3">Search for Symbol</p>
+          <div className="input-container">
+            <img src={search} className="ree" />
+            <input placeholder="Search your Symbol" />
+          </div>
+        </div>
+        {/* <div className="div4">
+          <p className="text3">Select Order Type</p>
+          <div className="dropdown-container">
+       <button onClick={handleToggleDropdown} className="dropdown-trigger">
+        {selectedOption}
+        <span className={`arrow ${showDropdown ? "up" : "down"}`}>▾</span>
+       </button>
+       {showDropdown && (
+        <div className="dropdown-menu">
+          <div
+            className="dropdown-item"
+            onClick={() => handleSelectOption("Option 1")}
+          >
+            Option 1
+          </div>
+          <div
+            className="dropdown-item"
+            onClick={() => handleSelectOption("Option 2")}
+          >
+            Option 2
+          </div>
+          <div
+            className="dropdown-item"
+            onClick={() => handleSelectOption("Option 3")}
+          >
+            Option 3
+          </div>
+        </div>
+        )}
+        </div>
+        </div> */}
+        <button className="deletbut">Cancel</button>
+        <button className="deletbut">Square Off All</button>
+
+        </div>
+      {/* <Grid container spacing={2} alignItems={"center"}>
         <Grid item xs={12}>
           <Box className="selectiondiv-box">
-            {/* <Dropdown
-              value={trend}
-              val={trendOptions}
-              title={"Select Trend"}
-              handleChange={(e) => {
-                handleTrend(e);
-              }}
-            />
-            <Dropdown
-              value={orderType}
-              val={orderTypeOptions}
-              title={"Select Order Type"}
-              handleChange={(e) => {
-                handleOrderType(e);
-              }}
-            /> */}
+         
             <Box className="selectionDiv bn searchFlex">
               <Tablesearch
                 placeholder="Enter symol"
@@ -65,7 +113,7 @@ const TradeDetailComponent = (props) => {
             {}
             <Button
               className="squareOff-btn solidButton"
-              // disabled={selected.length < 1}
+             
               sx={{
                 width: "auto !important",
                 fontSize: "1.2rem",
@@ -91,7 +139,7 @@ const TradeDetailComponent = (props) => {
             </Box>
           </Box>
         </Grid>
-      </Grid>
+      </Grid> */}
 
       <Table
         col={col}

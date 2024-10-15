@@ -20,7 +20,6 @@ import {
 } from "../../redux/actions/positionAction";
 import Dropdown from "../Dropdown/Dropdown";
 import "./Position.scss";
-import "./Position.scss";
 import { generatePopup } from "../../utils/popup";
 
 const down = (

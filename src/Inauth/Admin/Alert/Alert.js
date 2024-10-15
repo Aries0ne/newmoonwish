@@ -126,6 +126,7 @@ export default function AlertComp() {
 	useEffect(() => {
 		setSelectedAlert('');
 	}, [exchange]);
+	
 
 	const sendWatchListMsg = (value = search, exchangeName = exchange) => {
 		if (alertSocket?.isConnected) {

@@ -4,6 +4,35 @@
   color: var(--color-danger) !important;
 }
 
+/* Target the TableContainer specifically */
+.custom-scrollbar {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #b2b0b0 #ffffff; /* For Firefox */
+  border: none;
+}
+
+/* For Chrome, Safari, and Edge */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cdcdcd;
+  border-radius: 10px;
+  border: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+
 table.table.tableData {
   // border-top: var(--border);
   border-bottom: none !important;
@@ -12,15 +41,16 @@ table.table.tableData {
     tr {
       th {
         padding: 0.5rem;
-        font-size: 1.4rem;
+        font-size: 12px;
+        font-weight: 450 !important;
         min-height: 2rem;
         height: 2rem;
         padding: 0.5rem;
-        border-right: var(--border);
+        
         text-align: center;
         min-width: 9rem;
         color: var(--color-dark) !important;
-        border: var(--border);
+        
         font-weight: 500;
         background-color: var(--color-white);
 

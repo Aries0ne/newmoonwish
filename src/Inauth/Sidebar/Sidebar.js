@@ -140,7 +140,7 @@ export default function Sidebar(props) {
           <ListItem className="sidebarList-item">
             <NavLink
               components={"a"}
-              to={"/marketwatch"}
+              to={"/marketwatch1"}
               className="sidebarList-menu"
             >
               <Box className="sidebarList-icon">
@@ -260,7 +260,7 @@ export default function Sidebar(props) {
           </ListItem>
 
           <ListItem className="sidebarList-item">
-            <NavLink components={"a"} to={"alert"} className="sidebarList-menu">
+            <NavLink components={"a"} to={"alert1"} className="sidebarList-menu">
               <Box className="sidebarList-icon">
            
                   <div>
