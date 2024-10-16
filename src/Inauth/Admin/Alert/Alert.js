@@ -1573,8 +1573,8 @@ export default function AlertComp() {
 
 							<Box className='formItems'>
 								{/* <Typography component={"label"} className="label">
-                Value
-              </Typography> */}
+                                Value
+                                </Typography> */}
 								<Box
 									sx={{ position: 'relative', marginTop: 1, marginBottom: 2 }}
 								>

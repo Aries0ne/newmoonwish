@@ -6,6 +6,8 @@ import {
   RadioGroup,
   FormControlLabel,
   IconButton,
+  FormControl,
+  Button,
   Paper,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -15,6 +17,22 @@ import { useSocket } from "../../../hooks/useNewSocket";
 import { addWatchList } from "../../../redux/actions/commonActions";
 import "./addalert.scss";
 import close1 from "../../../images/Close1.png";
+import { generatePopup } from '../../../utils/popup';
+import {
+	deleteAlertData,
+	deleteBulkAlertData,
+	getAlertData,
+	getAlertFutureData,
+	getAlertOptionData,
+	getAlertOptionStrikeData,
+	getAlertPrice,
+	sendAlertData,
+	updateAlertData,
+	uploadBulkAlertData,
+} from '../../../redux/actions/alertActions';
+
+	const minus = { left: '8px' };
+	const plus = { right: '8px' };
 
 const Addalert = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -26,6 +44,26 @@ const Addalert = ({ onClose }) => {
   const [selectedSymbol, setSelectedSymbol] = useState(null);
   const [selectedValue, setSelectedValue] = useState(""); // Added state for radio button
   const [alertValue, setAlertValue] = useState(); // State for alert value
+  const [message, setMessage] = useState('');
+  const [selectedAlert, setSelectedAlert] = useState();
+  const [value, setValue] = useState(0);
+  const [condition, setCondition] = useState('Above');
+  const [compVal, setCompVal] = useState(0);
+  const [error, setError] = useState('');
+  const [exchange, setExchange] = useState('NSE');
+  const [editOpen, setEditOpen] = useState(false);
+  const [futureExpiryData, setFutureExpiryData] = useState('');
+  const [cpExpiry, setCpExpiry] = useState('');
+	const [cpStrike, setCpStrike] = useState('');
+  const [open, setOpen] = useState(false);
+  const [script, setScript] = useState('');
+  const [options, setOptions] = useState('future');
+  const [editElement, setEditElement] = useState();
+  const [isSendMessage,setIsSendMessage] = useState(false);
+  const [editElementPrice, setEditElementPrice] = useState(0);
+
+  const [search, setSearch] = useState('');
+
 
   const addsymboldata = useSelector(
     (state) => state?.CommonReducer?.addsymboldata
@@ -64,22 +102,49 @@ const Addalert = ({ onClose }) => {
 
   const handleRadioChange = (event) => setSelectedValue(event.target.value); // Radio button change handler
 
+
+  const handleExchange = (event, newValue) => {
+		setExchange(newValue);
+		// sendWatchListMsg('', newValue);
+		setSelectedValue('');
+		setValue(0);
+		setCpStrike('');
+		setCpExpiry('');
+		setFutureExpiryData('');
+		setOptions('future');
+		setError('');
+	};
+	const handleScript = (event) => {
+		setScript(event.target.value);
+	};
+	const handleValue = (event) => {
+		setValue(parseFloat(event.target.value));
+	};
+	const handleMessage = (event) => {
+		setMessage(event.target.value);
+	};
+	const handleCondition = (event) => {
+		setCondition(event.target.value);
+		setValue(parseFloat(compVal).toFixed(2));
+	};
+
   // Increment function for alert value
   const handleIncrement = () => {
-    if (alertValue === undefined || alertValue === "") {
-      setAlertValue(1); // Start from 1 if there’s no value
-    } else {
-      setAlertValue((prevValue) => parseFloat((prevValue + 0.10).toFixed(2)));
-    }
-  };
-
-  // Decrement function for alert value
-  const handleDecrement = () => {
-    setAlertValue((prevValue) => {
-      if (prevValue === undefined || prevValue === "") return 0; // Do not decrement below 0
-      return Math.max(0, parseFloat((prevValue - 0.10).toFixed(2)));
-    });
-  };
+		setValue((oldValue) => {
+			if (condition == 'Below' && oldValue >= compVal) {
+				return parseFloat(oldValue).toFixed(2);
+			}
+			return parseFloat(parseFloat(oldValue) + 1).toFixed(2);
+		});
+	};
+	const handleDecrement = () => {
+		setValue((oldValue) => {
+			if (condition == 'Above' && oldValue <= compVal) {
+				return parseFloat(oldValue).toFixed(2);
+			}
+			return parseFloat(parseFloat(oldValue) - 1).toFixed(2);
+		});
+	};
 
   // Handle manual input change
   const handleManualInputChange = (event) => {
@@ -94,6 +159,215 @@ const Addalert = ({ onClose }) => {
       setAlertValue(""); // Allow empty input
     }
   };
+
+ 
+  const createAlert = () => {
+		if (selectedAlert?.symbol?.length > 0 && value !== 0) {
+      console.log(selectedAlert);
+			if (condition == 'Above' && parseFloat(value) < parseFloat(compVal)) {
+				setError(`Value should greater than or equal to ${compVal}`);
+				return;
+			} else if (
+				condition == 'Below' &&
+				parseFloat(value) > parseFloat(compVal)
+			) {
+				setError(`Value should less than or equal to ${compVal}`);
+				return;
+			} else if (message.length > 32) {
+				setError('message should be less than 32 letters');
+				return;
+			}
+
+			dispatch(
+				sendAlertData({
+					symbol: selectedAlert?.symbol,
+					exchange: exchange,
+					type: condition,
+					value: value,
+					message: message,
+					token: selectedAlert?.token,
+				})
+			);
+			handleClear();
+			handleClose();
+		} else {
+			return generatePopup('error', 'Please enter proper details.');
+		}
+	};
+
+  const handleEditClose = () => {
+		setEditOpen(false);
+		handleClear();
+	};
+
+  const handleClear = () => {
+		setSelectedAlert('');
+		setValue(0);
+		// setExchange("NSE");
+		setMessage('');
+		setScript('');
+		setCondition('Above');
+		setCompVal(0);
+		setFutureExpiryData('');
+		setCpExpiry('');
+		setCpStrike('');
+		setSelectedValue('');
+		setError('');
+	};
+
+  const handleUpdateData = () => {
+		dispatch(
+			updateAlertData({
+				id: editElement.id,
+				value: value,
+				message: message,
+				condition: condition,
+			})
+		);
+		setEditOpen(false);
+		handleClear();
+	};
+  const handleClickOpen = (element) => {
+		setExchange(element.exchange);
+		dispatch(getAlertPrice({ token: element.token })).then((res) => {
+			if (res.status) {
+				setEditElementPrice(res.price);
+				setCompVal(parseFloat(res.price).toFixed(2));
+				setValue(parseFloat(res.price).toFixed(2));
+				setSelectedAlert(element);
+			}
+		});
+		setOpen(true);
+		setEditElement(element);
+	};
+  const handleClose = () => {
+		setOpen(false);
+		handleClear();
+	};
+  const handleCPExpiryChange = (event) => {
+		setCpExpiry(event.target.value);
+		getOptionStrikeDataFun(
+			{
+				exchange: exchange,
+				symbol: selectedAlert?.symbol,
+				expiry: event.target.value,
+			},
+			options == 'call' ? 'optioncestrike' : 'optionpestrike'
+		);
+	};
+
+  const getOptionStrikeDataFun = (payload, optionType) => {
+		dispatch(getAlertOptionStrikeData(payload, optionType)).then((res) => {
+			setCpStrike(res[0]?.token);
+			setSelectedAlert({ ...selectedAlert, token: res[0]?.token });
+			setValue(parseFloat(res[0]?.price).toFixed(2));
+			setCompVal(parseFloat(res[0]?.price).toFixed(2));
+		});
+	};
+
+  const minus = { left: '8px' };
+	const plus = { right: '8px' };
+  
+  useEffect(() => {
+		setSelectedAlert('');
+	}, [exchange]);
+
+  const handleSelectAlert = (value) => {
+		setSelectedAlert(value);
+		setOptions('future');
+		if (exchange == 'NFO' || exchange == 'MCX' || exchange == 'CDS') {
+			if (value != null) {
+				dispatch(
+					getAlertFutureData({ exchange: exchange, symbol: value?.symbol })
+				).then((res) => {
+					if (res?.length > 0) {
+						setFutureExpiryData(res[0]?.token);
+						setSelectedAlert({ ...value, token: res[0]?.token });
+						setValue(parseFloat(res[0]?.price).toFixed(2));
+						setCompVal(parseFloat(res[0]?.price).toFixed(2));
+					}
+				});
+			} else {
+				setValue(0);
+			}
+		} else {
+			if (value != null) {
+				setValue(parseFloat(value.price).toFixed(2));
+				setCompVal(parseFloat(value.price).toFixed(2));
+			} else {
+				setValue(0);
+			}
+		}
+	};
+
+  const handleChangeOptions = (e, newValue = 'string') => {
+		setOptions(newValue);
+
+		if (exchange == 'NFO' || exchange == 'MCX' || exchange == 'CDS') {
+			if (newValue == 'future') {
+				dispatch(
+					getAlertFutureData({
+						exchange: exchange,
+						symbol: selectedAlert?.symbol,
+					})
+				).then((res) => {
+					if (res?.length > 0) {
+						setFutureExpiryData(res[0]?.token);
+						setSelectedAlert({ ...selectedAlert, token: res[0]?.token });
+						setValue(parseFloat(res[0]?.price).toFixed(2));
+						setCompVal(parseFloat(res[0]?.price).toFixed(2));
+					}
+				});
+			} else if (newValue == 'call') {
+				dispatch(
+					getAlertOptionData(
+						{
+							exchange: exchange,
+							symbol: selectedAlert?.symbol,
+						},
+						'optionce'
+					)
+				).then((res) => {
+					if (res.length > 0) {
+						setCpExpiry(res[0]);
+						getOptionStrikeDataFun(
+							{
+								exchange: exchange,
+								symbol: selectedAlert?.symbol,
+								expiry: res[0],
+							},
+							'optioncestrike'
+						);
+					}
+				});
+			} else if (newValue == 'put') {
+				dispatch(
+					getAlertOptionData(
+						{
+							exchange: exchange,
+							symbol: selectedAlert?.symbol,
+						},
+						'optionpe'
+					)
+				).then((res) => {
+					if (res.length > 0) {
+						setCpExpiry(res[0]);
+						getOptionStrikeDataFun(
+							{
+								exchange: exchange,
+								symbol: selectedAlert?.symbol,
+								expiry: res[0],
+							},
+							'optionpestrike'
+						);
+					}
+				});
+			}
+		}
+	};
+  
+
+  
 
   return (
     <>
@@ -181,11 +455,12 @@ const Addalert = ({ onClose }) => {
 
                   <div className="additional-content">
                     <p className="text444">Alert when LTP is</p>
-
+                    <FormControl className='inputFields ' sx={{ display: 'block' }}>
                     <RadioGroup
-                      value={selectedValue}
-                      onChange={handleRadioChange}
+                     raw value={condition}
+                      onChange={handleCondition}
                       className="above"
+                      
                     >
                       <FormControlLabel
                         value="above"
@@ -194,12 +469,12 @@ const Addalert = ({ onClose }) => {
                             sx={{
                               color: "#888686", // Color when unchecked
                               "&.Mui-checked": {
-                                color: "#00ff9192", // Color when checked
+                                color: "#067026", // Color when checked
                               },
                             }}
                           />
                         }
-                        label={<span style={{ fontSize: '12px' }}>Above</span>}
+                        label={<span style={{ fontSize: '14px' }}>Above</span>}
                       />
                       <FormControlLabel
                         value="below"
@@ -208,17 +483,18 @@ const Addalert = ({ onClose }) => {
                             sx={{
                               color: "#888686",
                               "&.Mui-checked": {
-                                color: "#00ff9192",
+                                color: "#067026",
                               },
                             }}
                           />
                         }
-                        label={<span style={{ fontSize: '12px' }}>Below</span>}
+                        label={<span style={{ fontSize: '14px' }}>Below</span>}
                       />
                     </RadioGroup>
+                    </FormControl>
 
                     {/* Increment/Decrement Input */}
-                    <Paper
+                    {/* <Paper
                       elevation={1}
                       sx={{
                         display: "flex",
@@ -233,7 +509,7 @@ const Addalert = ({ onClose }) => {
                       <IconButton
                         size="small"
                         onClick={handleDecrement}
-                        disabled={alertValue <= 0}
+                      
                         sx={{
                           backgroundColor: "#067026",
                           color: "white",
@@ -247,8 +523,9 @@ const Addalert = ({ onClose }) => {
 
                       <InputBase
                         className="input1"
-                        value={alertValue}
-                        onChange={handleManualInputChange} // Handle manual input change
+                        value={value}
+                        onChange={handleValue} 
+                        type="number"
                         sx={{
                           mx: 2,
                           width: "50px",
@@ -271,12 +548,57 @@ const Addalert = ({ onClose }) => {
                       >
                         <AddIcon />
                       </IconButton>
-                    </Paper>
+                    </Paper> */}
+                    <Box className='formItems'>
+								{/* <Typography component={"label"} className="label">
+                                Value
+                                </Typography> */}
+								<Box
+									sx={{ position: 'relative', marginTop: 1, marginBottom: 2 }}
+								>
+									<Box className='selectionDiv bn searchFlex'>
+										<Box className='inputFields fullWidth'>
+											<InputBase
+												placeholder='Value'
+												value={value}
+												onChange={handleValue}
+												type='number'
+											/>
+										</Box>
+									</Box>
+									<Button
+										className='solidButton counterBtn'
+										sx={minus}
+										onClick={handleDecrement}
+									>
+										-
+									</Button>
+									<Button
+										className='solidButton counterBtn'
+										sx={plus}
+										onClick={handleIncrement}
+									>
+										+
+									</Button>
+								</Box>
+							</Box>
                   </div>
-                  <input className="typeinp" placeholder="Type the message you want to send..." />
+                  {/* <textarea className="typeinp" placeholder="Type the message you want to send..."></textarea> */}
+                  <label>  
+                    <textarea
+                      name="postContent"
+                      placeholder="Type the message you want to send..."
+                      rows={4}
+                      cols={40}
+                      className="typeinp"
+                      alertList={4}
+                      onChange={handleMessage}
+                      value={message}
+                    />
+                  </label>
                   <div className="butdiv">
-                    <button className="button48" >Create Alert</button>
-                    <button className="button49">Clear Values</button>
+                    <button className="button48" onClick={createAlert} >Create Alert</button>
+                    <button className="button49" onClick={handleClear}>Clear Values</button>
                   </div>
                 </div>
               </div>
