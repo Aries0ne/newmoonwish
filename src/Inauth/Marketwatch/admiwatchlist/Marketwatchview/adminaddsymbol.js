@@ -6,13 +6,13 @@ import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useSocket } from "../../../hooks/useNewSocket";
+import { useSocket } from "../../../../hooks/useNewSocket";
 import {
-    addWatchList,
+    adminaddWatchList,
     deleteWatchList,
-  } from "../../../redux/actions/commonActions";
+  } from "../../../../redux/actions/commonActions";
 
-const Addsymbol = ({ onClose,marketwatchname }) => {
+const AdminAddsymbol = ({ onClose,marketwatchname }) => {
     const dispatch = useDispatch();
     const [datasymbol, setDatasymbol] = useState([]);
     const [inputValue, setInputValue] = useState(''); 
@@ -57,7 +57,7 @@ const Addsymbol = ({ onClose,marketwatchname }) => {
             lot:"0",
             name:marketwatchname
           };
-          dispatch(addWatchList(obj));
+          dispatch(adminaddWatchList(obj));
     };
 
     const handleInputChange = (event) => {
@@ -170,4 +170,4 @@ const Addsymbol = ({ onClose,marketwatchname }) => {
     );
 };
 
-export default Addsymbol;
+export default AdminAddsymbol;

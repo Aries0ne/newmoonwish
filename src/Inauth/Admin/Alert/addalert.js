@@ -100,24 +100,9 @@ const Addalert = ({ onClose }) => {
 
   const handleCloseDetailsModal = () => setShowDetailsModal(false);
 
-  const handleRadioChange = (event) => setSelectedValue(event.target.value); // Radio button change handler
 
-
-  const handleExchange = (event, newValue) => {
-		setExchange(newValue);
-		// sendWatchListMsg('', newValue);
-		setSelectedValue('');
-		setValue(0);
-		setCpStrike('');
-		setCpExpiry('');
-		setFutureExpiryData('');
-		setOptions('future');
-		setError('');
-	};
-	const handleScript = (event) => {
-		setScript(event.target.value);
-	};
 	const handleValue = (event) => {
+    console.log(event.target.value);
 		setValue(parseFloat(event.target.value));
 	};
 	const handleMessage = (event) => {
@@ -132,37 +117,30 @@ const Addalert = ({ onClose }) => {
   const handleIncrement = () => {
 		setValue((oldValue) => {
 			if (condition == 'Below' && oldValue >= compVal) {
+       
 				return parseFloat(oldValue).toFixed(2);
+        
 			}
+      
 			return parseFloat(parseFloat(oldValue) + 1).toFixed(2);
 		});
+    
 	};
 	const handleDecrement = () => {
 		setValue((oldValue) => {
 			if (condition == 'Above' && oldValue <= compVal) {
-				return parseFloat(oldValue).toFixed(2);
+       
+        return parseFloat(oldValue).toFixed(2);
 			}
+     
 			return parseFloat(parseFloat(oldValue) - 1).toFixed(2);
 		});
 	};
 
-  // Handle manual input change
-  const handleManualInputChange = (event) => {
-    const value = event.target.value; // Keep it as a string
-    setAlertValue(value); // Update the input field directly
-
-    // Check if the value is a valid number
-    const parsedValue = parseFloat(value);
-    if (!isNaN(parsedValue) && parsedValue >= 0) {
-      setAlertValue(parsedValue.toFixed(2)); // Set alert value if it's valid
-    } else if (value === "") {
-      setAlertValue(""); // Allow empty input
-    }
-  };
 
  
   const createAlert = () => {
-		if (selectedAlert?.symbol?.length > 0 && value !== 0) {
+		if (selectedSymbol?.tradingsymbol?.length > 0 && value > 0) {
       console.log(selectedAlert);
 			if (condition == 'Above' && parseFloat(value) < parseFloat(compVal)) {
 				setError(`Value should greater than or equal to ${compVal}`);
@@ -180,12 +158,12 @@ const Addalert = ({ onClose }) => {
 
 			dispatch(
 				sendAlertData({
-					symbol: selectedAlert?.symbol,
+					symbol: selectedSymbol?.tradingsymbol,
 					exchange: exchange,
 					type: condition,
 					value: value,
 					message: message,
-					token: selectedAlert?.token,
+					token: selectedSymbol?.token,
 				})
 			);
 			handleClear();
@@ -272,99 +250,8 @@ const Addalert = ({ onClose }) => {
 		setSelectedAlert('');
 	}, [exchange]);
 
-  const handleSelectAlert = (value) => {
-		setSelectedAlert(value);
-		setOptions('future');
-		if (exchange == 'NFO' || exchange == 'MCX' || exchange == 'CDS') {
-			if (value != null) {
-				dispatch(
-					getAlertFutureData({ exchange: exchange, symbol: value?.symbol })
-				).then((res) => {
-					if (res?.length > 0) {
-						setFutureExpiryData(res[0]?.token);
-						setSelectedAlert({ ...value, token: res[0]?.token });
-						setValue(parseFloat(res[0]?.price).toFixed(2));
-						setCompVal(parseFloat(res[0]?.price).toFixed(2));
-					}
-				});
-			} else {
-				setValue(0);
-			}
-		} else {
-			if (value != null) {
-				setValue(parseFloat(value.price).toFixed(2));
-				setCompVal(parseFloat(value.price).toFixed(2));
-			} else {
-				setValue(0);
-			}
-		}
-	};
-
-  const handleChangeOptions = (e, newValue = 'string') => {
-		setOptions(newValue);
-
-		if (exchange == 'NFO' || exchange == 'MCX' || exchange == 'CDS') {
-			if (newValue == 'future') {
-				dispatch(
-					getAlertFutureData({
-						exchange: exchange,
-						symbol: selectedAlert?.symbol,
-					})
-				).then((res) => {
-					if (res?.length > 0) {
-						setFutureExpiryData(res[0]?.token);
-						setSelectedAlert({ ...selectedAlert, token: res[0]?.token });
-						setValue(parseFloat(res[0]?.price).toFixed(2));
-						setCompVal(parseFloat(res[0]?.price).toFixed(2));
-					}
-				});
-			} else if (newValue == 'call') {
-				dispatch(
-					getAlertOptionData(
-						{
-							exchange: exchange,
-							symbol: selectedAlert?.symbol,
-						},
-						'optionce'
-					)
-				).then((res) => {
-					if (res.length > 0) {
-						setCpExpiry(res[0]);
-						getOptionStrikeDataFun(
-							{
-								exchange: exchange,
-								symbol: selectedAlert?.symbol,
-								expiry: res[0],
-							},
-							'optioncestrike'
-						);
-					}
-				});
-			} else if (newValue == 'put') {
-				dispatch(
-					getAlertOptionData(
-						{
-							exchange: exchange,
-							symbol: selectedAlert?.symbol,
-						},
-						'optionpe'
-					)
-				).then((res) => {
-					if (res.length > 0) {
-						setCpExpiry(res[0]);
-						getOptionStrikeDataFun(
-							{
-								exchange: exchange,
-								symbol: selectedAlert?.symbol,
-								expiry: res[0],
-							},
-							'optionpestrike'
-						);
-					}
-				});
-			}
-		}
-	};
+  
+  
   
 
   

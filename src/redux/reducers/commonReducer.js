@@ -6,6 +6,7 @@ const initState = {
   liveFeedData: [],
   watchListData: [],
   watchListLive: [],
+  AdminLive: [],
   overAllProfitLoss: {},
   addsymboldata:[],
 };
@@ -56,6 +57,14 @@ const store = (state = initState, action) => {
       return {
         ...state,
         watchListLive: action?.payload,
+      };
+
+      case actionTypes.ADMIN_GET_WATCH_LIST_LIVE_DATA_SUCCESS:
+        console.log("Reducer Payload:", action.payload);
+      return {
+        
+        ...state,
+        AdminLive: action?.payload,
       };
 
     default:

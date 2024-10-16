@@ -10,6 +10,8 @@ const initState = {
   livePositions: [],
   liveTradeDetails: [],
   watchlistName : [],
+  adminwatchlistName : [],
+  watchname1: "",
 };
 
 const store = (state = initState, action) => {
@@ -19,16 +21,24 @@ const store = (state = initState, action) => {
         ...state,
         error: "",
       };
-      case actionTypes.CREATE_WATCHLIST_NAME:
+      case 'SET_WATCH_NAME':
+      return {
+        ...state,
+        watchname1: action.payload,  // Update the global watchname
+      };
+      case actionTypes.ADMIN_GET_WATCHLIST_NAME:
         return {
           ...state,
+          adminwatchlistName: action.payload,
           error: "",
         };
-        case actionTypes.CREATE_WATCHLIST_NAME_FAIL:
+        case actionTypes.ADMIN_GET_WATCHLIST_NAME_FAIL:
           return {
             ...state,
+      
             error: "",
           };
+      
       case actionTypes.GET_WATCHLIST_NAME:
         return {
           ...state,

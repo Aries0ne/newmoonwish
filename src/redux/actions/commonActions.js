@@ -54,6 +54,16 @@ export const getWatchListLiveData = (payload) => (dispatch) => {
   });
 };
 
+export const admingetWatchListLiveData = (payload) => (dispatch) => {
+  return new Promise((resolve, reject) => {
+    dispatch({
+      type: actionTypes.ADMIN_GET_WATCH_LIST_LIVE_DATA_SUCCESS,
+      payload: payload,
+    });
+    resolve();
+  });
+};
+
 export const addWatchList = (payload) => (dispatch) => {
   return new Promise((resolve, reject) => {
     let token = localStorage.getItem("token");
@@ -131,6 +141,46 @@ export const deleteWatchList = (payload) => (dispatch) => {
   });
 };
 
+
+
+
+export const adminaddWatchList = (payload) => (dispatch) => {
+  return new Promise((resolve, reject) => {
+    let token = localStorage.getItem("token");
+
+    axios
+      .post(`${API_URL}/position/adwatchlist/`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          dispatch({
+            type: actionTypes.ADMIN_ADD_WATCH_LIST_SUCCESS,
+            payload: res.data,
+          });
+          generatePopup("success", "Symbol added succesfully.");
+          resolve(res.data);
+        } else {
+          dispatch({
+            type: actionTypes.ADMIN_ADD_WATCH_LIST_FAIL,
+          });
+        }
+      })
+      .catch((error) => {
+        if (error?.response?.status === 400) {
+          dispatch({
+            type: actionTypes.ADMIN_ADD_WATCH_LIST_FAIL,
+          });
+        } else if (error?.response?.status === 401) {
+          generatePopup("error", "Token is invalid or expired.");
+          localStorage.clear();
+          window.location.replace("/");
+        }
+      });
+  });
+};
 
 
 

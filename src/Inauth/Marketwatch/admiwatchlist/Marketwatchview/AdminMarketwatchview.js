@@ -2,12 +2,11 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, Button, Grid, Tooltip, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { confirm } from "../../../redux/actions/confirmActions";
+import { confirm } from "../../../../redux/actions/confirmActions";
 import { deepClone } from "@mui/x-data-grid/utils/utils";
 import { MaterialReactTable } from "material-react-table";
 import "./addsymbol.scss";
 import Orderplace from "./orderplace";
-import { useDispatch, useSelector } from "react-redux";
 
 const down = (
   <svg
@@ -41,16 +40,16 @@ const up = (
 
 
 
-const Marketwatchview = (props) => {
+const AdminMarketwatchview = (props) => {
   const { data, buysellOpen, handleClickOpen, removeWatchList ,MarketWatch} = props;
   const [stateData, setStateData] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selectAll, setSelectedAll] = useState(false);
   const [ids, setIDs] = useState([]);
-  const [name1 , setname1] = useState('');
+
   const [isModalOpen1, setModalOpen1] = useState(false);
-  const watchname1 = useSelector(state => state.Position.watchname1);
+
   const handleSelectAll = (e) => {
     const value = e.target.checked;
     const newIDS = [];
@@ -74,31 +73,6 @@ const Marketwatchview = (props) => {
   const orderplacebutton = () => {
     setModalOpen1(true);
   }
-
-
-  useEffect(() => {
-    
-    if (watchname1 != "") {
-      setname1(watchname1);
-      console.log(name1,watchname1)
-      
-    }
-  }, [watchname1]);
-
-  useEffect(() => {
- 
-    // This will log after `name1` has been updated
-    console.log("Updated name1:", name1);
-  }, [name1]);
-
-  const handleRemoveWatchList = (row, currentName) => {
-    const updatedWatchlistDetails = {
-      ...row?.original,
-      name: currentName,  // Use the passed name directly
-    };
-  
-    removeWatchList(updatedWatchlistDetails);
-  };
 
   const [columns, setColumns] = useState([
     {
@@ -188,7 +162,7 @@ const Marketwatchview = (props) => {
                   .then((e) => {
                     setIDs([]);
                     setSelectedAll(false);
-                    handleRemoveWatchList (row,name1);
+                    removeWatchList(row?.original);
                   })
                   .catch((err) => {});
               }}
@@ -600,4 +574,4 @@ const Marketwatchview = (props) => {
   );
 };
 
-export default Marketwatchview;
+export default AdminMarketwatchview;

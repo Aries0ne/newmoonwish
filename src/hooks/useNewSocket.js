@@ -11,7 +11,8 @@ import {
   getProfitLoss,
   getWatchListLiveData,
   getWatchListSocket,
-  getaddsymboldata
+  getaddsymboldata,
+  admingetWatchListLiveData
 } from "../redux/actions/commonActions";
 import { getLivePositions } from "../redux/actions/positionAction";
 export function useSocket(endpoint) {
@@ -49,6 +50,9 @@ export function useSocket(endpoint) {
         dispatch(getPortfolioIndicatorsData(message));
       } else if (endpoint === "watchlist") {
         dispatch(getaddsymboldata(message));
+      }
+      else if (endpoint === "adminwatchlist") {
+        dispatch(admingetWatchListLiveData(message));
       }
     };
 

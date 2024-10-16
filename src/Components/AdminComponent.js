@@ -29,6 +29,8 @@ import Strategy from "../Inauth/Admin/Strategy/Strategy";
 import CreateStrategy from "../Inauth/Admin/CreateStrategy";
 import Others from "../Inauth/Admin/Others/Others";
 
+import AdminMarketWatch from "../Inauth/Marketwatch/admiwatchlist/AdminMarketWatch";
+
 
 const AdminComponent = () => {
   // admin tab

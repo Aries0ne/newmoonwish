@@ -568,12 +568,10 @@ export const deletePositionOrder =
 
 
 
-  export const createWatchlistName = (payload) => (dispatch) => {
+  export const createWatchlistName = (payload = {}) => (dispatch) => {
     return new Promise((resolve, reject) => {
       let token = localStorage.getItem("token");
-      dispatch({
-        type: actionTypes.CREATE_WATCHLIST_NAME,
-      });
+      
       axios
         .post(`${API_URL}/position/createwatchlistname/`, payload, {
           headers: {
@@ -583,23 +581,110 @@ export const deletePositionOrder =
         .then((res) => {
           if (res.status === 200) {
             dispatch({
-              type: actionTypes.CREATE_WATCHLIST_NAME,
-              
-            });
-            generatePopup("error", "New Watchlist created.");
+							type: actionTypes.CREATE_WATCHLIST_NAME,
+							payload: res.data,
+						});
+            generatePopup("success", "New Watchlist created.");
             
           } else {
-            dispatch({
-              type: actionTypes.CREATE_WATCHLIST_NAME_FAIL,
-            });
+            
             generatePopup("error", "Failed to create new watchlist.");
           }
         })
         .catch((error) => {
           if (error.response.status == 400) {
+            
+            generatePopup("error", "Failed to create new watchlist.");
+          } else if (error?.response?.status === 401) {
+            generatePopup("error", "Token is invalid or expired.");
+            localStorage.clear();
+            window.location.replace("/");
+          }
+        });
+    });
+  };
+
+
+
+
+
+
+
+
+
+  export const admingetWatchlistName = (payload) => (dispatch) => {
+    return new Promise((resolve, reject) => {
+      let token = localStorage.getItem("token");
+      dispatch({
+        type: actionTypes.ADMIN_GET_WATCHLIST_NAME,
+      });
+      axios
+        .get(`${API_URL}/position/admincreatewatchlistname/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
             dispatch({
-              type: actionTypes.CREATE_WATCHLIST_NAME_FAIL,
+              type: actionTypes.ADMIN_GET_WATCHLIST_NAME,
+              payload: res.data,
             });
+            resolve(res);
+          } else {
+            dispatch({
+              type: actionTypes.ADMIN_GET_WATCHLIST_NAME_FAIL,
+            });
+            generatePopup("error", "Failed to get live trade details.");
+          }
+        })
+        .catch((error) => {
+          if (error.response.status == 400) {
+            dispatch({
+              type: actionTypes.ADMIN_GET_WATCHLIST_NAME_FAIL,
+            });
+            generatePopup("error", "Failed to get live trade details.");
+          } else if (error?.response?.status === 401) {
+            generatePopup("error", "Token is invalid or expired.");
+            localStorage.clear();
+            window.location.replace("/");
+          }
+        });
+    });
+  };
+
+  export const setWatchName = (name) => ({
+    type: 'SET_WATCH_NAME',
+    payload: name,
+  });
+
+
+  export const admincreateWatchlistName = (payload = {}) => (dispatch) => {
+    return new Promise((resolve, reject) => {
+      let token = localStorage.getItem("token");
+      
+      axios
+        .post(`${API_URL}/position/admincreatewatchlistname/`, payload, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch({
+							type: actionTypes.ADMIN_CREATE_WATCHLIST_NAME,
+							payload: res.data,
+						});
+            generatePopup("success", "New Watchlist created.");
+            
+          } else {
+            
+            generatePopup("error", "Failed to create new watchlist.");
+          }
+        })
+        .catch((error) => {
+          if (error.response.status == 400) {
+            
             generatePopup("error", "Failed to create new watchlist.");
           } else if (error?.response?.status === 401) {
             generatePopup("error", "Token is invalid or expired.");

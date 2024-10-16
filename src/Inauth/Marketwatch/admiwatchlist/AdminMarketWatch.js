@@ -1,107 +1,57 @@
 
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-
-
-import './Marketwatch.scss';
-import edit from "../../images/Edit.png";
-import search from "../../images/Search.png";
-import del from "../../images/Delete1.png";
+import edit from "../../../images/Edit.png";
+import search from "../../../images/Search.png";
+import del from "../../../images/Delete1.png";
 import { useTable } from "react-table";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { isOverflown } from "@mui/x-data-grid/utils/domUtils";
-import Addsymbol from "./Marketwatchview/addsymbol";
-import Marketwatchview from "./Marketwatchview/Marketwatchview";
-import { useSocket } from "../../hooks/useNewSocket";
+import AdminAddsymbol from "./Marketwatchview/adminaddsymbol";
+import AdminMarketwatchview from "./Marketwatchview/AdminMarketwatchview";
+import { useSocket } from "../../../hooks/useNewSocket";
 import { useDispatch, useSelector } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Grid, Tooltip, Typography, InputBase } from "@mui/material";
-import { confirm } from "../../redux/actions/confirmActions";
+import { confirm } from "../../../redux/actions/confirmActions";
 
 import * as XLSX from "xlsx";
 import UploadIcon from '@mui/icons-material/Upload';
-import { generatePopup } from "../../utils/popup";
-import Dropdown from "../Dropdown/Dropdown";
+import { generatePopup } from "../../../utils/popup";
+import Dropdown from "../../Dropdown/Dropdown";
 import {
   uploadBulkwatchlist
-} from '../../redux/actions/alertActions';
+} from '../../../redux/actions/alertActions';
 
-import {deleteWatchList} from '../../redux/actions/commonActions';
-
-import { setWatchName } from '../../redux/actions/positionAction';
-
-import {admingetWatchlistName,getWatchlistName,createWatchlistName} from '../../redux/actions/positionAction';
+import {admingetWatchlistName,admincreateWatchlistName} from '../../../redux/actions/positionAction';
 import { CSVLink } from 'react-csv';
 
-const Marketwatchview1 = () => {
+const AdminMarketWatch= () => {
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("London");
-
   const [isModalOpen, setModalOpen] = useState(false);
-  const watchListUpdateSocket = useSocket("watchlistupdate");
-  const watchListUpdateSocket1 = useSocket("adminwatchlist");
+  const watchListUpdateSocket = useSocket("adminwatchlist");
   const [selectAll, setSelectedAll] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [watchValues, setwatchValues] = useState([]);
-
-  const [dropvalue, setdropvalue] = useState("");
+  
  
   const [watchlistsubmitname , setInputwatchlistsubmit] = useState("");
   const [inputvaluepopup, setInputvaluePopup] = useState("");
 
-  const [user , SetUser] = useState("User");
-  const [name1 , setname1] = useState('');
 
-  const handleDropdownChange = (e) => {
-    const newValue = e.target.value;
-    setdropvalue(newValue);  // Update the selected value
-    console.log("Selected value is:", newValue);  // Do something when the dropdown changes
-  };
+
   
-  const handledropClick = () => {
-    SetUser("Admin");
-    watchListUpdateSocket1.sendMessage({
-      remark: "watchlist",  // Define message type, if needed
-      name: dropvalue,  // Send input value as symbol
-      });
 
-  }
 
 
   const AdminLive = useSelector(
     (state) => state?.CommonReducer?.AdminLive
   );
 
-  const watchListLive = useSelector(
-    (state) => state?.CommonReducer?.watchListLive
-  );
-
-  const watchlistNameData = useSelector((state) => state.Position.watchlistName);
-
-  
-
-  const watchlistNameData1 = useSelector((state) => state.Position.adminwatchlistName);
-  const watchname1 = useSelector(state => state.Position.watchname1);
+  const watchlistNameData = useSelector((state) => state.Position.adminwatchlistName);
   const [watchlists, setWatchlists] = useState([]);
-  useEffect(() => {
-    dispatch(getWatchlistName());
-  }, [dispatch]);
-
-
   useEffect(() => {
     dispatch(admingetWatchlistName());
   }, [dispatch]);
-
-  useEffect(() => {
-    
-    if (watchname1 != "") {
-      setname1(watchname1);
-      
-    }
-  }, [watchname1]);
 
 
   
@@ -112,27 +62,12 @@ const Marketwatchview1 = () => {
         name: item.name,
         city: item.name // Assuming `owner` is what you want to display as `city`
       }));
-      
-      if (mappedWatchlists[0] && mappedWatchlists[0].name) {
-        setActiveTab(mappedWatchlists[0].name);
-      }
       setWatchlists(mappedWatchlists); // Update the state with the API response
     }
   }, [watchlistNameData]);
 
-
-  useEffect(() => {
-    if (watchlistNameData1 && Array.isArray(watchlistNameData1)) {
-      const mappedWatchlists1 = watchlistNameData1.map(item => item.name);
-      setwatchValues(mappedWatchlists1); // Update the state with just names like ['sanket', 'naman']
-    }
-  }, [watchlistNameData1]);
-
   const removeWatchList = (obj) => {
-    
-    
-
-    dispatch(deleteWatchList(obj));
+    // dispatch(deleteWatchList(obj));
   };
   // const [watchlists, setWatchlists] = useState([
   //   { name: "My Watchlist", city: "London" },
@@ -150,10 +85,10 @@ const Marketwatchview1 = () => {
       return;
     } else{
     if (inputvaluepopup != ""){
-      dispatch( createWatchlistName(
+      dispatch( admincreateWatchlistName(
         { name: inputvaluepopup }
       ));
-      dispatch(getWatchlistName());
+      dispatch(admingetWatchlistName());
     }}
   }
 
@@ -318,14 +253,8 @@ const Marketwatchview1 = () => {
 
   const [table1Data, setTable1Data] = useState();
   useEffect(() => {
-    if (user == "User"){
-    setTable1Data(watchListLive?.slice(0, 50));}
-
-  }, [watchListLive]);
-
-  useEffect(() => {
-    if (user == "Admin"){
-    setTable1Data(AdminLive?.slice(0, 50));}
+    console.log(AdminLive)
+    setTable1Data(AdminLive?.slice(0, 50));
 
   }, [AdminLive]);
 
@@ -333,7 +262,7 @@ const Marketwatchview1 = () => {
 
 
     // Parse the incoming WebSocket data and map it to your table structure
-    const updatedData = watchListLive.map((item) => ({
+    const updatedData = AdminLive.map((item) => ({
       ShortExchangeName: item.exchange,
       ScripCode: item.token,
       ScripName: item.tradingsymbol,
@@ -360,17 +289,11 @@ const Marketwatchview1 = () => {
     // Cleanup the socket on unmount
 
 
-  }, [watchListLive]);
-
-
+  }, [AdminLive]);
 
   // Function to switch between tabs
   const openCity = (cityName) => {
-    console.log("city name: "+ cityName)
-    SetUser("User");
     setActiveTab(cityName);
-    dispatch(setWatchName(cityName));
-
     setInputvaluePopup(cityName);
     watchListUpdateSocket.sendMessage({
       remark: "watchlist",  // Define message type, if needed
@@ -533,7 +456,8 @@ const Marketwatchview1 = () => {
     XLSX.writeFile(workbook, fileName);
   };
 
-  
+  const watchValues = ["market1", "market2", "market3", "SL-M"];
+
   return (
     <>
 
@@ -543,21 +467,20 @@ const Marketwatchview1 = () => {
 
       {isModalOpen && (
         <div>
-          <Addsymbol onClose={closemodal} marketwatchname = {inputvaluepopup}></Addsymbol>
+          <AdminAddsymbol onClose={closemodal} marketwatchname = {inputvaluepopup}></AdminAddsymbol>
 
         </div>
       )}
       <h1 className="head">Watchlists</h1>
       <div className="line">
         <div className="dropdown">
-          <div style={{display:"flex",flexDirection:"row"}}>
           {/* <button className="dropbtn">Select Predifined Watchlist</button>
           <div className="dropdown-content">
             <a href="#">List 1</a>
             <a href="#">List 2</a>
             <a href="#">List 3</a>
           </div> */}
-          {/* <Box
+          <Box
             className="inputFields space fullWidth"
             
             sx={{
@@ -575,38 +498,11 @@ const Marketwatchview1 = () => {
             <Dropdown
               sx={{ height: "30px", fontSize: "12px" }}
               val={watchValues}
-              value={dropvalue}
-              onChange={handleDropdownChange}
-
+              value=""
               
             />
-            
-            
-          </Box> */}
-          <FormControl className='buttdrop'>
-  <InputLabel id="demo-simple-select-label">Select predfined watchlist</InputLabel>
-  <Select
-    
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    value={dropvalue}
-    
-    label="Select Predifined"
-    onChange={handleDropdownChange}
-    
-  >
-    
-    {watchValues.map((value, index) => (
-    <MenuItem value={value}>{value}</MenuItem>
-  ))}
-    
-  </Select>
-</FormControl>
-          <button onClick={handledropClick} style={{marginLeft:'15px',backgroundColor:"#00ff9146",border:'none',borderRadius:'10px',paddingLeft:'30px', paddingRight:'30px'}}>Search</button>
-          </div>
-          
+          </Box>
         </div>
-        
         <div className="div01">
           {/* <div style={{ position: 'relative', display: 'inline-block' }}>
             <img src={edit} className="stratlogo" onClick={handleEditClick} // On image click, toggle dropdown visibility
@@ -780,12 +676,12 @@ const Marketwatchview1 = () => {
                     )}
                   </Droppable>
                 </DragDropContext> */}
-                <Marketwatchview
+                <AdminMarketwatchview
                   data={table1Data}
                   buysellOpen={buysellOpen}
                   handleClickOpen={handleClickOpen}
                   removeWatchList={removeWatchList}
-                  MarketWatch={name1}
+                  MarketWatch={inputvaluepopup}
                 />
               </div>
             </div>
@@ -824,4 +720,4 @@ const Marketwatchview1 = () => {
   );
 };
 
-export default Marketwatchview1;
+export default AdminMarketWatch;
