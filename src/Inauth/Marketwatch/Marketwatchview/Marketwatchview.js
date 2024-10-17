@@ -1,13 +1,16 @@
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Box, Button, Grid, Tooltip, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Box, Button, Grid, Tooltip, Typography,Checkbox,lighten } from "@mui/material";
+import React, { useEffect, useState,useRef } from "react";
 import { confirm } from "../../../redux/actions/confirmActions";
 import { deepClone } from "@mui/x-data-grid/utils/utils";
-import { MaterialReactTable } from "material-react-table";
+import { MaterialReactTable, MRT_GlobalFilterTextField,
+  MRT_ToggleFiltersButton,} from "material-react-table";
 import "./addsymbol.scss";
 import Orderplace from "./orderplace";
 import { useDispatch, useSelector } from "react-redux";
+
+
 
 const down = (
   <svg
@@ -51,6 +54,11 @@ const Marketwatchview = (props) => {
   const [name1 , setname1] = useState('');
   const [isModalOpen1, setModalOpen1] = useState(false);
   const watchname1 = useSelector(state => state.Position.watchname1);
+
+
+  
+
+  const name1Ref = useRef(name1);
   const handleSelectAll = (e) => {
     const value = e.target.checked;
     const newIDS = [];
@@ -80,6 +88,7 @@ const Marketwatchview = (props) => {
     
     if (watchname1 != "") {
       setname1(watchname1);
+      name1Ref.current = watchname1;
       console.log(name1,watchname1)
       
     }
@@ -91,16 +100,18 @@ const Marketwatchview = (props) => {
     console.log("Updated name1:", name1);
   }, [name1]);
 
-  const handleRemoveWatchList = (row, currentName) => {
+  const handleRemoveWatchList = (row) => {
+    console.log("Current Name:", name1Ref.current);
     const updatedWatchlistDetails = {
       ...row?.original,
-      name: currentName,  // Use the passed name directly
+      name: name1Ref.current,  // Use the passed name directly
     };
   
     removeWatchList(updatedWatchlistDetails);
   };
 
   const [columns, setColumns] = useState([
+    
     {
       id: "2",
       accessorKey: "tradingsymbol",
@@ -188,7 +199,7 @@ const Marketwatchview = (props) => {
                   .then((e) => {
                     setIDs([]);
                     setSelectedAll(false);
-                    handleRemoveWatchList (row,name1);
+                    handleRemoveWatchList (row);
                   })
                   .catch((err) => {});
               }}
@@ -352,8 +363,70 @@ const Marketwatchview = (props) => {
             }))}
             enableColumnOrdering={true}
             enableSorting={true}
-            enableColumnActions={false}
+            enableColumnActions={true}
             enableRowSelection={true}
+            
+
+            renderTopToolbar={ ({ table }) => {
+              const handleDeactivate = () => {
+                table.getSelectedRowModel().flatRows.map((row) => {
+                  handleRemoveWatchList (row);
+                });
+              };
+        
+              const handleActivate = () => {
+                table.getSelectedRowModel().flatRows.map((row) => {
+                  handleRemoveWatchList (row);
+                });
+              };
+        
+              // const handleContact = () => {
+              //   table.getSelectedRowModel().flatRows.map((row) => {
+              //     alert('contact ' + row.getValue('name'));
+              //   });
+              // };
+        
+              return (
+                <Box
+                  sx={(theme) => ({
+                    backgroundColor: lighten(theme.palette.background.default, 0.05),
+                    display: 'flex',
+                    gap: '0.5rem',
+                    p: '8px',
+                    justifyContent: 'space-between',
+                  })}
+                >
+                  <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                    {/* import MRT sub-components */}
+                    <MRT_GlobalFilterTextField table={table} />
+                    <MRT_ToggleFiltersButton table={table} />
+                  </Box>
+                  <Box>
+                    <Box sx={{ display: 'flex', gap: '0.5rem' }}>
+                      <Button
+                        color="error"
+                        disabled={!table.getIsSomeRowsSelected()}
+                        onClick={handleDeactivate}
+                        variant="contained"
+                      >
+                        Delete
+                      </Button>
+                      <Button
+                        color="error"
+                        disabled={table.getIsSomeRowsSelected()}
+                        onClick={handleActivate}
+                        variant="contained"
+                      >
+                        Delete All
+                      </Button>
+                      
+                    </Box>
+                  </Box>
+                </Box>
+              );
+            }}
+        
+            
             // renderTopToolbarCustomActions={({ table }) => {
             //   const selected = table.getSelectedRowModel()?.flatRows;
             //   return (

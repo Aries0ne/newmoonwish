@@ -99,7 +99,7 @@ const Marketwatchview1 = () => {
     
     if (watchname1 != "") {
       setname1(watchname1);
-      
+      console.log("watch is"+watchname1)
     }
   }, [watchname1]);
 
@@ -692,8 +692,8 @@ const Marketwatchview1 = () => {
           <p>{watchlist.city} is a beautiful city.</p> */}
           <div className="div006">
             <div className="div007">
-              <p className="text0123">Indices</p>
-              <p className="text003">Total 52 Items</p>
+              <p className="text0123">Watchlist Name : {activeTab}</p>
+              <p className="text003">Total {table1Data.length} Items</p>
             </div>
             <button className="addbut" onClick={handleClick}>+ Add Symbol</button>
           </div>
