@@ -152,6 +152,7 @@ const OrderComponent = (props) => {
         handleChangePage={handleChangePage}
         handleChangeRowsPerPage={handleChangeRowsPerPage}
       />
+   
     </Box>
   );
 };

@@ -95,7 +95,9 @@ export default function Dashboard(props) {
                   )
                 : rows
               )?.map((row, index) => (
-                <TableRow key={index}>
+                <TableRow key={index}
+                
+                >
                   {/*
 								 	 <TableCell>
                   <span>
@@ -104,7 +106,8 @@ export default function Dashboard(props) {
                 </TableCell> */}
                   {Object.keys(row).map((element, rowIndex) => {
                     return element !== "id" ? (
-                      <TableCell key={rowIndex}>
+                      <TableCell key={rowIndex} 
+                      sx={{border:'none'}}>
                         {element === "actions"
                           ? getActions(row[element], index)
                           : row[element]}

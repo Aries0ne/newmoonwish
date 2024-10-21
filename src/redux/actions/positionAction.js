@@ -219,7 +219,7 @@ export const createPosition =
         type: actionTypes.SIGNAL_DETAILS_INIT,
       });
       axios
-        .post(`${API_URL}/position/placeorder/`, payload, {
+        .post(`${API_URL}/position/placemanualorder/`, payload, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

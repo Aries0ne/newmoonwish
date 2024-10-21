@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./newalert.scss";
 import rebot from "../../../images/Reboot.png";
 import search from "../../../images/search1.png";
@@ -12,13 +12,13 @@ import close1 from "../../../images/Close1.png";
 import { generatePopup } from '../../../utils/popup';
 
 import {
-	deleteAlertData,
-	deleteBulkAlertData,
-	getAlertData,
-	getAlertPrice,
-	sendAlertData,
-	updateAlertData,
-	uploadBulkAlertData,
+  deleteAlertData,
+  deleteBulkAlertData,
+  getAlertData,
+  getAlertPrice,
+  sendAlertData,
+  updateAlertData,
+  uploadBulkAlertData,
 } from '../../../redux/actions/alertActions';
 
 import {
@@ -34,22 +34,22 @@ import {
 } from "@mui/material";
 
 const minus = { left: '8px' };
-	const plus = { right: '8px' };
+const plus = { right: '8px' };
 
 
 
 export default function AlertComponent() {
-  const[ editmodal , setEditModal] = useState(false);
-  const[ copymodal , setCopyModal] = useState(false);
+  const [editmodal, setEditModal] = useState(false);
+  const [copymodal, setCopyModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Triggered");
+  const [selectedOption, setSelectedOption] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const [selectedRows, setSelectedRows] = useState([]); // Selected rows state
   const [value, setValue] = useState(0);
   const [compVal, setCompVal] = useState(0);
   const [selectedSymbol1, setSelectedSymbol1] = useState(null);
   const [condition, setCondition] = useState('Above');
-  const [idupdate,setIdupdate] = useState();
+  const [idupdate, setIdupdate] = useState();
   const [message, setMessage] = useState('');
   const [exchange, setExchange] = useState('');
   const [token, setToken] = useState('');
@@ -87,25 +87,25 @@ export default function AlertComponent() {
   };
 
   useEffect(() => {
-		getAlertList();
-	}, []);
+    getAlertList();
+  }, []);
 
 
   const handleValue = (event) => {
     console.log(event.target.value);
-		setValue(parseFloat(event.target.value));
-	};
+    setValue(parseFloat(event.target.value));
+  };
 
   const handleMessage = (event) => {
-		setMessage(event.target.value);
-	};
+    setMessage(event.target.value);
+  };
 
   const handledelete = (id1) => {
     dispatch(deleteAlertData({ id: id1 }));
   }
   const getAlertList = () => {
-		dispatch(getAlertData());
-	};
+    dispatch(getAlertData());
+  };
 
   const handleCloseDetailsModal = () => {
     setEditModal(false);
@@ -113,91 +113,91 @@ export default function AlertComponent() {
 
 
   const handleUpdateData = () => {
-		dispatch(
-			updateAlertData({
-				id:idupdate ,
-				value: value,
-				message: message,
-				condition: condition,
-			})
-		);
-		setEditModal(false);
-		handleClear();
-	};
+    dispatch(
+      updateAlertData({
+        id: idupdate,
+        value: value,
+        message: message,
+        condition: condition,
+      })
+    );
+    setEditModal(false);
+    handleClear();
+  };
 
   const handleUpdateData1 = () => {
-		if (selectedSymbol1.length > 0 && value > 0) {
-      
-			if (condition == 'Above' && parseFloat(value) < parseFloat(compVal)) {
-				setError(`Value should greater than or equal to ${compVal}`);
-				return;
-			} else if (
-				condition == 'Below' &&
-				parseFloat(value) > parseFloat(compVal)
-			) {
-				setError(`Value should less than or equal to ${compVal}`);
-				return;
-			} else if (message.length > 32) {
-				setError('message should be less than 32 letters');
-				return;
-			}
+    if (selectedSymbol1.length > 0 && value > 0) {
 
-			dispatch(
-				sendAlertData({
-					symbol: selectedSymbol1,
-					exchange: exchange,
-					type: condition,
-					value: value,
-					message: message,
-					token: token,
-				})
-			);
+      if (condition == 'Above' && parseFloat(value) < parseFloat(compVal)) {
+        setError(`Value should greater than or equal to ${compVal}`);
+        return;
+      } else if (
+        condition == 'Below' &&
+        parseFloat(value) > parseFloat(compVal)
+      ) {
+        setError(`Value should less than or equal to ${compVal}`);
+        return;
+      } else if (message.length > 32) {
+        setError('message should be less than 32 letters');
+        return;
+      }
+
+      dispatch(
+        sendAlertData({
+          symbol: selectedSymbol1,
+          exchange: exchange,
+          type: condition,
+          value: value,
+          message: message,
+          token: token,
+        })
+      );
       setCopyModal(false);
-		handleClear();
-			
-		} else {
-			return generatePopup('error', 'Please enter proper details.');
-		}
-		
-	};
+      handleClear();
+
+    } else {
+      return generatePopup('error', 'Please enter proper details.');
+    }
+
+  };
 
   const handleClear = () => {
-		setSelectedSymbol1('');
+    setSelectedSymbol1('');
     setValue('');
     setMessage('');
     setCondition('');
     setIdupdate('');
-	};
+  };
 
   const handleCondition = (event) => {
-		setCondition(event.target.value);
-		setValue(parseFloat(compVal).toFixed(2));
-	};
+    setCondition(event.target.value);
+    setValue(parseFloat(compVal).toFixed(2));
+  };
 
   const handleDecrement = () => {
-		setValue((oldValue) => {
-			if (condition == 'Above' && oldValue <= compVal) {
-       
+    setValue((oldValue) => {
+      if (condition == 'Above' && oldValue <= compVal) {
+
         return parseFloat(oldValue).toFixed(2);
-			}
-     
-			return parseFloat(parseFloat(oldValue) - 1).toFixed(2);
-		});
-	};
+      }
+
+      return parseFloat(parseFloat(oldValue) - 1).toFixed(2);
+    });
+  };
 
 
   const handleIncrement = () => {
-		setValue((oldValue) => {
-			if (condition == 'Below' && oldValue >= compVal) {
-       
-				return parseFloat(oldValue).toFixed(2);
-        
-			}
-      
-			return parseFloat(parseFloat(oldValue) + 1).toFixed(2);
-		});
-    
-	};
+    setValue((oldValue) => {
+      if (condition == 'Below' && oldValue >= compVal) {
+
+        return parseFloat(oldValue).toFixed(2);
+
+      }
+
+      return parseFloat(parseFloat(oldValue) + 1).toFixed(2);
+    });
+
+  };
 
 
 
@@ -254,6 +254,26 @@ export default function AlertComponent() {
     },
   ];
 
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredData = alertData
+    .filter((row) => {
+      if (selectedOption === 'All') return true; // Show all if 'All' is selected
+      return row.status === selectedOption;
+    })
+    .filter((row) => {
+      const searchTerm = searchQuery.toLowerCase();
+      // Filter by search query matching symbol, type, or message
+      return (
+        row.symbol.toLowerCase().includes(searchTerm) ||
+        row.type.toLowerCase().includes(searchTerm) ||
+        row.message.toLowerCase().includes(searchTerm)
+      );
+    });
   return (
     <>
       {isModalOpen && (
@@ -267,9 +287,9 @@ export default function AlertComponent() {
           <div className="div2">
             <div className="div3">
               <h6 className="text1">Alert</h6>
-              <img src={rebot} className="ree" />
+              <img src={rebot}  className="ree" />
             </div>
-            <p className="text2">Total 52 alerts</p>
+            <p className="text2">Total {filteredData.length} alerts</p>
           </div>
           <button className="alertbut" onClick={handleClick}>+ Add Alert</button>
         </div>
@@ -279,7 +299,10 @@ export default function AlertComponent() {
             <p className="text3">Search For Alert</p>
             <div className="input-container">
               <img src={search} className="ree" />
-              <input placeholder="Search alert" />
+              <input type="text"
+                placeholder="Search alert"
+                value={searchQuery}
+                onChange={handleSearchChange} />
             </div>
           </div>
           <div className="div4">
@@ -291,9 +314,9 @@ export default function AlertComponent() {
               </button>
               {showDropdown && (
                 <div className="dropdown-menu">
-                  <div className="dropdown-item" onClick={() => handleSelectOption("Option 1")}>Option 1</div>
-                  <div className="dropdown-item" onClick={() => handleSelectOption("Option 2")}>Option 2</div>
-                  <div className="dropdown-item" onClick={() => handleSelectOption("Option 3")}>Option 3</div>
+                  <div className="dropdown-item" onClick={() => handleSelectOption('All')}>All</div>
+                  <div className="dropdown-item" onClick={() => handleSelectOption("Triggered")}>Triggered</div>
+                  <div className="dropdown-item" onClick={() => handleSelectOption("Active")}>Active</div>
                 </div>
               )}
             </div>
@@ -324,53 +347,53 @@ export default function AlertComponent() {
               </tr>
             </thead>
             <tbody>
-  {alertData.map((row, index) => {
-    // Convert and format the datetime string
-    const date = new Date(row.datetime);
-    const formattedDate = date.toLocaleDateString('en-GB', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    });
-    const formattedTime = date.toLocaleTimeString('en-GB', {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: true,
-    });
+              {filteredData.map((row, index) => {
+                // Convert and format the datetime string
+                const date = new Date(row.datetime);
+                const formattedDate = date.toLocaleDateString('en-GB', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                });
+                const formattedTime = date.toLocaleTimeString('en-GB', {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  second: '2-digit',
+                  hour12: true,
+                });
 
-    return (
-      <tr key={index}>
-        <td>
-          <input
-            type="checkbox"
-            checked={selectedRows.includes(index)}
-            onChange={() => handleSelectRow(index)}
-          />
-        </td>
-        <td className={row.status === 'Completed' ? 'status-completed' : 'status-pending'}>
-          {row.status}
-        </td>
-        <td>{`${formattedDate} ${formattedTime}`}</td>
-        <td>{row.symbol}</td>
-        <td>{row.value}</td>
-        <td>{row.type}</td>
-        <td>{row.message}</td>
-        <td>
-        <IconButton onClick={() => handleedit(row)} aria-label="edit">
-                <EditIcon />
-              </IconButton>
-              <IconButton onClick={() => handlecopy(row)}  aria-label="copy">
-                <ContentCopyIcon />
-              </IconButton>
-              <IconButton onClick={() => handledelete(row.id)} aria-label="delete">
-                <DeleteIcon />
-              </IconButton>
-        </td>
-      </tr>
-    );
-  })}
-</tbody>
+                return (
+                  <tr key={index}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked={selectedRows.includes(index)}
+                        onChange={() => handleSelectRow(index)}
+                      />
+                    </td>
+                    <td className={row.status === 'Triggered' ? 'status-completed' : 'status-pending'}>
+                      {row.status}
+                    </td>
+                    <td>{`${formattedDate} ${formattedTime}`}</td>
+                    <td>{row.symbol}</td>
+                    <td>{row.value}</td>
+                    <td>{row.type}</td>
+                    <td>{row.message}</td>
+                    <td>
+                      <IconButton onClick={() => handleedit(row)} aria-label="edit">
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton onClick={() => handlecopy(row)} aria-label="copy">
+                        <ContentCopyIcon />
+                      </IconButton>
+                      <IconButton onClick={() => handledelete(row.id)} aria-label="delete">
+                        <DeleteIcon />
+                      </IconButton>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
 
           </table>
         </div>
@@ -406,80 +429,80 @@ export default function AlertComponent() {
                   <div className="additional-content">
                     <p className="text444">Alert when LTP is</p>
                     <FormControl className='inputFields ' sx={{ display: 'block' }}>
-                    <RadioGroup
-                     raw value={condition}
-                      onChange={handleCondition}
-                      className="above"
-                      
-                    >
-                      <FormControlLabel
-                        value="above"
-                        control={
-                          <Radio
-                            sx={{
-                              color: "#888686", // Color when unchecked
-                              "&.Mui-checked": {
-                                color: "#067026", // Color when checked
-                              },
-                            }}
-                          />
-                        }
-                        label={<span style={{ fontSize: '14px' }}>Above</span>}
-                      />
-                      <FormControlLabel
-                        value="below"
-                        control={
-                          <Radio
-                            sx={{
-                              color: "#888686",
-                              "&.Mui-checked": {
-                                color: "#067026",
-                              },
-                            }}
-                          />
-                        }
-                        label={<span style={{ fontSize: '14px' }}>Below</span>}
-                      />
-                    </RadioGroup>
+                      <RadioGroup
+                        raw value={condition}
+                        onChange={handleCondition}
+                        className="above"
+
+                      >
+                        <FormControlLabel
+                          value="above"
+                          control={
+                            <Radio
+                              sx={{
+                                color: "#888686", // Color when unchecked
+                                "&.Mui-checked": {
+                                  color: "#067026", // Color when checked
+                                },
+                              }}
+                            />
+                          }
+                          label={<span style={{ fontSize: '14px' }}>Above</span>}
+                        />
+                        <FormControlLabel
+                          value="below"
+                          control={
+                            <Radio
+                              sx={{
+                                color: "#888686",
+                                "&.Mui-checked": {
+                                  color: "#067026",
+                                },
+                              }}
+                            />
+                          }
+                          label={<span style={{ fontSize: '14px' }}>Below</span>}
+                        />
+                      </RadioGroup>
                     </FormControl>
 
-                   
+
                     <Box className='formItems'>
-								{/* <Typography component={"label"} className="label">
+                      {/* <Typography component={"label"} className="label">
                                 Value
                                 </Typography> */}
-								<Box
-									sx={{ position: 'relative', marginTop: 1, marginBottom: 2 }}
-								>
-									<Box className='selectionDiv bn searchFlex'>
-										<Box className='inputFields fullWidth'>
-											<InputBase
-												placeholder='Value'
-												value={value}
-												onChange={handleValue}
-												type='number'
-											/>
-										</Box>
-									</Box>
-									<Button
-										className='solidButton counterBtn'
-										sx={minus}
-										onClick={handleDecrement}
-									>
-										-
-									</Button>
-									<Button
-										className='solidButton counterBtn'
-										sx={plus}
-										onClick={handleIncrement}
-									>
-										+
-									</Button>
-								</Box>
-							</Box>
+                      <Box
+                        sx={{ position: 'relative', marginTop: 1, marginBottom: 2 }}
+                      >
+                        <Box className='selectionDiv bn searchFlex'>
+                          <Box className='inputFields fullWidth'>
+                            <InputBase
+                              placeholder='Value'
+                              value={value}
+                              onChange={handleValue}
+                              type='number'
+                            />
+                          </Box>
+                        </Box>
+                        <Button
+                          className='solidButton counterBtn'
+                          sx={minus}
+                          onClick={handleDecrement}
+                        >
+                          -
+                        </Button>
+                        <Button
+                          className='solidButton counterBtn'
+                          sx={plus}
+                          onClick={handleIncrement}
+                        >
+                          +
+                        </Button>
+                      </Box>
+                    </Box>
                   </div>
                   {/* <textarea className="typeinp" placeholder="Type the message you want to send..."></textarea> */}
-                  <label>  
+                  <label>
                     <textarea
                       name="postContent"
                       placeholder="Type the message you want to send..."
@@ -492,7 +515,7 @@ export default function AlertComponent() {
                     />
                   </label>
                   <div className="butdiv">
-                    <button className="button48"  onClick={handleUpdateData}>Update Alert</button>
+                    <button className="button48" onClick={handleUpdateData}>Update Alert</button>
                     <button className="button49" >Clear Values</button>
                   </div>
                 </div>
@@ -505,7 +528,7 @@ export default function AlertComponent() {
 
 
 
-{copymodal && (
+      {copymodal && (
         <div className="modal-overlay">
           <div className="modal-content">
             <div className="modal-body">
@@ -528,80 +551,80 @@ export default function AlertComponent() {
                   <div className="additional-content">
                     <p className="text444">Alert when LTP is</p>
                     <FormControl className='inputFields ' sx={{ display: 'block' }}>
-                    <RadioGroup
-                     raw value={condition}
-                      onChange={handleCondition}
-                      className="above"
-                      
-                    >
-                      <FormControlLabel
-                        value="above"
-                        control={
-                          <Radio
-                            sx={{
-                              color: "#888686", // Color when unchecked
-                              "&.Mui-checked": {
-                                color: "#067026", // Color when checked
-                              },
-                            }}
-                          />
-                        }
-                        label={<span style={{ fontSize: '14px' }}>Above</span>}
-                      />
-                      <FormControlLabel
-                        value="below"
-                        control={
-                          <Radio
-                            sx={{
-                              color: "#888686",
-                              "&.Mui-checked": {
-                                color: "#067026",
-                              },
-                            }}
-                          />
-                        }
-                        label={<span style={{ fontSize: '14px' }}>Below</span>}
-                      />
-                    </RadioGroup>
+                      <RadioGroup
+                        raw value={condition}
+                        onChange={handleCondition}
+                        className="above"
+
+                      >
+                        <FormControlLabel
+                          value="above"
+                          control={
+                            <Radio
+                              sx={{
+                                color: "#888686", // Color when unchecked
+                                "&.Mui-checked": {
+                                  color: "#067026", // Color when checked
+                                },
+                              }}
+                            />
+                          }
+                          label={<span style={{ fontSize: '14px' }}>Above</span>}
+                        />
+                        <FormControlLabel
+                          value="below"
+                          control={
+                            <Radio
+                              sx={{
+                                color: "#888686",
+                                "&.Mui-checked": {
+                                  color: "#067026",
+                                },
+                              }}
+                            />
+                          }
+                          label={<span style={{ fontSize: '14px' }}>Below</span>}
+                        />
+                      </RadioGroup>
                     </FormControl>
 
-                   
+
                     <Box className='formItems'>
-								{/* <Typography component={"label"} className="label">
+                      {/* <Typography component={"label"} className="label">
                                 Value
                                 </Typography> */}
-								<Box
-									sx={{ position: 'relative', marginTop: 1, marginBottom: 2 }}
-								>
-									<Box className='selectionDiv bn searchFlex'>
-										<Box className='inputFields fullWidth'>
-											<InputBase
-												placeholder='Value'
-												value={value}
-												onChange={handleValue}
-												type='number'
-											/>
-										</Box>
-									</Box>
-									<Button
-										className='solidButton counterBtn'
-										sx={minus}
-										onClick={handleDecrement}
-									>
-										-
-									</Button>
-									<Button
-										className='solidButton counterBtn'
-										sx={plus}
-										onClick={handleIncrement}
-									>
-										+
-									</Button>
-								</Box>
-							</Box>
+                      <Box
+                        sx={{ position: 'relative', marginTop: 1, marginBottom: 2 }}
+                      >
+                        <Box className='selectionDiv bn searchFlex'>
+                          <Box className='inputFields fullWidth'>
+                            <InputBase
+                              placeholder='Value'
+                              value={value}
+                              onChange={handleValue}
+                              type='number'
+                            />
+                          </Box>
+                        </Box>
+                        <Button
+                          className='solidButton counterBtn'
+                          sx={minus}
+                          onClick={handleDecrement}
+                        >
+                          -
+                        </Button>
+                        <Button
+                          className='solidButton counterBtn'
+                          sx={plus}
+                          onClick={handleIncrement}
+                        >
+                          +
+                        </Button>
+                      </Box>
+                    </Box>
                   </div>
                   {/* <textarea className="typeinp" placeholder="Type the message you want to send..."></textarea> */}
-                  <label>  
+                  <label>
                     <textarea
                       name="postContent"
                       placeholder="Type the message you want to send..."
@@ -614,7 +637,7 @@ export default function AlertComponent() {
                     />
                   </label>
                   <div className="butdiv">
-                    <button className="button48"  onClick={handleUpdateData1}>Create Alert</button>
+                    <button className="button48" onClick={handleUpdateData1}>Create Alert</button>
                     <button className="button49" >Clear Values</button>
                   </div>
                 </div>

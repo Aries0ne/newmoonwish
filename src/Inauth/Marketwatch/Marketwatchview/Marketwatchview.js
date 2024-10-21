@@ -54,6 +54,7 @@ const Marketwatchview = (props) => {
   const [name1 , setname1] = useState('');
   const [isModalOpen1, setModalOpen1] = useState(false);
   const watchname1 = useSelector(state => state.Position.watchname1);
+  const [selectrow, setSelectRow] = useState([]);
 
 
   
@@ -79,8 +80,10 @@ const Marketwatchview = (props) => {
     setSelectedAll(e.target.checked);
   };
 
-  const orderplacebutton = () => {
+  const orderplacebutton = (action,row) => {
+
     setModalOpen1(true);
+    setSelectRow(row?.original);
   }
 
 
@@ -365,6 +368,7 @@ const Marketwatchview = (props) => {
             enableSorting={true}
             enableColumnActions={true}
             enableRowSelection={true}
+            
             
 
             renderTopToolbar={ ({ table }) => {
@@ -665,7 +669,7 @@ const Marketwatchview = (props) => {
 
       {isModalOpen1 && (
         <div>
-          <Orderplace onClose={closemodal1}></Orderplace>
+          <Orderplace data={selectrow} onClose={closemodal1}></Orderplace>
 
         </div>
       )}

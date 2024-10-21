@@ -17,7 +17,7 @@ import Marketwatchview from "./Marketwatchview/Marketwatchview";
 import { useSocket } from "../../hooks/useNewSocket";
 import { useDispatch, useSelector } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useRef} from 'react';
 import { Box, Button, Grid, Tooltip, Typography, InputBase } from "@mui/material";
 import { confirm } from "../../redux/actions/confirmActions";
 
@@ -54,6 +54,7 @@ const Marketwatchview1 = () => {
 
   const [user , SetUser] = useState("User");
   const [name1 , setname1] = useState('');
+  const name1Ref = useRef(name1);
 
   const handleDropdownChange = (e) => {
     const newValue = e.target.value;
@@ -161,7 +162,7 @@ const Marketwatchview1 = () => {
     const formData = new FormData();
     const fileData = event.target.files[0];
     formData.append('file', fileData);
-    formData.append('name', 'watchlist');
+    formData.append('name', name1Ref.current);
     dispatch(uploadBulkwatchlist(formData));
   };
 
@@ -370,7 +371,7 @@ const Marketwatchview1 = () => {
     SetUser("User");
     setActiveTab(cityName);
     dispatch(setWatchName(cityName));
-
+    name1Ref.current = cityName;
     setInputvaluePopup(cityName);
     watchListUpdateSocket.sendMessage({
       remark: "watchlist",  // Define message type, if needed
@@ -583,7 +584,7 @@ const Marketwatchview1 = () => {
             
             
           </Box> */}
-          <FormControl className='buttdrop'>
+          <FormControl className='buttdrop' >
   <InputLabel id="demo-simple-select-label">Select predfined watchlist</InputLabel>
   <Select
     
